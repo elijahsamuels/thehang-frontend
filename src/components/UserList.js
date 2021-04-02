@@ -17,9 +17,9 @@ export class UserList extends Component {
 		if (loading) {
 			return (
 				<div>    
-					<Dimmer active>
+					{/* <Dimmer active> */}
 						<Loader size='massive'>Loading</Loader>
-					</Dimmer>
+					{/* </Dimmer> */}
 				</div>
 			)
 		}
