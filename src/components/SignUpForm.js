@@ -1,21 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addUser } from '../actions'
-import { UserSignUp } from '../actions'
+// import { addUser } from '../actions'
+// import { UserSignUp } from '../actions'
 import { Form, Button } from 'semantic-ui-react'
 
 
 export class SignUpForm extends Component {
-	
-	onChange = e => {
+	state = {
+		first_name: '',
+		last_name: '',
+		city: '',
+		email: ''
+}
+
+	handleChange = e => {
 		this.setState({
-			[e.target.first_name]: e.target.value
+			[e.target.name]: e.target.value
 		})
 	}
-	
+		
 	onSubmit = e => {
 		e.preventDefault();
-		this.props.addUser(this.state);
+		this.props.addUser(this.state)
+		this.setState({
+			first_name: '',
+			last_name: '',
+			city: '',
+			email: ''
+		})
+		debugger
 	}
 
 	render() {
@@ -27,36 +40,36 @@ export class SignUpForm extends Component {
 						id="first_name" 
 						name="first_name" 
 						placeholder="First name"
-						value={this.state} 
+						value={this.state.first_name} 
 						onChange={this.handleChange} />
 					<label htmlFor='last_name'/>		
 					<input type="text" 
 						id="last_name" 
 						name="last_name" 
 						placeholder="Last name"
-						value={this.state} 
+						value={this.state.last_name} 
 						onChange={this.handleChange} />
 					<label htmlFor='city'/>				
 					<input type="text" 
 						id="city" 
 						name="city" 
 						placeholder="City"
-						value={this.state} 
+						value={this.state.city} 
 						onChange={this.handleChange} />
 					<label htmlFor='email'/>			
 					<input type="text" 
 						id="email" 
 						name="email" 
 						placeholder="Email"
-						value={this.state} 
+						value={this.state.email} 
 						onChange={this.handleChange} />
 					<div>
-						<div class="ui checkbox">
+						<div className="ui checkbox">
 							<input type="checkbox" />
 							<label>Agree to things</label>
 						</div>
 						<br />
-						<Button type="submit" onClick={UserSignUp}>Submit</Button>
+						<Button type="submit" onClick={this.onSubmit}>Submit</Button>
 					</div>
 				</div>
 			</Form>
@@ -65,7 +78,7 @@ export class SignUpForm extends Component {
 }
 const mapDispatchToProps = dispatch => {
 	return {
-		addUser: (user) => dispatch(addUser(user)) 
+		addUser: (user) => dispatch(this.addUser(user)) 
 	}
 }
 
