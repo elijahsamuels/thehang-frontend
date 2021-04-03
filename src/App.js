@@ -7,7 +7,7 @@ import Footer from './components/staticComponents/Footer';
 import ErrorLoading from './components/staticComponents/ErrorLoading';
 import About from './components/staticComponents/About';
 import Index from './components/Index';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
     render() {
@@ -33,3 +33,12 @@ class App extends Component {
 }
 
 export default App;
+
+
+// const mapStateToProps = state => {
+//     return {
+//         loading: state.loading
+//     }
+// }
+
+// export default connect(mapStateToProps, { getUsers })(App);

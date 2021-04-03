@@ -9,7 +9,7 @@ export const fetchUsers = () => {
 
 export const addUser = (user, history) => {
 	return dispatch => {
-		fetch('/users', {
+		fetch('/musicians', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

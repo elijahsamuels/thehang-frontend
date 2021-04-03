@@ -24,8 +24,8 @@ export class UserList extends Component {
 		}
 		return (
 			<div>
-					<h2>Users</h2>
-					<p>User Count: {userList.length} </p>
+					<h2>Musicians</h2>
+					<p>Musician Count: {userList.length} </p>
 					{/* <p>Newest User: {lastUser.props} </p> */}
 					{ userList }
 				</div>

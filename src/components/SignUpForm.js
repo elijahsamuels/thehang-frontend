@@ -8,25 +8,26 @@ export class SignUpForm extends Component {
 		first_name: '',
 		last_name: '',
 		city: '',
-		email: ''
+		email: '',
+		password: ''
 }
 
-	handleChange = e => {
+	handleChange = event => {
 		this.setState({
-			[e.target.name]: e.target.value
+			[event.target.name]: event.target.value
 		})
 	}
 		
-	handleSubmit = e => {
-		e.preventDefault();
+	handleSubmit = event => {
+		event.preventDefault();
 		// console.log('this.state: ',this.state );
 		this.props.addUser(this.state, this.props.history);
-		this.setState({
-			first_name: '',
-			last_name: '',
-			city: '',
-			email: ''
-		})
+		// this.setState({
+		// 	first_name: '',
+		// 	last_name: '',
+		// 	city: '',
+		// 	email: ''
+		// })
 	}
 
 	render() {
@@ -65,6 +66,13 @@ export class SignUpForm extends Component {
 						name="email" 
 						placeholder="Email"
 						value={this.state.email} 
+						onChange={this.handleChange} />
+					<label htmlFor='password'>Password</label>			
+					<input type="text" 
+						id="password" 
+						name="password" 
+						placeholder="Password"
+						value={this.state.password} 
 						onChange={this.handleChange} />
 						<br />
 						<br />
