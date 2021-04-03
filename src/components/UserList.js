@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import User from './User'
 import { fetchUsers } from '../actions';
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 
 export class UserList extends Component {
 	componentDidMount() {
@@ -13,7 +13,6 @@ export class UserList extends Component {
 		const userList = users.map(user => <User key={user.id} user={user} />);
 		// const lastUser = users.slice(-1)[0]
 
-		
 		if (loading) {
 			return (
 				<div>    

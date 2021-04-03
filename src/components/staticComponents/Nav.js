@@ -5,9 +5,9 @@ export class Nav extends Component {
 	render() {
 		return (
 			<div>
-				The Navigator! 
 				<Link to="/"> Main</Link>
 				<Link to="about"> About</Link>
+				<Link to="musicians"> Musicians</Link>
 			</div>
 		)
 	}

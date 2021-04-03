@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-// import { addUser } from '../actions'
-// import { UserSignUp } from '../actions'
-import { Form, Button } from 'semantic-ui-react'
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Form, Button } from 'semantic-ui-react';
+import { addUser } from '../actions/index.js';
 
 export class SignUpForm extends Component {
 	state = {
@@ -19,55 +17,64 @@ export class SignUpForm extends Component {
 		})
 	}
 		
-	onSubmit = e => {
+	handleSubmit = e => {
 		e.preventDefault();
-		this.props.addUser(this.state)
+		// console.log('this.state: ',this.state );
+		this.props.addUser(this.state, this.props.history);
 		this.setState({
 			first_name: '',
 			last_name: '',
 			city: '',
 			email: ''
 		})
-		debugger
 	}
 
 	render() {
 		return (
 			<Form onSubmit={ this.handleSubmit }>
 				<div>
-					<label htmlFor='first_name'/>				
+					<label htmlFor='signup'>			
+						Sign up!
+					</label>			
+				</div>
+				<div>
+					<label htmlFor='first_name'>First Name</label>			
 					<input type="text" 
 						id="first_name" 
 						name="first_name" 
 						placeholder="First name"
 						value={this.state.first_name} 
 						onChange={this.handleChange} />
-					<label htmlFor='last_name'/>		
+					<label htmlFor='last_name'>Last Name</label>		
 					<input type="text" 
 						id="last_name" 
 						name="last_name" 
 						placeholder="Last name"
 						value={this.state.last_name} 
 						onChange={this.handleChange} />
-					<label htmlFor='city'/>				
+					<label htmlFor='city'>City</label>				
 					<input type="text" 
 						id="city" 
 						name="city" 
 						placeholder="City"
 						value={this.state.city} 
 						onChange={this.handleChange} />
-					<label htmlFor='email'/>			
+					<label htmlFor='email'>Email</label>			
 					<input type="text" 
 						id="email" 
 						name="email" 
 						placeholder="Email"
 						value={this.state.email} 
 						onChange={this.handleChange} />
+						<br />
+						<br />
 					<div>
 						<div className="ui checkbox">
 							<input type="checkbox" />
-							<label>Agree to things</label>
+							<label className="user-agreement">Agree to things</label>
 						</div>
+						<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
+						<br />
 						<br />
 						<Button type="submit" onClick={this.onSubmit}>Submit</Button>
 					</div>
@@ -76,10 +83,10 @@ export class SignUpForm extends Component {
 		)
 	}
 }
-const mapDispatchToProps = dispatch => {
-	return {
-		addUser: (user) => dispatch(this.addUser(user)) 
-	}
-}
+// const mapDispatchToProps = dispatch => {
+// 	return {
+// 		addUser: (user) => dispatch(this.addUser(user)) 
+// 	}
+// }
 
-export default connect(null, mapDispatchToProps)(SignUpForm)
+export default connect(null, { addUser })(SignUpForm)

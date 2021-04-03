@@ -7,9 +7,20 @@ export const fetchUsers = () => {
 	}
 }
 
-// export const addUser = (user) => {
-// 	return {
-// 		type: "ADD_USER",
-// 		user
-// 	}
-// }
+export const addUser = (user, history) => {
+	return dispatch => {
+		fetch('/users', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ user })
+		})
+		.then(response => response.json())
+		.then(user => {
+			dispatch({ type: "ADD_USER", user })
+			history.push('/musicians')
+		})
+	}
+}
