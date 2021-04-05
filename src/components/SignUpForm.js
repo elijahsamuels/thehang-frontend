@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button } from 'semantic-ui-react';
 import { addUser } from '../actions/index.js';
+import { withRouter } from 'react-router-dom';
 
 export class SignUpForm extends Component {
 	state = {
@@ -20,14 +21,15 @@ export class SignUpForm extends Component {
 		
 	handleSubmit = event => {
 		event.preventDefault();
-		// console.log('this.state: ',this.state );
-		this.props.addUser(this.state, this.props.history);
-		// this.setState({
-		// 	first_name: '',
-		// 	last_name: '',
-		// 	city: '',
-		// 	email: ''
-		// })
+		this.props.addUser(this.state);
+		this.setState({
+			first_name: '',
+            last_name: '',
+            city: '',
+            email: '',
+            password: ''
+        })
+        this.props.history.push('/musicians')
 	}
 
 	render() {
@@ -97,4 +99,4 @@ export class SignUpForm extends Component {
 // 	}
 // }
 
-export default connect(null, { addUser })(SignUpForm)
+export default withRouter(connect(null, { addUser })(SignUpForm))

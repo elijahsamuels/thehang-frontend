@@ -9,7 +9,7 @@ export const fetchUsers = () => {
 
 export const addUser = (user, history) => {
 	return dispatch => {
-		fetch('/musicians', {
+		fetch('/users', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -20,7 +20,6 @@ export const addUser = (user, history) => {
 		.then(response => response.json())
 		.then(user => {
 			dispatch({ type: "ADD_USER", user })
-			history.push('/musicians')
 		})
 	}
 }
