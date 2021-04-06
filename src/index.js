@@ -7,12 +7,15 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import usersReducer from './reducers/usersReducer';
+import { Container } from 'semantic-ui-react';
 
 const store = createStore(usersReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
         <Provider store={store}>
-            <App />
+            <Container>
+                <App />
+            </Container>
         </Provider>,
     document.getElementById("root")
 );
