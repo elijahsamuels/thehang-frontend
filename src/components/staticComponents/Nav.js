@@ -8,9 +8,11 @@ export class Nav extends Component {
 		return (
 			<div>
 				<Menu secondary>
-					<Image 
-						src={logo} 
-						width={50} /> 
+					<Link to="/"> 
+						<Image 
+							src={logo} 
+							width={50} /> 
+					</Link>
 					<Menu.Item 
 						name="Main"
 						to="/"> 
