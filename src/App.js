@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import UserList from './components/UserList';
-// import UserSignUp from './components/UserSignUp';
-// import SignUpForm from './components/SignUpForm';
+import ShowUser from './components/ShowUser';
 import Nav from './components/staticComponents/Nav';
 import Footer from './components/staticComponents/Footer';
 import ErrorLoading from './components/staticComponents/ErrorLoading';
@@ -20,10 +19,10 @@ class App extends Component {
                             {/* <UserList />
                             <SignUpForm /> */}
                             <Route exact path ='/' component={ Index } />
-                            {/* <Route component={UserList} /> */}
-                            <Route exact path="/about" component={About} />
-                            <Route exact path="/musicians" component={ UserList} />
-                            <Route component={ErrorLoading} />
+                            <Route exact path="/about" component={ About } />
+                            <Route path="/musician/:id" component={ ShowUser } />
+                            <Route exact path="/musicians" component={ UserList } />
+                            <Route component={ ErrorLoading } />
                         </Switch>
                     <Footer />
                 </Router>

@@ -8,28 +8,29 @@ export class Nav extends Component {
 		return (
 			<div>
 				<Menu secondary>
-					<Image src={logo} width={50} /> 
+					<Image 
+						src={logo} 
+						width={50} /> 
 					<Menu.Item 
-					name="Main"
-					to="/"
-					active=""> 
+						name="Main"
+						to="/"> 
 						<Link to="/"> 
 							The Hang
 						</Link>
 					</Menu.Item>
 					
 					<Menu.Item 
-					position="right"
-					name="About"
-					to="/"> 
+						position="right"
+						name="About"
+						to="/"> 
 						<Link to="/about">
 							About
 						</Link>
 					</Menu.Item>
 					
 					<Menu.Item 
-					name="Musicians"
-					to="/"> 
+						name="Musicians"
+						to="/"> 
 						<Link to="/musicians">
 							Musicians
 						</Link>
