@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Header, Icon } from 'semantic-ui-react';
 import { addUser } from '../actions/index.js';
 import { withRouter } from 'react-router-dom';
 
@@ -36,41 +36,51 @@ export class SignUpForm extends Component {
 		return (
 			<Form onSubmit={ this.handleSubmit }>
 				<div>
-					<label htmlFor='signup'>			
-						Sign up!
-					</label>			
+					<Header as='h1' align='center'>
+						Sign up
+					</Header>
 				</div>
+				<br/>
 				<div>
-					<label htmlFor='first_name'>First Name</label>			
-					<input type="text" 
-						id="first_name" 
-						name="first_name" 
-						placeholder="First name"
-						value={this.state.first_name} 
-						onChange={this.handleChange} />
-					<label htmlFor='last_name'>Last Name</label>		
-					<input type="text" 
-						id="last_name" 
-						name="last_name" 
-						placeholder="Last name"
-						value={this.state.last_name} 
-						onChange={this.handleChange} />
-					<label htmlFor='city'>City</label>				
-					<input type="text" 
-						id="city" 
-						name="city" 
-						placeholder="City"
-						value={this.state.city} 
-						onChange={this.handleChange} />
-					<label htmlFor='email'>Email</label>			
-					<input type="text" 
-						id="email" 
-						name="email" 
-						placeholder="Email"
-						value={this.state.email} 
-						onChange={this.handleChange} />
-					<label htmlFor='password'>Password</label>			
-					<input type="text" 
+					<Form.Group widths='equal'>
+						<Form.Input 
+							label="First Name"
+							type="text" 
+							id="first_name" 
+							name="first_name" 
+							placeholder="First name"
+							value={this.state.first_name} 
+							onChange={this.handleChange} />
+						<Form.Input
+							label="Last Name"
+							type="text" 
+							id="last_name" 
+							name="last_name" 
+							placeholder="Last name"
+							value={this.state.last_name} 
+							onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Group widths='equal'>
+						<Form.Input
+							label="City"
+							type="text" 
+							id="city" 
+							name="city" 
+							placeholder="City"
+							value={this.state.city} 
+							onChange={this.handleChange} />
+						<Form.Input
+							label="Email"
+							type="text" 
+							id="email" 
+							name="email" 
+							placeholder="Email"
+							value={this.state.email} 
+							onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Input
+						label="Password"
+						type="password" 
 						id="password" 
 						name="password" 
 						placeholder="Password"
@@ -83,13 +93,14 @@ export class SignUpForm extends Component {
 							<input type="checkbox" />
 							<label className="user-agreement">Agree to things</label>
 						</div>
-						<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
 						<br />
 						<br />
-						<Button type="submit" onClick={this.onSubmit}>Submit</Button>
+						<Button type="submit" onClick={this.onSubmit}><Icon name="signup"/>Submit</Button>
 					</div>
+<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
 				</div>
 			</Form>
+
 		)
 	}
 }

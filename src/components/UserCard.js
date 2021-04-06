@@ -6,7 +6,7 @@ import { Button, Card, Image } from 'semantic-ui-react';
 import pianoDog from '../images/pianodog.jpg';
 
 
-class User extends Component {
+class UserCard extends Component {
 	
 	handleClick = (event) => {
 		console.log("hello from user number: ", event.id)
@@ -64,4 +64,4 @@ class User extends Component {
 	}
 }
 
-export default withRouter(connect(null, {  })(User))
+export default withRouter(connect(null, {  })(UserCard))

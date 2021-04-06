@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import User from './User'
+import UserCard from './UserCard'
 import { fetchUsers } from '../actions';
 import { Loader } from 'semantic-ui-react'
 
@@ -10,7 +10,7 @@ export class UserList extends Component {
 	}
 	render() {
 		const { loading, users } = this.props;
-		const userList = users.map(user => <User key={user.id} user={user} />);
+		const userList = users.map(user => <UserCard key={user.id} user={user} />);
 		// const lastUser = users.slice(-1)[0]
 
 		if (loading) {
