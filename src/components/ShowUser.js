@@ -1,29 +1,52 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Form, Button, Card, Image } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { Form, Button, Card, Image } from 'semantic-ui-react';
+import { UserCard } from './UserCard';
+
+// const user = UserCard(event)
+// const user = this.event
 
 const genderOptions = [
-	{ key: 'm', text: 'Male', value: 'male' },
-	{ key: 'f', text: 'Female', value: 'female' },
-	{ key: 'o', text: 'Other', value: 'other' },
-	{ key: 'n', text: 'Prefer not to say', value: 'prefer not to say' },
-  ]
-  
-export class ShowUser extends Component {
-	// const user = this.props.user;
+	{ key: 'male', text: 'Male', value: 'male' },
+	{ key: 'female', text: 'Female', value: 'female' },
+	{ key: 'other', text: 'Other', value: 'other' },
+	{ key: 'na', text: 'Prefer not to say', value: 'prefer not to say' },
+]
 
-	render() {
+
+const ShowUser = (props) => {
+	// const user = this.props.users.find(user => user.id == this.props.match.params.id)
+
+	console.log("this is something", props)
+	// debugger
 		return (
 			<div>
 				<Form>
+
 					<Form.Group widths='equal'>
-						<Form.Input fluid label='First name' placeholder='First name' />
-						<Form.Input fluid label='Last name' placeholder='Last name' />
-						<Form.Input fluid label='City' placeholder='City' />
-						<Form.Input fluid label='Email' placeholder='Email' />
+						<Form.Input fluid 
+							label='First name' 
+							placeholder='First name'
+							value={"user.first_name"} />
+						
+						<Form.Input fluid 
+							label='Last name' 
+							placeholder='Last name'
+							value={'hi'} />
 					</Form.Group>
-					<Form.Select options={genderOptions} placeholder='Gender' />
-					<Form.Checkbox label='I agree to the Terms and Conditions' />
+
+					<Form.Group widths='equal'>
+						<Form.Input fluid 
+							label='City' 
+							placeholder='City' />
+						
+						<Form.Input fluid 
+							label='Email' 
+							placeholder='Email' />
+					</Form.Group>
+					{/* <Form.Select options={genderOptions} placeholder='Gender' /> */}
+					{/* <Form.Checkbox label='I agree to the Terms and Conditions' /> */}
 
 				{/* 
 				{user.first_name}
@@ -38,7 +61,6 @@ export class ShowUser extends Component {
 			</div>
 		)
 	}
-}
 
 const mapStateToProps = (state) => ({
 	

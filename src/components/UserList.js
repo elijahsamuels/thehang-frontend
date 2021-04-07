@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserCard from './UserCard'
 import { fetchUsers } from '../actions';
-import { Loader } from 'semantic-ui-react'
+import { Loader, Card } from 'semantic-ui-react'
 
 export class UserList extends Component {
 	componentDidMount() {
@@ -11,7 +11,9 @@ export class UserList extends Component {
 	render() {
 		const { loading, users } = this.props;
 		const userList = users.map(user => <UserCard key={user.id} user={user} />);
+		// debugger
 		// const lastUser = users.slice(-1)[0]
+
 
 		if (loading) {
 			return (
@@ -22,14 +24,23 @@ export class UserList extends Component {
 				</div>
 			)
 		}
-		return (
-			<div>
+			return (
+				<div>
 					<h2>Musicians</h2>
 					<p>Musician Count: {userList.length} </p>
 					{/* <p>Newest User: {lastUser.props} </p> */}
-					{ userList }
+					{/* { userList } */}
+
+					<Card.Group 
+						centered={true}
+						itemsPerRow={4}
+						style={{padding: "20px"}}>
+						{ userList }
+					</Card.Group>
+
+
 				</div>
-			)
+				)
 	}
 }
 

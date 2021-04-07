@@ -23,3 +23,16 @@ export const addUser = (user, history) => {
 		})
 	}
 }
+
+export const showUser = ( user ) => {
+	return dispatch => {
+		debugger
+		fetch("/users/" + user.id)
+		.then(response => response.json())
+		.then(payload => {
+			dispatch({ type: "SHOW_USER", payload })
+		})
+		this.props.history.push(`/musician/${user.id}`);
+
+	}
+}

@@ -29,7 +29,7 @@ export class SignUpForm extends Component {
             email: '',
             password: ''
         })
-        this.props.history.push('/musicians')
+        this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
 	}
 
 	render() {
@@ -97,7 +97,8 @@ export class SignUpForm extends Component {
 						<br />
 						<Button type="submit" onClick={this.onSubmit}><Icon name="signup"/>Submit</Button>
 					</div>
-<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
+						<br />
+						<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
 				</div>
 			</Form>
 
