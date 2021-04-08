@@ -5,15 +5,14 @@ import { fetchUsers } from '../actions';
 import { Loader, Card } from 'semantic-ui-react'
 
 export class UserList extends Component {
+	
 	componentDidMount() {
 		this.props.fetchUsers();
 	}
+	
 	render() {
 		const { loading, users } = this.props;
-		const userList = users.map(user => <UserCard key={user.id} user={user} />);
-		// debugger
-		// const lastUser = users.slice(-1)[0]
-
+		const userList = users.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
 
 		if (loading) {
 			return (

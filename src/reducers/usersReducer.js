@@ -1,9 +1,11 @@
 const initialState = {
 	loading: true,
-	users: []
+	users: [],
+	showUser: {},
+	error: null
 }
 
-const usersReducer = (state=initialState, action) => {
+const usersReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case "LOADING":
 			return {
@@ -24,7 +26,7 @@ const usersReducer = (state=initialState, action) => {
 		case "SHOW_USER":
 			return {
 				...state,
-				user: [...state.user ]
+				showUser: action.payload
 			}
 		
 		default:
@@ -33,3 +35,22 @@ const usersReducer = (state=initialState, action) => {
 }
 
 export default usersReducer;
+
+
+//     switch(action.type){
+//         case "GOT_DIYS":
+//             return {...state, diys: action.payload }
+//         case "SHOW_DIY":
+//             return {...state, showDiy: action.payload}
+//         case "ADDED_DIY":
+//             return { ...state, diys: [...state.diys, action.payload] }
+//         case "LOADING":
+//             return  {...state, loading: action.payload }
+//         case "ERROR":
+//             return {...state, error: action.payload}
+//         default: 
+//             return state
+//     }
+// }
+
+// export default diyReducer

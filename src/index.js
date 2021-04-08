@@ -14,13 +14,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(usersReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
-        <Provider store={store}>
+    <Provider store={store}>
             <Container>
                 <App />
             </Container>
         </Provider>,
     document.getElementById("root")
-);
+    );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

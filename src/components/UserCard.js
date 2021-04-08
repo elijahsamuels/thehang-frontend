@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { Button, Card, Image } from 'semantic-ui-react';
 import { showUser } from '../actions/index.js';
 import { UserList } from './UserList.js';
@@ -8,12 +8,11 @@ import pianoDog from '../images/pianodog.jpg';
 
 
 export class UserCard extends Component {
-	
+
 	handleClick = user => {
 		console.log("hello from user number: ", user.id);
-		showUser(user)
+		this.props.showUser(user.id, this.props.history);
 
-		// debugger
 
         // this.props.history.push(`/musician/${user.id}`);
 		// this.props.user.setState({id: user});
@@ -30,21 +29,23 @@ export class UserCard extends Component {
 			// this.props.history.push('/musicians')
 	
 	}
-	
+
 	render() {
 		const user = this.props.user;
 		// let user = this.props.users.find(user => user.id === user)
 
 		return (
 			<div>
-				<Card.Group>
+				<Card.Group style={{padding: "2px"}}>
 
 					<Card
 						// fluid={true}
 						raised={true}
 						id={user.id} 
 						key={user.id} 
-						onClick={() => this.handleClick(user)}>
+						// onClick={() => this.handleClick(user)}
+						href={`/musician/${user.id}`}
+						>
 						<Card.Header 
 							align='center' 
 							as='h3'>

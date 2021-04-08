@@ -1,26 +1,49 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import UserList from './components/UserList';
 import ShowUser from './components/ShowUser';
 import Nav from './components/staticComponents/Nav';
+import { connect } from 'react-redux';
 import Footer from './components/staticComponents/Footer';
 import ErrorLoading from './components/staticComponents/ErrorLoading';
 import About from './components/staticComponents/About';
 import Index from './components/Index';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { fetchUsers } from './actions/index';
 
-class App extends Component {
-    render() {
+// useComponentDidMOunt
+
+const App = (props) => {
+    const allUsers = props.users // .find(user => user.id == parseInt(props.users.id))
+        // console.log(users)
+
+    // componentDidMount() {
+    //     const users = this.props.fetchUsers();
+    // }
+    
+    // const [users, setUsers] = useState([])
+
+    // useEffect(() => {
+    //     fetchUsers()
+    //     console.log("HI there you're in useEffect")
+    //     getAllUsers()
+    //   },[])
+
+    // const getAllUsers = () => {
+	// 	fetch("/users")
+	// 	.then(response => response.json())
+	// 	.then(data => {
+    //         setUsers(data)
+    //     })
+    // }
+    
         return (
             <div className="App">
                 <Router>
                     <Nav />
                         <Switch>
-                            {/* <UserSignUp /> */}
-                            {/* <UserList />
-                            <SignUpForm /> */}
-                            <Route exact path ='/' component={ Index } />
+                            <Route exact path='/' component={ Index } />
                             <Route exact path="/about" component={ About } />
-                            <Route path="/musician/:id" component={ ShowUser } />
+                            <Route exact path='/musician/:id' component={ ShowUser }/>
                             <Route exact path="/musicians" component={ UserList } />
                             <Route component={ ErrorLoading } />
                         </Switch>
@@ -29,10 +52,24 @@ class App extends Component {
             </div>
         );
     }
-}
 
-export default App;
+    // const mapStateToProps = (state) => {
+    //     return {
+    //         users: state.user.users
+    //     }
+    //     }
+    
+const mapStateToProps = (state) => {
+    return {
+		loading: state.loading,
+		users: state.users,
+	}
+    
+} 
 
+export default connect(mapStateToProps, { fetchUsers })(App);
+
+// export default connect(mapStateToProps)(user) ;
 
 // const mapStateToProps = state => {
 //     return {
@@ -41,3 +78,9 @@ export default App;
 // }
 
 // export default connect(mapStateToProps, { getUsers })(App);
+
+// <Route  exact path="/testing/:id/composer/:composer_id" component={(routerProps) => {
+//     const findObj = blogs.find(el => el.id == routerProps.match.params.id)
+//     return  <Testing obj={findObj}/>
+// }
+//  } />
