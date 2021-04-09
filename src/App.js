@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserList from './components/UserList';
 import ShowUser from './components/ShowUser';
+import EditUser from './components/EditUser';
 import Nav from './components/staticComponents/Nav';
 import { connect } from 'react-redux';
 import Footer from './components/staticComponents/Footer';
@@ -44,6 +45,7 @@ const App = (props) => {
                             <Route exact path='/' component={ Index } />
                             <Route exact path="/about" component={ About } />
                             <Route exact path='/musician/:id' component={ ShowUser }/>
+                            <Route exact path='/musician/:id/edit' component={ EditUser }/>
                             <Route exact path="/musicians" component={ UserList } />
                             <Route component={ ErrorLoading } />
                         </Switch>

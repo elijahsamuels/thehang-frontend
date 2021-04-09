@@ -315,3 +315,14 @@ rails generate migration CreateSecondaryInstruments flute:boolean clarinet:boole
 primary:string
 secondary:string
 other:string
+
+
+
+
+
+
+
+
+##############################################
+
+two things needed for 

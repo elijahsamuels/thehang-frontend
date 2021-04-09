@@ -12,11 +12,11 @@ export const fetchUsers = () => {
 
 export const addUser = (user, history) => {
 	return dispatch => {
-		fetch('/users', {
-			method: 'POST',
+		fetch("/users", {
+			method: "POST",
 			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				"Accept": "application/json",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({ user })
 		})
@@ -42,15 +42,41 @@ export const showUser = (id) => {
 	return (dispatch) => {
 	  dispatch({ type: "LOADING", payload: true })
 	  fetch(`/users/${id}`)
-		.then(res => {
-		  if (!res.ok) { // error coming back from server
-			throw dispatch({ type: "ERROR", payload: 'could not find the data for that resource' })
-			// Error('could not fetch the data for that resource');
+		.then(response => {
+		  if (!response.ok) { // error coming back from server
+			throw dispatch({ type: "ERROR", payload: "could not find the data for that resource" })
+			// Error("could not fetch the data for that resource");
 		  }
-		  return res.json();
+		  return response.json();
 		})
 		.then(data => {
-	// console.log(data)
+		// console.log(data)
+		  dispatch({ type: "LOADING", payload: false })
+		  dispatch(obtainUser(data))
+		  // setData(data);
+		  dispatch({ type: "ERROR", payload: null })
+		  // setError(null);
+		})
+		.catch(error => {
+		  dispatch({ type: "LOADING", payload: false }) // auto catches network / connection error
+		  dispatch({ type: "ERROR", payload: error.message }) // setError(err.message);
+  
+		})
+	}
+  }
+export const editUser = (id) => {
+	return (dispatch) => {
+	  dispatch({ type: "LOADING", payload: true })
+	  fetch(`/users/${id}`)
+		.then(response => {
+		  if (!response.ok) { // error coming back from server
+			throw dispatch({ type: "ERROR", payload: "could not find the data for that resource" })
+			// Error("could not fetch the data for that resource");
+		  }
+		  return response.json();
+		})
+		.then(data => {
+		// console.log(data)
 		  dispatch({ type: "LOADING", payload: false })
 		  dispatch(obtainUser(data))
 		  // setData(data);

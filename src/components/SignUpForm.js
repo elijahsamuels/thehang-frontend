@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Header, Icon } from 'semantic-ui-react';
+import { Form, Button, Header, Icon, Input } from 'semantic-ui-react';
 import { addUser } from '../actions/index.js';
 import { withRouter } from 'react-router-dom';
 
@@ -71,12 +71,19 @@ export class SignUpForm extends Component {
 							onChange={this.handleChange} />
 						<Form.Input
 							label="Email"
-							type="text" 
+							type="text"
+							// control={Input}
 							id="email" 
 							name="email" 
 							placeholder="Email"
 							value={this.state.email} 
-							onChange={this.handleChange} />
+							onChange={this.handleChange}
+							// error={{
+							// 	content: 'Please enter a valid email address',
+							// 	pointing: 'below',
+							//   }}
+						 />
+
 					</Form.Group>
 					<Form.Input
 						label="Password"
@@ -105,6 +112,9 @@ export class SignUpForm extends Component {
 		)
 	}
 }
+
+
+
 // const mapDispatchToProps = dispatch => {
 // 	return {
 // 		addUser: (user) => dispatch(this.addUser(user)) 

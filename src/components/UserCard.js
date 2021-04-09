@@ -9,9 +9,10 @@ import pianoDog from '../images/pianodog.jpg';
 
 export class UserCard extends Component {
 
-	handleClick = user => {
-		console.log("hello from user number: ", user.id);
-		this.props.showUser(user.id, this.props.history);
+	// handleClick = user => {
+	// 	console.log("hello from user number: ", user.id);
+	// 	this.props.showUser(user.id, this.props.history);
+	// }
 
 
         // this.props.history.push(`/musician/${user.id}`);
@@ -28,10 +29,8 @@ export class UserCard extends Component {
 			// this.props.showUser(this.user.id);
 			// this.props.history.push('/musicians')
 	
-	}
-
-	render() {
-		const user = this.props.user;
+		render() {
+			const user = this.props.user;
 		// let user = this.props.users.find(user => user.id === user)
 
 		return (
