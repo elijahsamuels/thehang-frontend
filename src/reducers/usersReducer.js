@@ -28,6 +28,12 @@ const usersReducer = (state = initialState, action) => {
 				...state,
 				showUser: action.payload
 			}
+		// building this out
+		case "EDIT_USER":
+			return {
+				...state,
+				users:[...state.users, action.payload]
+			}
 		
 		default:
 			return state;

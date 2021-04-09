@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Input, Image, Sticky } from 'semantic-ui-react';
+import { Menu, Input, Image, Sticky, Icon } from 'semantic-ui-react';
 import logo from '../../images/sampleLogo.png';
 
 export class Nav extends Component {
@@ -40,6 +40,16 @@ export class Nav extends Component {
 									Musicians
 								</Link>
 							</Menu.Item>
+
+							<Menu.Item 
+								name="Edit"
+								to="/musician/:id/edit"> 
+								<Link to="/edit">
+								<Icon loading name='setting' />
+									Edit
+								</Link>
+							</Menu.Item>
+
 					<Menu.Item position='right'>
 					<Input
 						transparent
