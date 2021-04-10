@@ -38,7 +38,6 @@ export class UserCard extends Component {
 				<Card.Group style={{padding: "2px"}}>
 
 					<Card
-						// fluid={true}
 						raised={true}
 						id={user.id} 
 						key={user.id} 
