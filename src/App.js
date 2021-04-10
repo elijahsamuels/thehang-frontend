@@ -8,8 +8,10 @@ import Footer from './components/staticComponents/Footer';
 import ErrorLoading from './components/staticComponents/ErrorLoading';
 import About from './components/staticComponents/About';
 import Index from './components/Index';
+// import { Router } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { fetchUsers } from './actions/index';
+import history from './components/staticComponents/history.js';
 
 // useComponentDidMOunt
 
@@ -39,7 +41,7 @@ const App = (props) => {
     
         return (
             <div className="App">
-                <Router>
+                <Router history={ history }>
                     <Nav />
                         <Switch>
                             <Route exact path='/' component={ Index } />
