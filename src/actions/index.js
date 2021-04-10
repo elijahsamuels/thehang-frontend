@@ -27,17 +27,6 @@ export const addUser = (user, history) => {
 	}
 }
 
-// export const showUser = ( user, history ) => {
-// 	return dispatch => {
-// 		fetch("/users/" + user)
-// 		.then(response => response.json())
-// 		.then(user => {
-// 			dispatch({ type: "SHOW_USER", user })
-// 			history.push(`/musician/${user.id}`);
-// 		})
-// 	}
-// }
-
 export const showUser = (id) => {
 	return (dispatch) => {
 	  dispatch({ type: "LOADING", payload: true })

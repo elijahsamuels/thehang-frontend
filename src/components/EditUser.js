@@ -105,8 +105,8 @@ const EditUser = (props) => {
         first_name: props.user.first_name,
 		last_name: props.user.last_name,
 		city: props.user.city,
-		email: props.user.email,
 		state: props.user.state,
+		email: props.user.email,
 		phone: props.user.phone,
 		website: props.user.website,
 		description: props.user.description,
@@ -114,9 +114,25 @@ const EditUser = (props) => {
 		secondary_instrument_id: props.user.secondary_instrument_id,
     });
 
-    const handleSubmit = (event) => {
+    
+    const handleSubmit = event => {
+        console.log("handleSubmit: ", event)
         event.preventDefault();
-        // alert(`Submitting Name ${name}`)
+		props.editUser(props);
+		props.setState({
+			first_name: localUser.first_name,
+            last_name: localUser.last_name,
+            city: localUser.city,
+            state: localUser.state,
+            email: localUser.email,
+            phone: localUser.phone,
+            website: localUser.website,
+            primary_instrument_id: localUser.primary_instrument_id,
+            secondary_instrument_id: localUser.secondary_instrument_id,
+            description: localUser.description,
+        })
+        // this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
+	
     }
 
     const handleChange = event => {
@@ -126,7 +142,7 @@ const EditUser = (props) => {
 	}
 
     const instrumentIDToName = (instrumentIDs) => {
-        const instrumentArray = {
+        const instrumentSelect = {
             0: "",
             1: "Guitar",
             2: "Bass",
@@ -135,9 +151,9 @@ const EditUser = (props) => {
             5: "Saxophone",
         };
         if (!!instrumentIDs) {
-            return instrumentArray[instrumentIDs];
+            return instrumentSelect[instrumentIDs];
         }
-            return instrumentArray[0];
+            return instrumentSelect[0];
     };
 
     const dispatch = useDispatch();
@@ -229,7 +245,7 @@ const EditUser = (props) => {
                         fluid
                         label="Primary Instrument"
                         placeholder="primary_instrument_id"
-                        // value={localUser.primary_instrument_id.value}
+                        value={localUser.primary_instrument_id}
                         onChange={handleChange}
                         />
                     <Form.Input
@@ -237,7 +253,7 @@ const EditUser = (props) => {
                         label="Secondary Instrument"
                         placeholder="secondary_instrument_id"
                         // value={instrumentIDToName(user.secondary_instrument_id)}
-                        // value={localUser.secondary_instrument_id}
+                        value={localUser.secondary_instrument_id}
                         onChange={handleChange}
                     />
                     {/* <Dropdown
@@ -276,6 +292,8 @@ const EditUser = (props) => {
                         onChange={handleChange}
                     />
                 </Form>
+                <Button type="submit" onClick={handleSubmit}><Icon name="signup"/>Save Changes</Button>
+
             </Form>
         </div>
     );
@@ -287,7 +305,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(EditUser);
+export default connect(mapStateToProps, { editUser })(EditUser);
 
 
 

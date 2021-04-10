@@ -10,24 +10,29 @@ export class SignUpForm extends Component {
 		last_name: '',
 		city: '',
 		email: '',
-		password: ''
+		password: '',
+		confirmPassword: ''
 }
 
 	handleChange = event => {
 		this.setState({
-			[event.target.name]: event.target.value
-		})
+			[event.target.name]: event.target.value,
+		})	  
 	}
 		
 	handleSubmit = event => {
 		event.preventDefault();
+		let error = false;
+
 		this.props.addUser(this.state);
 		this.setState({
 			first_name: '',
             last_name: '',
             city: '',
             email: '',
-            password: ''
+            password: '',
+			confirmPassword: ''
+
         })
         this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
 	}
@@ -45,7 +50,7 @@ export class SignUpForm extends Component {
 					<Form.Group widths='equal'>
 						<Form.Input 
 							label="First Name"
-							type="text" 
+							type="text"  
 							id="first_name" 
 							name="first_name" 
 							placeholder="First name"
@@ -72,12 +77,13 @@ export class SignUpForm extends Component {
 						<Form.Input
 							label="Email"
 							type="text"
-							// control={Input}
 							id="email" 
 							name="email" 
 							placeholder="Email"
 							value={this.state.email} 
 							onChange={this.handleChange}
+							error={{content: 'Please enter a valid email address',
+						}, this.state.emailError}
 							// error={{
 							// 	content: 'Please enter a valid email address',
 							// 	pointing: 'below',
@@ -85,6 +91,7 @@ export class SignUpForm extends Component {
 						 />
 
 					</Form.Group>
+					<Form.Group>
 					<Form.Input
 						label="Password"
 						type="password" 
@@ -93,6 +100,19 @@ export class SignUpForm extends Component {
 						placeholder="Password"
 						value={this.state.password} 
 						onChange={this.handleChange} />
+
+					<Form.Input
+						label="Confirm Password"
+						type="password" 
+						id="confirmPassword" 
+						name="confirmPassword" 
+						placeholder="Confirm Password"
+						// message={"hello"}
+						value={this.state.confirmPassword} 
+						onChange={this.handleChange} 
+						error={this.state.confirmPasswordError || this.state.passwordMatchError}
+						/>
+					</Form.Group>
 						<br />
 						<br />
 					<div>
@@ -102,7 +122,19 @@ export class SignUpForm extends Component {
 						</div>
 						<br />
 						<br />
-						<Button type="submit" onClick={this.onSubmit}><Icon name="signup"/>Submit</Button>
+						<Form.Button
+						disabled={!this.state.first_name
+							|| !this.state.last_name
+							|| !this.state.city
+							|| !this.state.password
+							|| !this.state.email
+							|| !this.state.confirmPassword
+						}
+						color="blue"
+						type="submit" 
+						id="submit"
+						name="submit"
+						onClick={this.onSubmit}><Icon name="signup"/>Submit</Form.Button>
 					</div>
 						<br />
 						<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>

@@ -56,6 +56,12 @@ const usersReducer = (state = initialState, action) => {
 			// UNTESTED!!!
 		// building this out. find the object by index. (slice it out of the array), edit, and then replace and resend 
 		case "EDIT_USER":
+			debugger
+			return {
+				...state,
+				user: action.payload
+			}
+			
 			// debugger
 			// let User = state.users
 			// let user = User.all.find(u => u.id === action.payload.id)
@@ -66,10 +72,6 @@ const usersReducer = (state = initialState, action) => {
 			// 	...state,
 			// 	users: ([...firstHalf, action.payload, ...secondHalf])
 			// }
-			return {
-				...state,
-				user: action.payload
-			}
 
 			default:
 				return state;

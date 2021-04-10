@@ -287,8 +287,11 @@ Some common exercises:
 
 =======================================
 
+##### Validating Forms in Semantic UI React
+https://medium.com/@krandles/validating-forms-in-semantic-ui-react-a057957f1dd6
 
-Google OAuth for React
+
+# Google OAuth for React #
 
 ##### Add Google Login to your React Apps in 10 mins
 https://dev.to/sivaneshs/add-google-login-to-your-react-apps-in-10-mins-4del

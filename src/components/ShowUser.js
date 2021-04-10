@@ -186,6 +186,7 @@ const ShowUser = (props) => {
                         {instrumentIDToName(user.secondary_instrument_id)}
                     </List.Content>
                 </List.Item>
+                
             </List>
         </div>
     );
