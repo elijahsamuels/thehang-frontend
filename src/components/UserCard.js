@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import { Button, Card, Image } from 'semantic-ui-react';
-import { showUser } from '../actions/index.js';
+import { showUser } from '../actions/userActions.js';
 import { UserList } from './UserList.js';
 import pianoDog from '../images/pianodog.jpg';
 

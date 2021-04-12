@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Menu, Input, Image, Sticky, Icon } from "semantic-ui-react";
 import logo from "../../images/sampleLogo.png";
-import { editUser } from "../../actions/index.js";
+import { editUser } from "../../actions/userActions.js";
 
 const Nav = (props) => {
 	const currentUser = props.user;

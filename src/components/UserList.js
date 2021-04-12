@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserCard from './UserCard'
-import { fetchUsers } from '../actions';
+import { fetchUsers } from '../actions/userActions';
 import { Loader, Card } from 'semantic-ui-react'
 
 export class UserList extends Component {
@@ -25,8 +25,8 @@ export class UserList extends Component {
 		}
 			return (
 				<div>
-					<h2>Musicians</h2>
-					<p>Musician Count: {userList.length} </p>
+					<h2 align='center'>Musicians</h2>
+					<p align='center'>Musician Count: {userList.length} </p>
 					{/* <p>Newest User: {lastUser.props} </p> */}
 					{/* { userList } */}
 

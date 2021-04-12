@@ -3,7 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { List, Form, Button, Card, Image, Dropdown } from "semantic-ui-react";
 import { UserCard } from "./UserCard";
-import { showUser } from "../actions";
+import { showUser } from "../actions/userActions";
 
 // const user = UserCard(event)
 // const user = this.event

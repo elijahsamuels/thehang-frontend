@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import QRCode from '../../images/paypalQRCode.png';
 
-export class About extends Component {
-	render() {
-		return (
-			<div className="about">
-				<h2> This is about the About Page. </h2>
+
+
+const About = () => {
+	  return (
+		  <div className="about">			
+				<h2 align='center'> This is about the About Page. </h2>
 				<div className="description" align='center'>
 					<p>This will be the description of the site. A collection of musicians throughout the world. The ultimate rollidex!</p>
 				</div>
@@ -28,6 +29,6 @@ export class About extends Component {
 			</div>
 		)
 	}
-}
+
 
 export default About

@@ -94,11 +94,11 @@ const instruments = [
   { name: 'other', key: 'other', text: 'Other', value: 'other' }
 ]
 
-const EditUser = (props) => {
+const EditUser = props => {
   // const user = this.props.users.find(user => user.id == this.props.match.params.id)
 
   const [localUser, setLocalUser] = useState({
-      id: props.user.id,
+      ...props.user,
       first_name: props.user.first_name,
       last_name: props.user.last_name,
       city: props.user.city,
@@ -113,29 +113,29 @@ const EditUser = (props) => {
       deleteme: console.log("props from useState: ", props.user)
     })
 
-    // const [user, setUser] = useState({
-    //   first_name: localUser.first_name,
-    //   last_name: localUser.last_name,
-    //   city: localUser.city,
-    //   state: localUser.state,
-    //   email: localUser.email,
-    //   phone: localUser.phone,
-    //   website: localUser.website,
-    //   primary_instrument_id: localUser.primary_instrument_id,
-    //   secondary_instrument_id: localUser.secondary_instrument_id,
-    //   description: localUser.description,
-    //   password: localUser.password,
-    // })
   const handleSubmit = event => {
     console.log('handleSubmit: ', event)
     event.preventDefault()
-    props.editUser(localUser)
+    props.editUser(props)
+    props.setState({
+      first_name: localUser.first_name,
+      last_name: localUser.last_name,
+      city: localUser.city,
+      state: localUser.state,
+      email: localUser.email,
+      phone: localUser.phone,
+      website: localUser.website,
+      primary_instrument_id: localUser.primary_instrument_id,
+      secondary_instrument_id: localUser.secondary_instrument_id,
+      description: localUser.description,
+      password: localUser.password,
+    })
     // this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
   }
 
   const handleChange = event => {
     setLocalUser({
-      ...localUser, [event.target.name]: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -154,10 +154,10 @@ const EditUser = (props) => {
     return instrumentSelect[0]
   }
 
-//   const dispatch = useDispatch()
-//   useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [
-//     dispatch
-//   ]) // this is like componentDidMount
+  const dispatch = useDispatch()
+  useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [
+    dispatch
+  ]) // this is like componentDidMount
 
   if (props.loading) {
     return (
@@ -353,8 +353,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { editUser })( EditUser )
-// export default withRouter(connect(mapStateToProps, { editUser })(EditUser))
+// export default connect(mapStateToProps, { editUser })(EditUser)
+export default withRouter(connect(mapStateToProps, { editUser })(EditUser))
 
 // function onCallHover(event) {
 //     event.target.style.background = "red";

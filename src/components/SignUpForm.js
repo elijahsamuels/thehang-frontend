@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Header, Icon, Input } from 'semantic-ui-react';
-import { addUser } from '../actions/index.js';
+import { Form, Header, Icon } from 'semantic-ui-react';
+import { addUser } from '../actions/userActions.js';
 import { withRouter } from 'react-router-dom';
 
 export class SignUpForm extends Component {
@@ -22,8 +22,6 @@ export class SignUpForm extends Component {
 		
 	handleSubmit = event => {
 		event.preventDefault();
-		let error = false;
-
 		this.props.addUser(this.state);
 		this.setState({
 			first_name: '',

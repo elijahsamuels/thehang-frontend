@@ -10,7 +10,7 @@ import About from './components/staticComponents/About';
 import Index from './components/Index';
 // import { Router } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { fetchUsers } from './actions/index';
+import { fetchUsers } from './actions/userActions';
 import history from './components/staticComponents/history.js';
 
 // useComponentDidMOunt
