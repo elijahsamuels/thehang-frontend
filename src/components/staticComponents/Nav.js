@@ -10,7 +10,8 @@ import Logout from "../Logout";
 const Nav = (props) => {
 	// const currentUser = props.user;
     const isLoggedIn = props.currentUser;
-    console.log(props.currentUser)
+    // console.log(props.currentUser)
+    console.log(3)
         return (
 			<div >
                 <Sticky active={false} >

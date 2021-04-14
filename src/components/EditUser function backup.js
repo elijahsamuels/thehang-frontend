@@ -139,20 +139,6 @@ const EditUser = props => {
     })
   }
 
-  const instrumentIDToName = instrumentIDs => {
-    const instrumentSelect = {
-      0: '',
-      1: 'Guitar',
-      2: 'Bass',
-      3: 'Drums',
-      4: 'Keys',
-      5: 'Saxophone'
-    }
-    if (!!instrumentIDs) {
-      return instrumentSelect[instrumentIDs]
-    }
-    return instrumentSelect[0]
-  }
 
   const dispatch = useDispatch()
   useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [

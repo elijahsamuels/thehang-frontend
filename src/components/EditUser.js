@@ -110,7 +110,7 @@ const EditUser = (props) => {
         secondary_instrument_id: props.currentUser.secondary_instrument_id,
         description: props.currentUser.description,
         password: props.currentUser.password,
-        deleteme: console.log("props from props.currentUser: ", props.currentUser),
+        deleteme: console.log(2),
     });
 
     const handleSubmit = (event) => {

@@ -109,10 +109,10 @@ export class EditUser extends Component {
     };
     
     componentDidMount() {
+      // Const { a, b, c, d } = this.props? // use this as an example do deconstruct
         let user = this.props.user
             // (user) => user.id === this.props.match.params.id
         // );
-        // debugger
         this.setState({
             first_name: user.first_name,
             last_name: user.last_name,
@@ -184,20 +184,6 @@ export class EditUser extends Component {
 //     })
 //   }
 
-//   const instrumentIDToName = instrumentIDs => {
-//     const instrumentSelect = {
-//       0: '',
-//       1: 'Guitar',
-//       2: 'Bass',
-//       3: 'Drums',
-//       4: 'Keys',
-//       5: 'Saxophone'
-//     }
-//     if (!!instrumentIDs) {
-//       return instrumentSelect[instrumentIDs]
-//     }
-//     return instrumentSelect[0]
-//   }
 
 //   const dispatch = useDispatch()
 //   useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [

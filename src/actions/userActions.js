@@ -64,6 +64,7 @@ export const showUser = (id) => {
 export const editUser = (user) => {
     return (dispatch) => {
 		dispatch({ type: "LOADING", payload: true });
+        console.log(1, "???")
         fetch(`/users/${user.id}`, {
             method: "PATCH",
             headers: {
@@ -74,7 +75,7 @@ export const editUser = (user) => {
         })
             .then((response) => {
                 if (response.ok === false) {
-                    // server error
+                    console.log(5, "5 only on error from editUser")
                     throw dispatch({
                         type: "ERROR",
                         payload: "ERROR: Unable to save edits.",
@@ -83,11 +84,12 @@ export const editUser = (user) => {
                 return response.json();
             })
             .then((data) => {
-                // console.log(data)
+                console.log(2, "2 from editUser")
                 dispatch(obtainUser(data));
                 dispatch({ type: "LOADING", payload: false });
-                // setData(data);
+                console.log(3, "3 from editUser")
                 dispatch({ type: "ERROR", payload: null });
+                console.log(4, "4 from editUser")
                 // setError(null);
             })
             .catch((err) => {
@@ -96,6 +98,7 @@ export const editUser = (user) => {
                 // setError(err.message);
                 dispatch({ type: "ERROR", payload: err.message });
             });
+            console.log(3)
     };
 };
 

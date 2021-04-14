@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { List } from "semantic-ui-react";
 // import { UserCard } from "./UserCard";
 import { showUser } from "../actions/userActions";
+import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 
 // const user = UserCard(event)
 // const user = this.event
@@ -107,21 +108,6 @@ const ShowUser = (props) => {
         return <div>"...Show User is Loading"</div>;
     }
 
-    const instrumentIDToName = (instrumentIDs) => {
-        const instrumentArray = [
-            "",
-            "Guitar",
-            "Bass",
-            "Drums",
-            "Keys",
-            "Saxophone",
-        ];
-        if (!!instrumentIDs) {
-            return instrumentArray[instrumentIDs];
-        }
-            return instrumentArray[0];
-    };
-
     return (
         <div>
             <List>
@@ -179,14 +165,14 @@ const ShowUser = (props) => {
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
                         Primary Instrument:{" "}
-                        {instrumentIDToName(user.primary_instrument_id)}
+                        {InstrumentIDToName(user.primary_instrument_id)}
                     </List.Content>
                 </List.Item>
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
                         Secondary Instrument:{" "}
-                        {instrumentIDToName(user.secondary_instrument_id)}
+                        {InstrumentIDToName(user.secondary_instrument_id)}
                     </List.Content>
                 </List.Item>
                 

@@ -47,17 +47,11 @@ const App = (props) => {
             {/* <div>{env.API_URL}</div>; */}
             <Router history={history}>
                 <Nav />
-                {/* <Login />
-                <Logout /> */}
                 <Switch>
                     <Route exact path="/" component={Index} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/musician/:id" component={ShowUser} />
-                    <Route
-                        exact
-                        path="/musician/:id/edit"
-                        component={EditUser}
-                    />
+                    <Route exact path="/musician/:id/edit" component={EditUser} />
                     <Route exact path="/musicians" component={UserList} />
                     <Route component={ErrorLoading} />
                 </Switch>
