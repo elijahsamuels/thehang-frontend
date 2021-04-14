@@ -30,8 +30,7 @@ export class UserCard extends Component {
                             ui={false}
                         />
                         <Card.Content>
-                            <p align="center">                        {InstrumentIDToName(user.primary_instrument_id)}
-</p>
+                            <p align="center">{InstrumentIDToName(user.primary_instrument_id)}</p>
                             <p align="center">{user.city}</p>
                             <p align="center">{user.email}</p>
                         </Card.Content>

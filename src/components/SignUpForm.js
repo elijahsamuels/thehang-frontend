@@ -135,7 +135,6 @@ export class SignUpForm extends Component {
 						onClick={this.onSubmit}><Icon name="signup"/>Submit</Form.Button>
 					</div>
 						<br />
-						<p>User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else </p>
 				</div>
 			</Form>
 

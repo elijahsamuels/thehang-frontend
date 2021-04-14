@@ -8,13 +8,11 @@ import Footer from "./components/staticComponents/Footer";
 import ErrorLoading from "./components/staticComponents/ErrorLoading";
 import About from "./components/staticComponents/About";
 import Index from "./components/Index";
-// import { Router } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { fetchUsers } from "./actions/userActions";
 import history from "./components/staticComponents/history.js";
-// import Login from "./components/Login";
-// import Logout from "./components/Logout";
 import env from "react-dotenv";
+import { Container } from "semantic-ui-react";
 
 // useComponentDidMOunt
 
@@ -46,26 +44,30 @@ const App = (props) => {
         <div className="App">
             {/* <div>{env.API_URL}</div>; */}
             <Router history={history}>
-                <Nav />
-                <Switch>
-                    <Route exact path="/" component={Index} />
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/musician/:id" component={ShowUser} />
-                    <Route exact path="/musician/:id/edit" component={EditUser} />
-                    <Route exact path="/musicians" component={UserList} />
-                    <Route component={ErrorLoading} />
-                </Switch>
-                <Footer />
+                <Container fluid>
+                    <Nav />
+                    <Switch>
+                        <Route exact path="/" component={Index} />
+                        <Route exact path="/about" component={About} />
+                        <Route
+                            exact
+                            path="/musician/:id"
+                            component={ShowUser}
+                        />
+                        <Route
+                            exact
+                            path="/musician/:id/edit"
+                            component={EditUser}
+                        />
+                        <Route exact path="/musicians" component={UserList} />
+                        <Route component={ErrorLoading} />
+                    </Switch>
+                    <Footer />
+                </Container>
             </Router>
         </div>
     );
 };
-
-// const mapStateToProps = (state) => {
-//     return {
-//         users: state.user.users
-//     }
-//     }
 
 const mapStateToProps = (state) => {
     return {
@@ -75,19 +77,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { fetchUsers })(App);
-
-// export default connect(mapStateToProps)(user) ;
-
-// const mapStateToProps = state => {
-//     return {
-//         loading: state.loading
-//     }
-// }
-
-// export default connect(mapStateToProps, { getUsers })(App);
-
-// <Route  exact path="/testing/:id/composer/:composer_id" component={(routerProps) => {
-//     const findObj = blogs.find(el => el.id == routerProps.match.params.id)
-//     return  <Testing obj={findObj}/>
-// }
-//  } />

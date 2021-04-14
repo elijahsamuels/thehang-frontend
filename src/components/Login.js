@@ -15,23 +15,6 @@ const Login = (props) => {
 		refreshTokenSetup(response);
 	};
 
-	// const dispatch = useDispatch();
-    // const [localUser, setLocalUser] = useState({
-    //     // id: props.user.id,
-    //     first_name: response.profileObj.givenName,
-    //     last_name: props.user.last_name,
-    //     email: props.user.email,
-    //     deleteme: console.log("props from useState: ", props.user),
-    // });
-
-    //   const [response, setloginUser] = useState({
-    // 	...props.currentUser,
-    // 	first_name: response.profileObj.givenName,
-    // 	last_name: response.profileObj.familyName,
-    // 	email: response.profileObj.email,
-    // 	// deleteme: console.log("props from useState: ", props.user)
-    //   })
-
     const onFailure = (response) => {
         console.log("Login failed: response:", response);
         alert(`Failed to login.`);

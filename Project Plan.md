@@ -11,152 +11,118 @@ https://lucid.app/lucidchart/022b9f96-aabf-43e2-9042-258d1ef45345/edit?page=qM9o
 ### Phase One:
 
 #### User story
-- a user (musician) can signup, and create a basic profile
-- a user can view, edit/update and delete their profile
-- a user can view all profiles
+- [x] a user (musician) can signup, and create a basic profile
+- [x] a user can view their profile
+- [x] a user can view edit/update profile
+- [ ] a user can view delete profile
+- [x] a user can view all profiles
 
-- user attributes:
-  - id: id
-  - string: password
-  - string: first_name
-  - string: last_name
-  - string: email
-  - string: city
+- [x] user attributes:
+  - [x] id: id
+  - [x] string: password
+  - [x] string: first_name
+  - [x] string: last_name
+  - [x] string: email
+  - [x] string: city
+  - [x] intger: primary_instrumet
+  - [x] intger: secondary_instrumet
   
   ### Phase Two:
-  - string: phone
-  - integer: travel_distance
-  - string: description
-  - string: website link
+  - [x] string: phone
+  - [x] integer: travel_distance
+  - [x] string: description
+  - [x] string: website link
   
 
-  Primary_Instrument
-  Instruments has_many users (join table: user_primary_instruments)
-  User Primary_Instrument belongs_to instrument (join table: user_primary_instruments)
-    - boolean: clarinet
-    - boolean: flute
-    - boolean: saxophone
-    - boolean: trumpet
-    - boolean: trombone
-    - boolean: bass
-    - boolean: guitar
-    - boolean: drums
-    - boolean: piano
-    - boolean: vocals_male
-    - boolean: vocals_female
-    - boolean: vocals_female
-    - boolean: dj
-
-  Secondary_Instrument
-  Instruments has_many users (join table: user_secondary_instruments)
-  User Secondary_Instrument belongs_to instrument (join table: user_secondary_instruments)
-    - boolean: clarinet
-    - boolean: flute
-    - boolean: saxophone
-    - boolean: trumpet
-    - boolean: trombone
-    - boolean: bass
-    - boolean: guitar
-    - boolean: drums
-    - boolean: piano
-    - boolean: vocals_male
-    - boolean: vocals_female
-    - boolean: vocals_female
-    - boolean: dj
-    - 
-
-
-
-  - has_many instruments
-  Instrument has_many users (join table: user_instruments)
-  User has_many instruments (join table: user_instruments)
-    - boolean: clarinet
-    - boolean: flute
-    - boolean: saxophone
-    - boolean: trumpet
-    - boolean: trombone
-    - boolean: bass
-    - boolean: guitar
-    - boolean: drums
-    - boolean: piano
-    - boolean: vocals_male
-    - boolean: vocals_female
-    - boolean: vocals_female
-    - boolean: dj
-    - 
+  Instruments
+  Instruments has_many users (join table: user_instruments)
+  User Primary_Instrument belongs_to instrument (join table: user_instruments)
+    - [ ] id: 1, name: clarinet
+    - [ ] id: 2, name: flute
+    - [ ] id: 3, name: saxophone
+    - [ ] id: 4, name: trumpet
+    - [ ] id: 5, name: trombone
+    - [ ] id: 6, name: bass
+    - [ ] id: 7, name: guitar
+    - [ ] id: 8, name: drums
+    - [ ] id: 9, name: piano
+    - [ ] id: 10, name: vocals_male
+    - [ ] id: 11, name: vocals_female
+    - [ ] id: 12, name: vocals_female
+    - [ ] id: 13, name: dj
 
   ### Phase Three:
-  - has_many gig_types - Checkboxes
+  - [ ] has_many gig_types - [ ] Checkboxes
   Gig_types has_many users (join table: gig_types_for_user)
   User has_many gig_types (join table: gig_types_for_user)
-  - boolean: available for gigs?
-    - boolean: bar_restaurant
-    - boolean: club
-    - boolean: wedding_band
-    - boolean: recording_session
-    - boolean: chamber_ensemble
-    - boolean: orchestra_symphony
-    - boolean: touring
-    - 
+  - [ ] boolean: available for gigs?
+    - [ ] boolean: bar_restaurant
+    - [ ] boolean: club
+    - [ ] boolean: wedding_band
+    - [ ] boolean: recording_session
+    - [ ] boolean: chamber_ensemble
+    - [ ] boolean: orchestra_symphony
+    - [ ] boolean: touring
+    - [ ] 
 
   ### Phase Four:
-  - integer: requested_pay_rate
-  - string: photo
-  - string: gender
-  - integer: date_of_birth
-  - string: youtube_links
-  - string: associated_bands
-  - has_many genres
+  - [ ] integer: requested_pay_rate
+  - [ ] string: photo
+  - [ ] string: gender
+  - [ ] integer: date_of_birth
+  - [ ] string: youtube_links
+  - [ ] string: associated_bands
+  - [ ] has_many genres
   Genre has_many users (join table: user_genres)
   User has_many genres (join table: user_genres)
-    - boolean: rock
-    - boolean: hip_hop_rap
-    - boolean: rnb
-    - boolean: country
-    - boolean: electronic
-    - boolean: latin
-    - boolean: jazz
-    - boolean: pop
+    - [ ] boolean: rock
+    - [ ] boolean: hip_hop_rap
+    - [ ] boolean: rnb
+    - [ ] boolean: country
+    - [ ] boolean: electronic
+    - [ ] boolean: latin
+    - [ ] boolean: jazz
+    - [ ] boolean: pop
 
   ### Phase Five:
-  - a map (google maps? api?) with location of musicians
-  - internal only? average requested pay rates by areas
+  - [ ] a map (google maps? api?) with location of musicians
+  - [ ] internal only? average requested pay rates by areas
 
-  - connections with other musicians (users)
+  - [ ] connections with other musicians (users)
   User has_many users (connections) (join table: connections)
   
-  - recommendations to other musicians (users) (can only recommend a musician with a connection)
+  - [ ] recommendations to other musicians (users) (can only recommend a musician with a connection)
   User has_many recommedations, through: connections (join table: user_recommendations)
   Recommendation belongs_to user (the user that created it) (join table: user_recommendations)
 
-  - Gig stories
-    - a user can CRUD a story to share 
-      - has_many Stories
+  - [ ] Gig stories
+    - [ ] a user can CRUD a story to share 
+      - [ ] has_many Stories
       Stories belongs_to a user (join table: user_stories)
       User has_many stories (join table: user_stories)
 
 
-- A user not logged in can view basic info 
+- [ ] A user not logged in can view basic info 
 
   Skills has_many users (join table: user_skills)
   User has_many skills (join table: user_skills)
-    - boolean: arranging
-    - boolean: band leader
-    - boolean: composition
-    - boolean: transcription
-    - boolean: event production
-    - boolean: studio mastering
-    - boolean: studio mixing
-    - boolean: studio recording
-    - boolean: instrument repair - woodwind
-    - boolean: instrument repair - brass
-    - boolean: instrument repair - guitar & bass
-    - boolean: instrument repair - acoustic piano
-    - boolean: instrument repair - digital keyboad
-    - boolean: instrument repair - amps
-    - boolean: piano tuning
-    - boolean: education - classroom
-    - boolean: education - private lessons
+    - [ ] boolean: arranging
+    - [ ] boolean: band leader
+    - [ ] boolean: composition
+    - [ ] boolean: transcription
+    - [ ] boolean: event production
+    - [ ] boolean: studio mastering
+    - [ ] boolean: studio mixing
+    - [ ] boolean: studio recording
+    - [ ] boolean: instrument repair - woodwind
+    - [ ] boolean: instrument repair - brass
+    - [ ] boolean: instrument repair - guitar & bass
+    - [ ] boolean: instrument repair - acoustic piano
+    - [ ] boolean: instrument repair - digital keyboad
+    - [ ] boolean: instrument repair - amps
+    - [ ] boolean: piano tuning
+    - [ ] boolean: education - classroom
+    - [ ] boolean: education - private lessons
 
 
 
@@ -202,7 +168,7 @@ start with rails backend
 
 # STRETCH GOALS
 
-- [ ] 
+- [ ] User should have to prove they're a musician by passing some music related question. Either identify musical note on a staff, instrument, or something else
 - [ ] 
 - [ ] 
 - [ ] 
@@ -313,22 +279,3 @@ rails generate migration CreateJoinTableUserPrimaryInstruments user primary_inst
 
 Secondary_Instrument
 rails generate migration CreateSecondaryInstruments flute:boolean clarinet:boolean
-
-
-
-
-
-primary:string
-secondary:string
-other:string
-
-
-
-
-
-
-
-
-##############################################
-
-two things needed for 
