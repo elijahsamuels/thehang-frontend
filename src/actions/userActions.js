@@ -1,3 +1,5 @@
+import history from "../components/staticComponents/history";
+
 export const obtainUser = (user) => ({ type: "SHOW_USER", payload: user });
 
 export const fetchUsers = () => {
@@ -58,8 +60,8 @@ export const showUser = (id) => {
             });
     };
 };
+
 export const editUser = (user) => {
-	// debugger
     return (dispatch) => {
 		dispatch({ type: "LOADING", payload: true });
         fetch(`/users/${user.id}`, {
@@ -96,3 +98,40 @@ export const editUser = (user) => {
             });
     };
 };
+
+export const currentUser = (user) => ({ type: "CREATE_USER", payload: user });
+
+export const loginUser = (userObj) => {
+    return (dispatch) => {
+        // dispatch({ type: "LOADING", payload: true });
+        fetch(`/users`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userObj }),
+        })
+        .then(response => response.json()) // fulfilled and returns the user object
+        .then(data => {
+            console.log(data.id)
+            dispatch({type:'CURRENT_USER', payload: data})
+        })
+    }
+
+}
+
+    // grab the object from the GoogleLogin component
+    // send to the rails API, users controller => find_or_create by the object passed in
+    // on the response, set the incoming data to the currentUser in state
+{/* 
+    
+    axios
+    .get(`https://people.googleapis.com/v1/people/${googleId}?personFields=birthdays,genders&access_token=${accessToken}`)
+    .then((response) => {console.log(JSON.stringify(response, null, 4)); }) //You will get data here
+    .catch((error) => {console.warn(JSON.stringify(error, null, 4));});
+    
+*/}
+
+
+// https://people.googleapis.com/v1/people/109441694687044824001?personFields=birthdays,genders&access_token=AIzaSyA2dy67S5fSB8H70A3cSZtL-uEdwKwOCc0

@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { Menu, Input, Image, Sticky, Icon } from "semantic-ui-react";
 import logo from "../../images/sampleLogo.png";
 import { editUser } from "../../actions/userActions.js";
+import Login from "../Login";
+import Logout from "../Logout";
 
 const Nav = (props) => {
 	const currentUser = props.user;
-
+    const isLoggedIn = !!props.currentUser;
+    console.log(currentUser)
         return (
 			<div >
                 <Sticky active={false} >
@@ -27,14 +30,24 @@ const Nav = (props) => {
                             <Link to="/musicians">Musicians</Link>
                         </Menu.Item>
 
-                        <Menu.Item
+                        {isLoggedIn ?
+                            <>
+                            <Menu.Item
                             name="Edit"
                             to={`/musician/${currentUser.id}/edit`}>
-                            <Link to={`/musician/${currentUser.id}/edit`}>
-                                <Icon loading name="setting" />
-                                Edit
-                            </Link>
-                        </Menu.Item>
+                                <Link to={`/musician/${currentUser.id}/edit`}>
+                                    <Icon loading name="setting" />
+                                    Edit
+                                </Link>
+                            </Menu.Item>
+                            <Logout />
+
+                            </>
+                            :
+                            <Login />
+            
+                            // <div >hi </div>
+                            }
 
                         <Menu.Item position="right">
                             <Input
