@@ -302,6 +302,9 @@ https://www.npmjs.com/package/react-google-login
 ##### JWT from WebDevSimplified
 https://www.youtube.com/watch?v=mbsmsi7l3r4
 
+##### JS COOKIE
+https://github.com/js-cookie/js-cookie
+
 
 Primary_Instrument
 rails generate migration CreatePrimaryInstruments flute:boolean clarinet:boolean

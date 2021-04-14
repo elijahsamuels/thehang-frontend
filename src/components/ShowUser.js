@@ -1,8 +1,8 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import { List, Form, Button, Card, Image, Dropdown } from "semantic-ui-react";
-import { UserCard } from "./UserCard";
+import { Link } from "react-router-dom";
+import { List } from "semantic-ui-react";
+// import { UserCard } from "./UserCard";
 import { showUser } from "../actions/userActions";
 
 // const user = UserCard(event)
@@ -92,7 +92,10 @@ const ShowUser = (props) => {
     // const user = this.props.users.find(user => user.id == this.props.match.params.id)
     // const findUser = users.find(user => user.id == routerProps.match.params.id)
 
-    const location = user.city + ", " + user.state;
+    const location = `${user.city}, ${user.state}` ;
+
+
+
     const baseLocationURL = "www.google.com/maps/place/";
     console.log("this is current user object: ", props.user);
     const dispatch = useDispatch();

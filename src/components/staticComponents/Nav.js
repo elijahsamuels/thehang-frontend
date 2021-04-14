@@ -32,22 +32,19 @@ const Nav = (props) => {
 
                         {isLoggedIn ?
                             <>
-                            <Menu.Item
-                            name="Edit"
-                            to={`/musician/${props.currentUser.id}/edit`}>
-                                <Link to={`/musician/${props.currentUser.id}/edit`}>
-                                    <Icon loading name="setting" />
-                                    Edit
-                                </Link>
-                            </Menu.Item>
-                            <Logout />
-
+                                <Menu.Item
+                                    name="Edit"
+                                    to={`/musician/${props.currentUser.id}/edit`}>
+                                    <Link to={`/musician/${props.currentUser.id}/edit`}>
+                                        <Icon loading name="setting" />
+                                        Edit
+                                    </Link>
+                                </Menu.Item>
+                                <Logout />
                             </>
                             :
                             <Login />
-            
-                            // <div >hi </div>
-                            }
+                        }
 
                         <Menu.Item position="right">
                             <Input

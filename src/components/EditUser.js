@@ -98,19 +98,19 @@ const EditUser = (props) => {
     // const user = this.props.users.find(user => user.id == this.props.match.params.id)
 
     const [localUser, setLocalUser] = useState({
-        id: props.user.id,
-        first_name: props.user.first_name,
-        last_name: props.user.last_name,
-        city: props.user.city,
-        state: props.user.state,
-        email: props.user.email,
-        phone: props.user.phone,
-        website: props.user.website,
-        primary_instrument_id: props.user.primary_instrument_id,
-        secondary_instrument_id: props.user.secondary_instrument_id,
-        description: props.user.description,
-        password: props.user.password,
-        deleteme: console.log("props from useState: ", props.user),
+        id: props.currentUser.id,
+        first_name: props.currentUser.first_name,
+        last_name: props.currentUser.last_name,
+        city: props.currentUser.city,
+        state: props.currentUser.state,
+        email: props.currentUser.email,
+        phone: props.currentUser.phone,
+        website: props.currentUser.website,
+        primary_instrument_id: props.currentUser.primary_instrument_id,
+        secondary_instrument_id: props.currentUser.secondary_instrument_id,
+        description: props.currentUser.description,
+        password: props.currentUser.password,
+        deleteme: console.log("props from props.currentUser: ", props.currentUser),
     });
 
     const handleSubmit = (event) => {
@@ -149,7 +149,7 @@ const EditUser = (props) => {
     text("https://www.cloudflare.com/cdn-cgi/trace").then((data) => {
         let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
         let ip = data.match(ipRegex)[0];
-        localUser.ip = ip; // HELP: Doesn't always show... Why?
+        // localUser.ip = ip; // HELP: Doesn't always show... Why?
     });
    
     //   const dispatch = useDispatch()
@@ -349,9 +349,9 @@ const EditUser = (props) => {
             <List.Item>
                 <List.Icon name="computer" />Your computer type: {clientInformation.platform} <br />
             </List.Item>
-            <List.Item>
+            {/* <List.Item>
                 <Icon name="location arrow" />Your IP Address: {localUser.ip} <br />
-            </List.Item>
+            </List.Item> */}
             </List>
         </div>
     );
@@ -359,7 +359,7 @@ const EditUser = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
+        currentUser: state.currentUser,
     };
 };
 
