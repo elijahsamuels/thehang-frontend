@@ -8,9 +8,9 @@ import Login from "../Login";
 import Logout from "../Logout";
 
 const Nav = (props) => {
-	const currentUser = props.user;
-    const isLoggedIn = !!props.currentUser;
-    console.log(currentUser)
+	// const currentUser = props.user;
+    const isLoggedIn = props.currentUser;
+    console.log(props.currentUser)
         return (
 			<div >
                 <Sticky active={false} >
@@ -34,8 +34,8 @@ const Nav = (props) => {
                             <>
                             <Menu.Item
                             name="Edit"
-                            to={`/musician/${currentUser.id}/edit`}>
-                                <Link to={`/musician/${currentUser.id}/edit`}>
+                            to={`/musician/${props.currentUser.id}/edit`}>
+                                <Link to={`/musician/${props.currentUser.id}/edit`}>
                                     <Icon loading name="setting" />
                                     Edit
                                 </Link>
@@ -66,12 +66,13 @@ const Nav = (props) => {
     }
 
 const mapStateToProps = (state) => {
-    console.log("state", state); // array of users
+    // console.log("state", state); // array of users
 	// debugger
     return {
 		loading: state.loading,
         users: state.users,
-		user: state.user
+		user: state.user,
+		currentUser: state.currentUser
 		// test: console.log("mapStateToProps: ", state)
     };
 };
