@@ -99,10 +99,9 @@ const instruments = [
     // { name: "other", key: "other", text: "Other", value: "other" },
 ];
 
-
 const EditUser = (props) => {
     // const user = this.props.users.find(user => user.id == this.props.match.params.id)
-    
+
     // useEffect(() => {
     //     return function setUserImg() {
     //         if (props !== undefined) {
@@ -126,7 +125,6 @@ const EditUser = (props) => {
         password: props.currentUser.password,
         imageUrl: props.currentUser.imageUrl,
     });
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -156,7 +154,6 @@ const EditUser = (props) => {
     //     localUser.ip = ip; // HELP: Doesn't always show... Why?
     // });
 
-
     if (props.loading) {
         return (
             <div>
@@ -171,11 +168,20 @@ const EditUser = (props) => {
 
     return (
         <div>
-            <br/>
+            <br />
             <h1 align="center">Welcome, {localUser.first_name}!</h1>
-            <br/>
+            <br />
 
             <Form>
+                <Image.Group widths="equal" align="center">
+                    <Image
+                        src={`${localUser.imageUrl}`}
+                        size="small"
+                        bordered={true}
+                        rounded
+                        alt="user image"
+                    />
+                </Image.Group>
                 <Form.Group widths="equal">
                     <Icon name="user" color="black" />
                     <Form.Input
@@ -248,7 +254,7 @@ const EditUser = (props) => {
                         value={localUser.email}
                         onChange={handleChange}
                     />
-                        <Icon name="linkify" color="black" />
+                    <Icon name="linkify" color="black" />
                     <Form.Input
                         fluid
                         name="website"
@@ -259,7 +265,6 @@ const EditUser = (props) => {
                         value={localUser.website}
                         onChange={handleChange}
                     />
-                    <Image src={`${localUser.imageUrl}`} size='medium' rounded />
                     {/* <Form.Input
                         fluid
                         name="imgUrl"
@@ -297,13 +302,17 @@ const EditUser = (props) => {
                         )}
                         // onChange={handleChange}
                     /> */}
-                      <Select 
-                      placeholder={InstrumentIDToName(localUser.primary_instrument_id)} 
-                      value={InstrumentIDToName(localUser.primary_instrument_id)}
-                    //   selected={localUser.primary_instrument_id}  
-                      options={instruments}
-                      onChange={handleChange}
-                       />
+                    <Select
+                        placeholder={InstrumentIDToName(
+                            localUser.primary_instrument_id
+                        )}
+                        value={InstrumentIDToName(
+                            localUser.primary_instrument_id
+                        )}
+                        //   selected={localUser.primary_instrument_id}
+                        options={instruments}
+                        onChange={handleChange}
+                    />
                     <Form.Input
                         fluid
                         name="secondary_instrument_id"
@@ -311,10 +320,13 @@ const EditUser = (props) => {
                         type="text"
                         id="secondary_instrument_id"
                         placeholder="secondary_instrument_id"
-                        value={InstrumentIDToName(localUser.secondary_instrument_id)}
+                        value={InstrumentIDToName(
+                            localUser.secondary_instrument_id
+                        )}
                         onChange={handleChange}
                     />
-                    <Form.Input
+
+                    {/* <Form.Input
                         fluid
                         name="password"
                         label="Password"
@@ -323,7 +335,7 @@ const EditUser = (props) => {
                         placeholder="password"
                         value={localUser.password}
                         onChange={handleChange}
-                    />
+                    /> */}
                     {/* <Dropdown
                         placeholder='Select Country'
                         // fluid
@@ -340,12 +352,16 @@ const EditUser = (props) => {
                         placeholder="Gender"
                         value={localUser.website}
                         onChange={handleChange}
-
+                        
                     /> */}
                 </Form.Group>
                 <Form.Group>
                     <Icon name="book" color="black" />
                     <TextArea
+                        placeholder="Description"
+                        name="Description"
+                        // type="text"
+                        id="Description"
                         label="Description"
                         // value={user.description}
                         value={localUser.description}
@@ -385,10 +401,12 @@ const EditUser = (props) => {
             </Form>
             <List>
                 <List.Item>
-                    <List.Icon name="microchip" /> Info about your machine: {clientInformation.userAgent} 
+                    <List.Icon name="microchip" /> Info about your machine:{" "}
+                    {clientInformation.userAgent}
                 </List.Item>
                 <List.Item>
-                    <List.Icon name="computer" /> Your computer type: {clientInformation.platform}
+                    <List.Icon name="computer" /> Your computer type:{" "}
+                    {clientInformation.platform}
                 </List.Item>
                 {/* <List.Item>
                     <List.Icon name="location arrow" /> Your IP Address: {localUser.ip}
