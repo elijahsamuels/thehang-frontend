@@ -6,6 +6,7 @@ const InstrumentIDToName = (instrumentID) => {
 		3: "Drums",
 		4: "Keys",
 		5: "Saxophone",
+		6: "Trumpet",
 	};
 	
 	if (!!instrumentID) {

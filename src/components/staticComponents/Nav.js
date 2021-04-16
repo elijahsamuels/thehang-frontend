@@ -8,68 +8,69 @@ import Login from "../Login";
 import Logout from "../Logout";
 
 const Nav = (props) => {
-    const isLoggedIn = props.currentUser;
-    console.log(3)
-        return (
-			<div >
-                <Sticky active={false} >
-                    <Menu secondary>
-                        <Link to="/">
-                            <Image src={logo} width={50} />
-                        </Link>
-                        <Menu.Item name="Main" to="/">
-                            <Link to="/">The Hang</Link>
-                        </Menu.Item>
+    const currentUser = props.currentUser;
+    console.log(3);
+    return (
+        <div>
+            <Sticky active={false}>
+                <Menu secondary>
+                    <Link to="/">
+                        <Image src={logo} width={50} />
+                    </Link>
+                    <Menu.Item name="Main" to="/">
+                        <Link to="/">The Hang</Link>
+                    </Menu.Item>
 
-                        <Menu.Item position="right" name="About" to="/">
-                            <Link to="/about">About</Link>
-                        </Menu.Item>
+                    <Menu.Item position="right" name="About" to="/">
+                        <Link to="/about">About</Link>
+                    </Menu.Item>
 
-                        <Menu.Item name="Musicians" to="/">
-                            <Link to="/musicians">Musicians</Link>
-                        </Menu.Item>
+                    <Menu.Item name="Musicians" to="/">
+                        <Link to="/musicians">Musicians</Link>
+                    </Menu.Item>
 
-                        {isLoggedIn ?
-                            <>
-                                <Menu.Item
-                                    name="Edit"
-                                    to={`/musician/${props.currentUser.id}/edit`}>
-                                    <Link to={`/musician/${props.currentUser.id}/edit`}>
-                                        <Icon loading name="setting" />
-                                        Edit
-                                    </Link>
-                                </Menu.Item>
-                                <Logout />
-                            </>
-                            :
-                            <Login />
-                        }
+                    {!!currentUser ? (
+                        <>
+                            <Menu.Item
+                                name="Edit"
+                                to={`/musician/${currentUser.id}/edit`}>
+                                <Link
+                                    to={`/musician/${currentUser.id}/edit`}>
+                                    <Icon loading name="setting" />
+                                    Edit
+                                </Link>
+                            </Menu.Item>
+                            <Logout />
+                        </>
+                    ) : (
+                        <Login />
+                    )}
 
-                        <Menu.Item position="right">
-                            <Input
-                                transparent
-                                icon={{ name: "search", link: true }}
-                                placeholder="Search users..."
-                            />
-                        </Menu.Item>
-                    </Menu>
-                    {/* <Link to="/"> Main</Link>
+                    <Menu.Item position="right">
+                        <Input
+                            transparent
+                            icon={{ name: "search", link: true }}
+                            placeholder="Search users..."
+                        />
+                    </Menu.Item>
+                </Menu>
+                {/* <Link to="/"> Main</Link>
 						<Link to="about"> About</Link>
 					<Link to="musicians"> Musicians</Link> */}
-                </Sticky>
-            </div>
-        );
-    }
+            </Sticky>
+        </div>
+    );
+};
 
 const mapStateToProps = (state) => {
     // console.log("state", state); // array of users
-	// debugger
+    // debugger
     return {
-		loading: state.loading,
+        loading: state.loading,
         users: state.users,
-		user: state.user,
-		currentUser: state.currentUser
-		// test: console.log("mapStateToProps: ", state)
+        user: state.user,
+        currentUser: state.currentUser,
+        // test: console.log("mapStateToProps: ", state)
     };
 };
 

@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { List } from "semantic-ui-react";
+// import { UserCard } from "./UserCard";
 import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
+
+// const user = UserCard(event)
+// const user = this.event
 
 const genderOptions = [
     { key: "male", text: "Male", value: "male" },
@@ -85,10 +89,13 @@ const instruments = [
 ];
 
 const ShowUser = (props) => {
+    // console.log("this is current user object: ", props.user);
+    const currentUser = props.currentUser;
     const user = props.user;
     const location = `${user.city}, ${user.state}` ;
     const baseLocationURL = "www.google.com/maps/place/";
-    console.log("this is current user object: ", props.user);
+    // debugger
+
     const dispatch = useDispatch();
     useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [
         dispatch
@@ -97,7 +104,7 @@ const ShowUser = (props) => {
     if (props.loading) {
         return <div>"...Show User is Loading"</div>;
     }
-
+    
     return (
         <div>
             <List>
@@ -113,12 +120,16 @@ const ShowUser = (props) => {
                         {location}
                     </List.Content>
                 </List.Item>
+
+                {!!currentUser ? (
                 <List.Item>
                     <List.Icon name="mail" color="black" />
                     <List.Content label="user_email">
                         <a href={`mailto:${user.email}`}>{user.email}</a>
                     </List.Content>
                 </List.Item>
+                 ) : ( <></> )}
+
                 <List.Item>
                     <List.Icon name="linkify" color="black" />
                     <List.Content label="user_website">
@@ -132,6 +143,7 @@ const ShowUser = (props) => {
                         {/* <Link to={{pathname: user.website}} target="_blank">{user.website}</Link> */}
                     </List.Content>
                 </List.Item>
+                {!!currentUser ? (
 
                 <List.Item>
                     <List.Icon name="phone" />{" "}
@@ -144,6 +156,7 @@ const ShowUser = (props) => {
                         </a>
                     </List.Content>
                 </List.Item>
+                 ) : ( <></> )}
 
                 <List.Item>
                     <List.Icon name="book" />
@@ -171,10 +184,12 @@ const ShowUser = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         user: state.showUser,
+        currentUser: state.currentUser,
     };
 };
+// debugger
 
 export default connect(mapStateToProps)(ShowUser);

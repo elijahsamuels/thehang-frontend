@@ -5,10 +5,11 @@ import { showUser } from "../actions/userActions.js";
 import pianoDog from "../images/pianodog.jpg";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 
-export class UserCard extends Component {
-    render() {
-        const user = this.props.user;
-        // let user = this.props.users.find(user => user.id === user)
+const UserCard = (props) => {
+        const user = props.user;
+        const currentUser = props.currentUser;
+// debugger
+        // let user = props.users.find(user => user.id === user)
 
         return (
             <div>
@@ -17,7 +18,7 @@ export class UserCard extends Component {
                         raised={true}
                         id={user.id}
                         key={user.id}
-                        // onClick={() => this.handleClick(user)}
+                        // onClick={() => handleClick(user)}
                         href={`/musician/${user.id}`}>
                         <Card.Header align="center" as="h3">
                             {user.first_name} {user.last_name}
@@ -32,7 +33,10 @@ export class UserCard extends Component {
                         <Card.Content>
                             <p align="center">{InstrumentIDToName(user.primary_instrument_id)}</p>
                             <p align="center">{user.city}</p>
-                            <p align="center">{user.email}</p>
+                            {!!currentUser ?
+                                <p align="center">{user.email}</p>
+                                : (<></>)
+                            }
                         </Card.Content>
                         {/* <Button 
 							animated='fade' 
@@ -46,13 +50,13 @@ export class UserCard extends Component {
                 <br />
             </div>
         );
-    }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         loading: state.loading,
         users: state.users,
+        currentUser: state.currentUser,
     };
 };
 

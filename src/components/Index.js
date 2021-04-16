@@ -10,7 +10,7 @@ export class Index extends Component {
 				<p>Build out user login/signup options</p>
 				<p>Build out something else like recent story? Post? newest user?</p>
 				<br/>
-				<SignUpForm />
+				{/* <SignUpForm /> */}
 
 			</div>
 		)

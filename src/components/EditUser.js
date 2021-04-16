@@ -14,6 +14,7 @@ import {
 } from "semantic-ui-react";
 import { UserCard } from "./UserCard";
 import { editUser } from "../actions/userActions";
+import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 
 const genderOptions = [
     { key: "male", text: "Male", value: "male" },
@@ -127,22 +128,6 @@ const EditUser = (props) => {
         });
     };
 
-    const instrumentIDToName = (instrumentIDs) => {
-        const instrumentSelect = {
-            0: "",
-            1: "Guitar",
-            2: "Bass",
-            3: "Drums",
-            4: "Keys",
-            5: "Saxophone",
-        };
-        if (!!instrumentIDs) {
-            return instrumentSelect[instrumentIDs];
-        }
-        return instrumentSelect[0];
-    };
-
-
     const text = async (url) => {
         return await fetch(url).then((res) => res.text());
     };
@@ -151,7 +136,7 @@ const EditUser = (props) => {
         let ip = data.match(ipRegex)[0];
         // localUser.ip = ip; // HELP: Doesn't always show... Why?
     });
-   
+
     //   const dispatch = useDispatch()
     //   useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [
     //     dispatch
@@ -247,7 +232,7 @@ const EditUser = (props) => {
                         value={localUser.email}
                         onChange={handleChange}
                     />
-                    <Icon name="linkify" color="black" />
+                        <Icon name="linkify" color="black" />
                     <Form.Input
                         fluid
                         name="website"
@@ -258,6 +243,8 @@ const EditUser = (props) => {
                         value={localUser.website}
                         onChange={handleChange}
                     />
+                </Form.Group>
+                <Form.Group>
                     <Form.Input
                         fluid
                         name="primary_instrument_id"
@@ -265,9 +252,25 @@ const EditUser = (props) => {
                         type="text"
                         id="primary_instrument_id"
                         placeholder="primary_instrument_id"
-                        value={localUser.primary_instrument_id}
+                        value={InstrumentIDToName(
+                            localUser.primary_instrument_id
+                        )}
                         onChange={handleChange}
                     />
+                    <Dropdown
+                        fluid
+                        search
+                        selection
+                        name="primary_instrument_id"
+                        label="Primary Instrument"
+                        // id="primary_instrument_id" placeholder="Primary Instrument"
+                        options={instruments}
+                        value={InstrumentIDToName(
+                            localUser.primary_instrument_id
+                        )}
+                        // onChange={handleChange}
+                    />
+
                     <Form.Input
                         fluid
                         name="secondary_instrument_id"
@@ -275,8 +278,9 @@ const EditUser = (props) => {
                         type="text"
                         id="secondary_instrument_id"
                         placeholder="secondary_instrument_id"
-                        // value={instrumentIDToName(user.secondary_instrument_id)}
-                        value={localUser.secondary_instrument_id}
+                        value={InstrumentIDToName(
+                            localUser.secondary_instrument_id
+                        )}
                         onChange={handleChange}
                     />
                     <Form.Input
@@ -296,13 +300,6 @@ const EditUser = (props) => {
                         selection
                         options={instrumentIDToName}
                         onChange={handleChange}
-                    /> */}
-
-                    {/* <Dropdown
-                        // label="Primary Instrument"
-                        placeholder="Primary Instrument"
-                        value={instrumentIDToName(user.primary_instrument_id)}
-                        // onChange={handleChange}
                     /> */}
 
                     {/*<Icon name="genderless" color="black" />
@@ -342,14 +339,17 @@ const EditUser = (props) => {
                 </Form.Group>
             </Form>
             <List>
-            <List.Item>
-                <List.Icon name="microchip" />Info about your machine: <br />{clientInformation.userAgent} <br />
-                {/* <List.Icon name="signup" />Your browser: {navigator.userAgentData.brands[0].brand} <br /> */}
-            </List.Item>
-            <List.Item>
-                <List.Icon name="computer" />Your computer type: {clientInformation.platform} <br />
-            </List.Item>
-            {/* <List.Item>
+                <List.Item>
+                    <List.Icon name="microchip" />
+                    Info about your machine: <br />
+                    {clientInformation.userAgent} <br />
+                    {/* <List.Icon name="signup" />Your browser: {navigator.userAgentData.brands[0].brand} <br /> */}
+                </List.Item>
+                <List.Item>
+                    <List.Icon name="computer" />
+                    Your computer type: {clientInformation.platform} <br />
+                </List.Item>
+                {/* <List.Item>
                 <Icon name="location arrow" />Your IP Address: {localUser.ip} <br />
             </List.Item> */}
             </List>

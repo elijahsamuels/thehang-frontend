@@ -1,13 +1,30 @@
 import React, { Component } from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Container, Sticky } from "semantic-ui-react";
 
- class Footer extends Component {
+class Footer extends Component {
     render() {
         return (
-            <div align='center'>
-                <a href="https://www.elijahsamuels.com" target="_blank" rel="noreferrer">© {new Date().getFullYear()}</a>
-				<a href="mailto:elijahsamuels@gmail.com"> <Icon name="mail" color="black" />{"Elijah Samuels"}</a>
-            </div>
+            <Container className="footer" align="center">
+                <a
+                    href="https://www.elijahsamuels.com"
+                    target="_blank"
+                    rel="noreferrer">
+                    {new Date().getFullYear()} ©{" "}
+                </a>
+                    
+                <a href="mailto:elijahsamuels@gmail.com">
+                    {" "}
+                    {"Elijah Samuels"} 
+                    {" "}
+                    {"Contact"}
+                    {" "}
+                    <Icon name="mail" color="black" />
+                </a>
+                <a href="https://github.com/elijahsamuels/thehang-frontend.git">
+                    {" "}
+                    <Icon name="github square" color="black" />
+                </a>
+            </Container>
         );
     }
 }

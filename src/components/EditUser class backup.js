@@ -131,11 +131,6 @@ export class EditUser extends Component {
         console.log("handle Submit", id);
         // debugger
         this.props.editUser(this.state);
-        // this.props.history.push(`/musicians/${id}`);
-        // this.setState({
-        //     first_name: user.first_name,
-        //     last_name: user.last_name,
-        // });
     };
 
 
