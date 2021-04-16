@@ -18,6 +18,8 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, showUser: action.payload };
         case "CURRENT_USER":
             return { ...state, currentUser: action.payload };
+        case "EDIT_CURRENT_USER":
+            return { ...state, currentUser: action.payload };
         case "ERROR":
             return { ...state, error: action.payload };
         default:

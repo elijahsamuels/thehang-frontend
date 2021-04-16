@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import {
     List,
     Form,
-    Button,
+    Image,
     Icon,
     Loader,
     Dimmer,
@@ -99,8 +99,17 @@ const instruments = [
     // { name: "other", key: "other", text: "Other", value: "other" },
 ];
 
+
 const EditUser = (props) => {
     // const user = this.props.users.find(user => user.id == this.props.match.params.id)
+    
+    // useEffect(() => {
+    //     return function setUserImg() {
+    //         if (props !== undefined) {
+    //             console.log("from 109", props.currentUser.imageUrl)
+    //             console.log("from 110", props.currentUser.first_name)
+    //         }}
+    //     });
 
     const [localUser, setLocalUser] = useState({
         id: props.currentUser.id,
@@ -115,12 +124,19 @@ const EditUser = (props) => {
         secondary_instrument_id: props.currentUser.secondary_instrument_id,
         description: props.currentUser.description,
         password: props.currentUser.password,
-        deleteme: console.log(2),
+        imageUrl: props.currentUser.imageUrl,
     });
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         props.editUser(localUser);
+    };
+
+    // need to build this out to actions, reducer, and database. we want to HIDE the user, not actually delete the account.
+    const handleDelete = (event) => {
+        event.preventDefault();
+        props.deleteUser(localUser);
     };
 
     const handleChange = (event) => {
@@ -152,12 +168,11 @@ const EditUser = (props) => {
     }
 
     // const baseLocationURL = "www.google.com/maps/place/";
-    // console.log("this is current user object: ", props.user);
 
     return (
         <div>
             <br/>
-            <h1 align="center">Edit your profile, {localUser.first_name}</h1>
+            <h1 align="center">Welcome, {localUser.first_name}!</h1>
             <br/>
 
             <Form>
@@ -244,6 +259,17 @@ const EditUser = (props) => {
                         value={localUser.website}
                         onChange={handleChange}
                     />
+                    <Image src={`${localUser.imageUrl}`} size='medium' rounded />
+                    {/* <Form.Input
+                        fluid
+                        name="imgUrl"
+                        label="imgUrl"
+                        type="text"
+                        id="imgUrl"
+                        placeholder="imgUrl"
+                        value={localUser.imgUrl}
+                        onChange={handleChange}
+                    /> */}
                 </Form.Group>
                 <Form.Group>
                     <Form.Input
@@ -273,15 +299,11 @@ const EditUser = (props) => {
                     /> */}
                       <Select 
                       placeholder={InstrumentIDToName(localUser.primary_instrument_id)} 
-                    //   placeholder='Primary Instrument' 
-                    //   value={localUser.primary_instrument_id}
                       value={InstrumentIDToName(localUser.primary_instrument_id)}
                     //   selected={localUser.primary_instrument_id}  
                       options={instruments}
                       onChange={handleChange}
                        />
-
-
                     <Form.Input
                         fluid
                         name="secondary_instrument_id"
@@ -355,7 +377,7 @@ const EditUser = (props) => {
                         type="delete"
                         id="delete"
                         name="delete"
-                        onClick={handleSubmit}>
+                        onClick={handleDelete}>
                         <Icon name="delete" />
                         Delete Account
                     </Form.Button>

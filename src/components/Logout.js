@@ -8,8 +8,7 @@ import { useHistory } from 'react-router';
 
 
 
-const clientId =
-"707788443358-u05p46nssla3l8tmn58tpo9r5sommgks.apps.googleusercontent.com";
+const clientId = "1013700354653-b2kttdr1n3oh7pu52qp5f0e47jvfck0o.apps.googleusercontent.com";
 
 function Logout(props) {
     let history = useHistory()
