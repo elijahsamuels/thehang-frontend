@@ -64,7 +64,6 @@ const Nav = (props) => {
 
 const mapStateToProps = (state) => {
     // console.log("state", state); // array of users
-    // debugger
     return {
         loading: state.loading,
         users: state.users,

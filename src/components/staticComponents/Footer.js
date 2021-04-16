@@ -14,14 +14,14 @@ class Footer extends Component {
                     
                 <a href="mailto:elijahsamuels@gmail.com">
                     {" "}
-                    {"Elijah Samuels"} 
-                    {" "}
+                    {"The Hang"} 
+                    {" | "}
                     {"Contact"}
                     {" "}
                     <Icon name="mail" color="black" />
                 </a>
                 <a href="https://github.com/elijahsamuels/thehang-frontend.git">
-                    {" "}
+                    {" | "}
                     <Icon name="github square" color="black" />
                 </a>
             </Container>

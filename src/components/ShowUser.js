@@ -94,7 +94,6 @@ const ShowUser = (props) => {
     const user = props.user;
     const location = `${user.city}, ${user.state}` ;
     const baseLocationURL = "www.google.com/maps/place/";
-    // debugger
 
     const dispatch = useDispatch();
     useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [
@@ -190,6 +189,5 @@ const mapStateToProps = state => {
         currentUser: state.currentUser,
     };
 };
-// debugger
 
 export default connect(mapStateToProps)(ShowUser);

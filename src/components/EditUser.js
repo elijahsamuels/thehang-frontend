@@ -24,75 +24,79 @@ const genderOptions = [
 ];
 
 const instruments = [
-    { name: "flute", key: "flute", text: "Flute", value: "flute" },
-    { name: "clarinet", key: "clarinet", text: "Clarinet", value: "clarinet" },
-    {
-        name: "saxophone",
-        key: "saxophone",
-        text: "Saxophone",
-        value: "saxophone",
-    },
-    { name: "oboe", key: "oboe", text: "Oboe", value: "oboe" },
-    { name: "bassoon", key: "bassoon", text: "Bassoon", value: "bassoon" },
-    { name: "trumpet", key: "trumpet", text: "Trumpet", value: "trumpet" },
-    { name: "trombone", key: "trombone", text: "Trombone", value: "trombone" },
-    {
-        name: "acoustic guitar",
-        key: "acoustic guitar",
-        text: "Acoustic Guitar",
-        value: "acoustic guitar",
-    },
-    {
-        name: "electric guitar",
-        key: "electric guitar",
-        text: "Electric Guitar",
-        value: "electric guitar",
-    },
-    {
-        name: "electric bass",
-        key: "electric bass",
-        text: "Electric Bass",
-        value: "electric bass",
-    },
-    { name: "drums", key: "drums", text: "Drums", value: "rums" },
-    {
-        name: "piano/keys",
-        key: "piano/keys",
-        text: "Piano/Keys",
-        value: "piano/keys",
-    },
-    {
-        name: "vocals (male)",
-        key: "vocals (male)",
-        text: "Vocals (Male)",
-        value: "vocals (male)",
-    },
-    {
-        name: "vocals (female key)",
-        key: "vocals (female)",
-        text: "Vocals (Female)",
-        value: "vocals (female)",
-    },
-    { name: "tuba", key: "tuba", text: "Tuba", value: "tuba" },
-    { name: "violin", key: "violin", text: "Violin", value: "violin" },
-    { name: "viola", key: "viola", text: "Viola", value: "viola" },
-    { name: "cello", key: "cello", text: "Cello", value: "cello" },
-    {
-        name: "double bass",
-        key: "double bass",
-        text: "Double Bass (Upright Bass)",
-        value: "double bass",
-    },
-    {
-        name: "accordion",
-        key: "accordion",
-        text: "Accordion",
-        value: "accordion",
-    },
-    { name: "dj", key: "dj", text: "DJ", value: "dj" },
-    { name: "banjo", key: "banjo", text: "Banjo", value: "banjo" },
-    { name: "mandolin", key: "mandolin", text: "Mandolin", value: "mandolin" },
-    { name: "other", key: "other", text: "Other", value: "other" },
+    { key: "1", text: "Guitar", value: "guitar" },
+    { key: "2", text: "Bass", value: "bass" },
+    { key: "3", text: "Drums", value: "drums" },
+    { key: "4", text: "Piano", value: "piano" },
+    { key: "5", text: "Saxophone", value: "saxophone" },
+    { key: "6", text: "Trumpet", value: "trumpet" },
+    // {
+    //     name: "saxophone",
+    //     key: "saxophone",
+    //     text: "Saxophone",
+    //     value: "saxophone",
+    // },
+    // { name: "oboe", key: "oboe", text: "Oboe", value: "oboe" },
+    // { name: "bassoon", key: "bassoon", text: "Bassoon", value: "bassoon" },
+    // { name: "trumpet", key: "trumpet", text: "Trumpet", value: "trumpet" },
+    // { name: "trombone", key: "trombone", text: "Trombone", value: "trombone" },
+    // {
+    //     name: "acoustic guitar",
+    //     key: "acoustic guitar",
+    //     text: "Acoustic Guitar",
+    //     value: "acoustic guitar",
+    // },
+    // {
+    //     name: "electric guitar",
+    //     key: "electric guitar",
+    //     text: "Electric Guitar",
+    //     value: "electric guitar",
+    // },
+    // {
+    //     name: "electric bass",
+    //     key: "electric bass",
+    //     text: "Electric Bass",
+    //     value: "electric bass",
+    // },
+    // { name: "drums", key: "drums", text: "Drums", value: "rums" },
+    // {
+    //     name: "piano/keys",
+    //     key: "piano/keys",
+    //     text: "Piano/Keys",
+    //     value: "piano/keys",
+    // },
+    // {
+    //     name: "vocals (male)",
+    //     key: "vocals (male)",
+    //     text: "Vocals (Male)",
+    //     value: "vocals (male)",
+    // },
+    // {
+    //     name: "vocals (female key)",
+    //     key: "vocals (female)",
+    //     text: "Vocals (Female)",
+    //     value: "vocals (female)",
+    // },
+    // { name: "tuba", key: "tuba", text: "Tuba", value: "tuba" },
+    // { name: "violin", key: "violin", text: "Violin", value: "violin" },
+    // { name: "viola", key: "viola", text: "Viola", value: "viola" },
+    // { name: "cello", key: "cello", text: "Cello", value: "cello" },
+    // {
+    //     name: "double bass",
+    //     key: "double bass",
+    //     text: "Double Bass (Upright Bass)",
+    //     value: "double bass",
+    // },
+    // {
+    //     name: "accordion",
+    //     key: "accordion",
+    //     text: "Accordion",
+    //     value: "accordion",
+    // },
+    // { name: "dj", key: "dj", text: "DJ", value: "dj" },
+    // { name: "banjo", key: "banjo", text: "Banjo", value: "banjo" },
+    // { name: "mandolin", key: "mandolin", text: "Mandolin", value: "mandolin" },
+    // { name: "other", key: "other", text: "Other", value: "other" },
 ];
 
 const EditUser = (props) => {
@@ -115,10 +119,8 @@ const EditUser = (props) => {
     });
 
     const handleSubmit = (event) => {
-        // console.log("handleSubmit: ", event);
         event.preventDefault();
         props.editUser(localUser);
-        // this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
     };
 
     const handleChange = (event) => {
@@ -128,19 +130,16 @@ const EditUser = (props) => {
         });
     };
 
-    const text = async (url) => {
-        return await fetch(url).then((res) => res.text());
-    };
-    text("https://www.cloudflare.com/cdn-cgi/trace").then((data) => {
-        let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
-        let ip = data.match(ipRegex)[0];
-        // localUser.ip = ip; // HELP: Doesn't always show... Why?
-    });
+    // HELP/TODO: Move this out to a separate component
+    // const text = async (url) => {
+    //     return await fetch(url).then((res) => res.text());
+    // };
+    // text("https://www.cloudflare.com/cdn-cgi/trace").then((data) => {
+    //     let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
+    //     let ip = data.match(ipRegex)[0];
+    //     localUser.ip = ip; // HELP: Doesn't always show... Why?
+    // });
 
-    //   const dispatch = useDispatch()
-    //   useEffect(() => dispatch(editUser(parseInt(props.match.params.id))), [
-    //     dispatch
-    //   ]) // this is like componentDidMount
 
     if (props.loading) {
         return (
@@ -151,14 +150,16 @@ const EditUser = (props) => {
             </div>
         );
     }
-    // const user = props.user;
-    // const findUser = users.find(user => user.id == routerProps.match.params.id)
 
     // const baseLocationURL = "www.google.com/maps/place/";
     // console.log("this is current user object: ", props.user);
 
     return (
         <div>
+            <br/>
+            <h1 align="center">Edit your profile, {localUser.first_name}</h1>
+            <br/>
+
             <Form>
                 <Form.Group widths="equal">
                     <Icon name="user" color="black" />
@@ -257,7 +258,7 @@ const EditUser = (props) => {
                         )}
                         onChange={handleChange}
                     />
-                    <Dropdown
+                    {/* <Dropdown
                         fluid
                         search
                         selection
@@ -269,7 +270,17 @@ const EditUser = (props) => {
                             localUser.primary_instrument_id
                         )}
                         // onChange={handleChange}
-                    />
+                    /> */}
+                      <Select 
+                      placeholder={InstrumentIDToName(localUser.primary_instrument_id)} 
+                    //   placeholder='Primary Instrument' 
+                    //   value={localUser.primary_instrument_id}
+                      value={InstrumentIDToName(localUser.primary_instrument_id)}
+                    //   selected={localUser.primary_instrument_id}  
+                      options={instruments}
+                      onChange={handleChange}
+                       />
+
 
                     <Form.Input
                         fluid
@@ -278,9 +289,7 @@ const EditUser = (props) => {
                         type="text"
                         id="secondary_instrument_id"
                         placeholder="secondary_instrument_id"
-                        value={InstrumentIDToName(
-                            localUser.secondary_instrument_id
-                        )}
+                        value={InstrumentIDToName(localUser.secondary_instrument_id)}
                         onChange={handleChange}
                     />
                     <Form.Input
@@ -336,22 +345,32 @@ const EditUser = (props) => {
                         <Icon name="signup" />
                         Save Changes
                     </Form.Button>
+                    <Form.Button // HELP! Can't get the button to disable IF fields are empty
+                        // disabled={!localUser.first_name
+                        //     || !localUser.last_name
+                        //     || !localUser.email
+                        //     || !localUser.phone
+                        // }
+                        color="red"
+                        type="delete"
+                        id="delete"
+                        name="delete"
+                        onClick={handleSubmit}>
+                        <Icon name="delete" />
+                        Delete Account
+                    </Form.Button>
                 </Form.Group>
             </Form>
             <List>
                 <List.Item>
-                    <List.Icon name="microchip" />
-                    Info about your machine: <br />
-                    {clientInformation.userAgent} <br />
-                    {/* <List.Icon name="signup" />Your browser: {navigator.userAgentData.brands[0].brand} <br /> */}
+                    <List.Icon name="microchip" /> Info about your machine: {clientInformation.userAgent} 
                 </List.Item>
                 <List.Item>
-                    <List.Icon name="computer" />
-                    Your computer type: {clientInformation.platform} <br />
+                    <List.Icon name="computer" /> Your computer type: {clientInformation.platform}
                 </List.Item>
                 {/* <List.Item>
-                <Icon name="location arrow" />Your IP Address: {localUser.ip} <br />
-            </List.Item> */}
+                    <List.Icon name="location arrow" /> Your IP Address: {localUser.ip}
+                </List.Item> */}
             </List>
         </div>
     );

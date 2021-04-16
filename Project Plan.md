@@ -148,22 +148,22 @@ start with rails backend
 
 # REQUIREMENTS
 
-- [ ] The code is written in ES6 as much as possible
-- [ ] Use the create-react-app was used to create your React app
-- [ ] Your app should have one HTML page to render your react-redux application
-- [ ] There are 5 stateless components
-- [ ] There are 3 routes
-- [ ] 1 model in the backend (or more!)
-- [ ] react-router is being used with proper RESTful routing
-- [ ] Redux and redux-thunk middleware are being used to modify state change 
-- [ ] Make use of async actions and redux-thunk middleware to send data to and receive data from a server
-- [ ] Use of Rails API backend to persist data for the application
-- [ ] You should be using fetch() within your actions to GET and POST data from your API-do not use jQuery methods.
-- [ ] Good understanding of the react/redux state flow
-- [ ] Good understanding of state and props in React
-- [ ] Knowledge of async JS with Promises
-- [ ] Your client-side application should handle the display of data with minimal data manipulation
-- [ ] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it
+- [x] The code is written in ES6 as much as possible
+- [x] Use the create-react-app was used to create your React app
+- [x] Your app should have one HTML page to render your react-redux application
+- [x] There are 5 stateless components
+- [x] There are 3 routes
+- [x] 1 model in the backend (or more!)
+- [x] react-router is being used with proper RESTful routing
+- [x] Redux and redux-thunk middleware are being used to modify state change 
+- [x] Make use of async actions and redux-thunk middleware to send data to and receive data from a server
+- [x] Use of Rails API backend to persist data for the application
+- [x] You should be using fetch() within your actions to GET and POST data from your API-do not use jQuery methods.
+- [] Good understanding of the react/redux state flow
+- [] Good understanding of state and props in React
+- [] Knowledge of async JS with Promises
+- [x] Your client-side application should handle the display of data with minimal data manipulation
+- [x] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it
 
 
 # STRETCH GOALS

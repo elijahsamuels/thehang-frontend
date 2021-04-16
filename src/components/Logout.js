@@ -16,7 +16,6 @@ function Logout(props) {
     const onSuccess = () => {
         history.push('/about')
         props.logoutUser(null)
-        // debugger
         // console.log("Logout made successfully");
         // alert('Logout made successfully ✌');
     };

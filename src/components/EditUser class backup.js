@@ -129,7 +129,6 @@ export class EditUser extends Component {
     handleEditSubmit = (event, id) => {
         event.preventDefault();
         console.log("handle Submit", id);
-        // debugger
         this.props.editUser(this.state);
     };
 
@@ -204,7 +203,6 @@ render() {
     // let user = this.props.users.find(
     //     (user) => user.id === userId
     // );
-// debugger
   return (
     <div>
 

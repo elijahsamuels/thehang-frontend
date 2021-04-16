@@ -8,7 +8,6 @@ import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 const UserCard = (props) => {
         const user = props.user;
         const currentUser = props.currentUser;
-// debugger
         // let user = props.users.find(user => user.id === user)
 
         return (
