@@ -100,7 +100,23 @@ export const editUser = (user) => {
     };
 };
 
-export const deleteUser = (user) => ({ type: "DELETE_USER", payload: user });
+export const deleteUser = (user) => {
+    debugger
+    return (dispatch) => {
+        debugger
+        fetch(`/users/${user.id}`, {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ user })
+        })
+        .then( response => response.json()) // fulfilled and returns the user object
+        .then( data => dispatch({ type: "DELETE_CURRENT_USER", payload: data }));
+        debugger
+    };
+};
 
 
 export const currentUser = (user) => ({ type: "CREATE_USER", payload: user });

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { List, Form, Image, Icon, Loader, Dimmer, Select, TextArea} from "semantic-ui-react";
-import { editUser } from "../actions/userActions";
+import { editUser, deleteUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 // import { withRouter, Link } from "react-router-dom";
 // import { UserCard } from "./UserCard";
@@ -309,11 +309,6 @@ const EditUser = (props) => {
                         Save Changes
                     </Form.Button>
                     <Form.Button // HELP! Can't get the button to disable IF fields are empty
-                        // disabled={!localUser.first_name
-                        //     || !localUser.last_name
-                        //     || !localUser.email
-                        //     || !localUser.phone
-                        // }
                         color="red"
                         type="delete"
                         id="delete"
@@ -348,7 +343,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { editUser })(EditUser);
+export default connect(mapStateToProps, { editUser, deleteUser })(EditUser);
 // export default withRouter(connect(mapStateToProps, { editUser })(EditUser))
 
 // function onCallHover(event) {
