@@ -279,3 +279,9 @@ rails generate migration CreateJoinTableUserPrimaryInstruments user primary_inst
 
 Secondary_Instrument
 rails generate migration CreateSecondaryInstruments flute:boolean clarinet:boolean
+
+
+
+
+
+https://medium.com/@AndrewBonner2/filter-results-with-react-f746dc7984c

@@ -1,20 +1,10 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import {
-    List,
-    Form,
-    Image,
-    Icon,
-    Loader,
-    Dimmer,
-    Dropdown,
-    Select,
-    TextArea,
-} from "semantic-ui-react";
-import { UserCard } from "./UserCard";
+import { List, Form, Image, Icon, Loader, Dimmer, Select, TextArea} from "semantic-ui-react";
 import { editUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
+// import { withRouter, Link } from "react-router-dom";
+// import { UserCard } from "./UserCard";
 
 const genderOptions = [
     { key: "male", text: "Male", value: "male" },
@@ -30,85 +20,20 @@ const instruments = [
     { key: "4", text: "Piano", value: "piano" },
     { key: "5", text: "Saxophone", value: "saxophone" },
     { key: "6", text: "Trumpet", value: "trumpet" },
-    // {
-    //     name: "saxophone",
-    //     key: "saxophone",
-    //     text: "Saxophone",
-    //     value: "saxophone",
-    // },
-    // { name: "oboe", key: "oboe", text: "Oboe", value: "oboe" },
-    // { name: "bassoon", key: "bassoon", text: "Bassoon", value: "bassoon" },
-    // { name: "trumpet", key: "trumpet", text: "Trumpet", value: "trumpet" },
-    // { name: "trombone", key: "trombone", text: "Trombone", value: "trombone" },
-    // {
-    //     name: "acoustic guitar",
-    //     key: "acoustic guitar",
-    //     text: "Acoustic Guitar",
-    //     value: "acoustic guitar",
-    // },
-    // {
-    //     name: "electric guitar",
-    //     key: "electric guitar",
-    //     text: "Electric Guitar",
-    //     value: "electric guitar",
-    // },
-    // {
-    //     name: "electric bass",
-    //     key: "electric bass",
-    //     text: "Electric Bass",
-    //     value: "electric bass",
-    // },
-    // { name: "drums", key: "drums", text: "Drums", value: "rums" },
-    // {
-    //     name: "piano/keys",
-    //     key: "piano/keys",
-    //     text: "Piano/Keys",
-    //     value: "piano/keys",
-    // },
-    // {
-    //     name: "vocals (male)",
-    //     key: "vocals (male)",
-    //     text: "Vocals (Male)",
-    //     value: "vocals (male)",
-    // },
-    // {
-    //     name: "vocals (female key)",
-    //     key: "vocals (female)",
-    //     text: "Vocals (Female)",
-    //     value: "vocals (female)",
-    // },
-    // { name: "tuba", key: "tuba", text: "Tuba", value: "tuba" },
-    // { name: "violin", key: "violin", text: "Violin", value: "violin" },
-    // { name: "viola", key: "viola", text: "Viola", value: "viola" },
-    // { name: "cello", key: "cello", text: "Cello", value: "cello" },
-    // {
-    //     name: "double bass",
-    //     key: "double bass",
-    //     text: "Double Bass (Upright Bass)",
-    //     value: "double bass",
-    // },
-    // {
-    //     name: "accordion",
-    //     key: "accordion",
-    //     text: "Accordion",
-    //     value: "accordion",
-    // },
-    // { name: "dj", key: "dj", text: "DJ", value: "dj" },
-    // { name: "banjo", key: "banjo", text: "Banjo", value: "banjo" },
-    // { name: "mandolin", key: "mandolin", text: "Mandolin", value: "mandolin" },
-    // { name: "other", key: "other", text: "Other", value: "other" },
 ];
 
 const EditUser = (props) => {
     // const user = this.props.users.find(user => user.id == this.props.match.params.id)
-
+    
     // useEffect(() => {
     //     return function setUserImg() {
     //         if (props !== undefined) {
     //             console.log("from 109", props.currentUser.imageUrl)
-    //             console.log("from 110", props.currentUser.first_name)
+    //             console.log("from 110", props.currentUser.   rst_name)
     //         }}
     //     });
+    
+
 
     const [localUser, setLocalUser] = useState({
         id: props.currentUser.id,
@@ -125,7 +50,7 @@ const EditUser = (props) => {
         password: props.currentUser.password,
         imageUrl: props.currentUser.imageUrl,
     });
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         props.editUser(localUser);
@@ -143,7 +68,6 @@ const EditUser = (props) => {
             [event.target.name]: event.target.value,
         });
     };
-
     // HELP/TODO: Move this out to a separate component
     // const text = async (url) => {
     //     return await fetch(url).then((res) => res.text());
@@ -153,6 +77,7 @@ const EditUser = (props) => {
     //     let ip = data.match(ipRegex)[0];
     //     localUser.ip = ip; // HELP: Doesn't always show... Why?
     // });
+
 
     if (props.loading) {
         return (
@@ -418,6 +343,7 @@ const EditUser = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        // loading: state.loading,
         currentUser: state.currentUser,
     };
 };

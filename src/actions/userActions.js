@@ -4,11 +4,9 @@ export const fetchUsers = () => {
     return (dispatch) => {
         dispatch({ type: "LOADING" });
         fetch("/users")
-            .then( response => response.json())
-            // .then(payload => dispatch({ type: "SET_USERS", payload }))
-            .then( payload =>
-                console.log(dispatch({ type: "SET_USERS", payload }))
-            );
+            .then(response => response.json())
+            .then(payload => dispatch({ type: "SET_USERS", payload }))
+            // .then(payload => // console.log(dispatch({ type: "SET_USERS", payload })))
     };
 };
 
@@ -102,6 +100,9 @@ export const editUser = (user) => {
     };
 };
 
+export const deleteUser = (user) => ({ type: "DELETE_USER", payload: user });
+
+
 export const currentUser = (user) => ({ type: "CREATE_USER", payload: user });
 
 export const loginUser = (userObj) => {
@@ -116,11 +117,10 @@ export const loginUser = (userObj) => {
             body: JSON.stringify({ userObj })
         })
             .then( response => response.json()) // fulfilled and returns the user object
-            .then( data => dispatch({ type: "CURRENT_USER",
-             payload: data })
-            );
+            .then( data => dispatch({ type: "CURRENT_USER", payload: data }));
     };
 };
+
 export const logoutUser = () => {
     return (dispatch) => {
         dispatch({ type: "CURRENT_USER", payload: null });
