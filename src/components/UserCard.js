@@ -36,7 +36,7 @@ const UserCard = (props) => {
                         <p align="center">
                             {InstrumentIDToName(user.primary_instrument_id)}
                         </p>
-                        <p align="center">{user.city}</p>
+                        <p align="center">{user.city}, {user.state}</p>
                         {!!currentUser ? (
                             <p align="center">{user.email}</p>
                         ) : (

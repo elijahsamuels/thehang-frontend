@@ -1,11 +1,14 @@
 export const obtainUser = (user) => ({ type: "SHOW_USER", payload: user });
 
 export const fetchUsers = () => {
+    console.log("fetchUsers", fetchUsers)
+    
     return (dispatch) => {
         dispatch({ type: "LOADING" });
         fetch("/users")
-            .then((response) => response.json())
-            .then((payload) => dispatch({ type: "SET_USERS", payload }));
+        .then((response) => response.json())
+        .then((payload) => dispatch({ type: "SET_USERS", payload }));
+        console.log("dispatch", dispatch)
     };
 };
 

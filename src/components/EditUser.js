@@ -202,7 +202,7 @@ const EditUser = (props) => {
                         )}
                         // onChange={handleChange}
                     /> */}
-                    <Select
+                    {/* <Select
                         placeholder={InstrumentIDToName(
                             localUser.primary_instrument_id
                         )}
@@ -212,7 +212,7 @@ const EditUser = (props) => {
                         //   selected={localUser.primary_instrument_id}
                         options={instruments}
                         onChange={handleChange}
-                    />
+                    /> */}
                     <Form.Input
                         fluid
                         name="secondary_instrument_id"

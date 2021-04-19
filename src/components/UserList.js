@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
-import { Loader, Card, Dimmer } from "semantic-ui-react";
+import { Loader, Card } from "semantic-ui-react";
 
 export class UserList extends Component {
     
@@ -15,9 +15,10 @@ export class UserList extends Component {
             [event.target.name]: event.target.value,
         });
     };
-
+ 
     componentDidMount() {
         this.props.fetchUsers();
+        console.log("this.props.fetchUsers()", this.props.fetchUsers())
         this.functionSearch();
     }
 
@@ -34,14 +35,15 @@ export class UserList extends Component {
         }
 
     render() {
+        console.log("render")
         const { loading } = this.props;
 
         if (loading) {
             return (
                 <div>
-                    <Dimmer active>
+                    {/* <Dimmer active> */}
                         <Loader size="massive">Loading</Loader>
-                    </Dimmer>
+                    {/* </Dimmer> */}
                 </div>
             );
         }
@@ -73,10 +75,12 @@ export class UserList extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("mapStateToProps", state)
     return {
         loading: state.loading,
         users: state.users,
     };
+
 };
 
 export default connect(mapStateToProps, { fetchUsers })(UserList);
