@@ -34,8 +34,7 @@ const Nav = (props) => {
                             <Menu.Item
                                 name="Edit"
                                 to={`/musician/${currentUser.id}/edit`}>
-                                <Link
-                                    to={`/musician/${currentUser.id}/edit`}>
+                                <Link to={`/musician/${currentUser.id}/edit`}>
                                     <Icon loading name="setting" />
                                     Edit
                                 </Link>
@@ -45,7 +44,7 @@ const Nav = (props) => {
                     ) : (
                         <Login />
                     )}
-
+                    
                     <Menu.Item position="right">
                         <Input
                             transparent

@@ -16,11 +16,12 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, users: [...state.users, action.user] };
         case "SHOW_USER":
             return { ...state, showUser: action.payload };
+        case "DELETE_USER":
+            debugger;
+            return { ...state, currentUser: null };
         case "CURRENT_USER":
             return { ...state, currentUser: action.payload };
         case "EDIT_CURRENT_USER":
-            return { ...state, currentUser: action.payload };
-        case "DELETE_CURRENT_USER":
             return { ...state, currentUser: action.payload };
         case "ERROR":
             return { ...state, error: action.payload };

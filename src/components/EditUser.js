@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { List, Form, Image, Icon, Loader, Dimmer, Select, TextArea} from "semantic-ui-react";
-import { editUser, deleteUser } from "../actions/userActions";
+import { editUser, deleteUser, logoutUser } from "../actions/userActions";
+import onSuccess from "../components/Logout";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
+// import { useHistory } from 'react-router';
 // import { withRouter, Link } from "react-router-dom";
 // import { UserCard } from "./UserCard";
+// import { logoutUser } from "../actions/userActions";
 
 const genderOptions = [
     { key: "male", text: "Male", value: "male" },
@@ -33,8 +36,6 @@ const EditUser = (props) => {
     //         }}
     //     });
     
-
-
     const [localUser, setLocalUser] = useState({
         id: props.currentUser.id,
         first_name: props.currentUser.first_name,
@@ -57,9 +58,15 @@ const EditUser = (props) => {
     };
 
     // need to build this out to actions, reducer, and database. we want to HIDE the user, not actually delete the account.
+    // const history = useHistory()
+
     const handleDelete = (event) => {
         event.preventDefault();
+        // debugger
+        props.history.push('/about')
+        // debugger
         props.deleteUser(localUser);
+        // debugger
     };
 
     const handleChange = (event) => {
@@ -365,14 +372,3 @@ export default connect(mapStateToProps, { editUser, deleteUser })(EditUser);
 // function onCallHoverLeave(event) {
 //     event.target.style.background = "white";
 // }
-
-// const instrumentsOptions = () => {
-//     return instruments.map((i) => i.id);
-// };
-
-// const handleChange = (event) => {
-// setState({
-//     [event.target.name]: event.target.value,
-//     // [event.target.name]: event.target.innerText,
-// });
-// };

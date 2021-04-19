@@ -10,31 +10,70 @@ import { Loader, Card, Search, Dimmer } from "semantic-ui-react";
 
 export class UserList extends Component {
     
-    componentDidMount() {
-        this.props.fetchUsers();
-        // this.setState({
-        //     searchValue: this.props.searchValue,
-        // });
+
+    state = {
+        searchValue: ""
     }
 
 
     handleChange = (event) => {
-        // debugger
         this.setState({
             [event.target.name]: event.target.value,
-            // searchValue: this.props.searchValue,
+            // [this.state.searchValue]: event.target.value
         });
-        // debugger
-    };
-    
-    render() {
         
-        const { loading, users } = this.props;
-        // let searchValue = this.props.searchValue ;
+    };
+
+    componentDidMount() {
+        this.props.fetchUsers();
+        this.functionSearch();
+    }
+
+    functionSearch = () => {
+        const { users } = this.props;
         // debugger
-        // const usersSorted = users.filter(user => user.city === this.handleChange() );
-        // debugger
-		const userList = users.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
+            if (this.state.searchValue === "") {
+                const userList = users.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
+                return userList
+            } else { 
+                const usersSorted = users.filter(user => user.city === this.state.searchValue );
+                const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
+                return userList
+            };
+        }
+
+    render() {
+        const { loading } = this.props;
+        
+        // let functionSearch = () => {
+            //     if (this.state.searchValue === "") {
+                //         return user.city
+                //     } else { 
+                    //         return this.state.searchValue
+                    //     } 
+                    // }
+                    
+                    
+
+        // const usersSorted = users.filter(user => user.city === functionSearch() );
+		// const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
+
+
+
+        // const usersSorted = users.filter(user => user.city === functionSearch() );
+		// const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
+        
+        // const usersSorted = users.filter(user => user.city === functionSearch() );
+		// const userList = users.filter(user => user.city === functionSearch())//.filter(user => user.city === functionSearch())
+
+        // <UserCard key={user.id} user={user} history={this.props.history} />)
+        // .filter(user => console.log("user", user));
+        // .filter(user => user.city === functionSearch());
+        // console.log("this.props", this.props)
+        // console.log("userList", userList)
+        
+        // let searchValue = if (users.length === 0 ) {users}  users ; "Austin"
+		// const sorterUserList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
 
         if (loading) {
             return (
@@ -49,16 +88,17 @@ export class UserList extends Component {
         return (
             <div>
                 <h2 align="center">Musicians</h2>
-                <p align="center">Musician Count: {userList.length} </p>
+                <p align="center">Musician Count: {this.functionSearch().length} </p>
                 <div align="center">
-                    <Search
+                    <input
                         placeholder="Filter by City"
                         name="searchValue"
-                        input={{ icon: "search", iconPosition: "left" }}
+                        // input={{ icon: "search", iconPosition: "left" }}
                         loading={loading}
                         // onChange={handleChange(event)} // results={results}
-                        onChange={ event => this.props.handleChange(event)} // results={results}
-                        value={this.props.searchValue}
+                        value={this.state.searchValue}
+                        onChange={this.handleChange} // results={results}
+                        // onChange={(event) => this.handleChange(event)} // results={results}
                     />
                 </div>
 
@@ -66,7 +106,7 @@ export class UserList extends Component {
                     centered={true}
                     itemsPerRow={4}
                     style={{ padding: "20px" }}>
-                    {userList}
+                    {this.functionSearch()}
                 </Card.Group>
             </div>
         );
