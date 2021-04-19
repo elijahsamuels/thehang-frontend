@@ -11,9 +11,8 @@ const Login = (props) => {
     let history = useHistory()
 
     const onSuccess = (response) => {
-        debugger
         props.loginUser(response.profileObj);
-        history.push("/about"); // this one works!
+        // history.push("/about"); // this one works!
 		refreshTokenSetup(response);
         // console.log("Login, stage: 1. This then sends to the loginUser (action) userActions (file)");
 		//   dispatch({ type: "CURRENT_USER", payload: response.profileObj.email})

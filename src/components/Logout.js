@@ -11,7 +11,6 @@ const clientId = "1013700354653-b2kttdr1n3oh7pu52qp5f0e47jvfck0o.apps.googleuser
 export const Logout = (props) => {
     let history = useHistory()
     const onSuccess = () => {
-        debugger
         history.push('/about')
         props.logoutUser(null)
         // console.log("Logout made successfully");

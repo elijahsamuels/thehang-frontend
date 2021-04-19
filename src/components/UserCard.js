@@ -8,12 +8,10 @@ import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 const UserCard = (props) => {
     const user = props.user;
     const currentUser = props.currentUser;
-    // debugger
     // let user = props.users.find(user => user.id === user)
     const userImage = () => {
     // function userImage() {
         // console.log("props from userImage(): ",props, pianoDog)
-        // debugger
         if (!!user.imageUrl) {
             return user.imageUrl
         } else {
@@ -27,7 +25,6 @@ const UserCard = (props) => {
                     raised={true}
                     id={user.id}
                     key={user.id}
-                    // onClick={() => handleClick(user)}
                     href={`/musician/${user.id}`}>
                     <Card.Header align="center" as="h3">
                         {user.first_name} {user.last_name}
@@ -75,7 +72,5 @@ const mapStateToProps = (state) => {
         currentUser: state.currentUser,
     };
 };
-
-// export default withRouter(connect(mapStateToProps, { showUser })(UserCard))
 
 export default connect(mapStateToProps, { showUser })(UserCard);

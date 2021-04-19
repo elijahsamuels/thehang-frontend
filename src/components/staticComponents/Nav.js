@@ -72,5 +72,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-// export default Nav
 export default connect(mapStateToProps, { editUser })(Nav);

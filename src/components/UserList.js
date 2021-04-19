@@ -4,17 +4,12 @@ import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
 import { Loader, Card, Search, Dimmer } from "semantic-ui-react";
 
-// make a copy of this file before converting to functional component
-// need to convert to function component
-// then utilize useState
-
 export class UserList extends Component {
     
 
     state = {
         searchValue: ""
     }
-
 
     handleChange = (event) => {
         this.setState({
@@ -31,7 +26,6 @@ export class UserList extends Component {
 
     functionSearch = () => {
         const { users } = this.props;
-        // debugger
             if (this.state.searchValue === "") {
                 const userList = users.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
                 return userList
@@ -44,36 +38,6 @@ export class UserList extends Component {
 
     render() {
         const { loading } = this.props;
-        
-        // let functionSearch = () => {
-            //     if (this.state.searchValue === "") {
-                //         return user.city
-                //     } else { 
-                    //         return this.state.searchValue
-                    //     } 
-                    // }
-                    
-                    
-
-        // const usersSorted = users.filter(user => user.city === functionSearch() );
-		// const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
-
-
-
-        // const usersSorted = users.filter(user => user.city === functionSearch() );
-		// const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
-        
-        // const usersSorted = users.filter(user => user.city === functionSearch() );
-		// const userList = users.filter(user => user.city === functionSearch())//.filter(user => user.city === functionSearch())
-
-        // <UserCard key={user.id} user={user} history={this.props.history} />)
-        // .filter(user => console.log("user", user));
-        // .filter(user => user.city === functionSearch());
-        // console.log("this.props", this.props)
-        // console.log("userList", userList)
-        
-        // let searchValue = if (users.length === 0 ) {users}  users ; "Austin"
-		// const sorterUserList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
 
         if (loading) {
             return (
@@ -95,10 +59,8 @@ export class UserList extends Component {
                         name="searchValue"
                         // input={{ icon: "search", iconPosition: "left" }}
                         loading={loading}
-                        // onChange={handleChange(event)} // results={results}
                         value={this.state.searchValue}
-                        onChange={this.handleChange} // results={results}
-                        // onChange={(event) => this.handleChange(event)} // results={results}
+                        onChange={this.handleChange} 
                     />
                 </div>
 

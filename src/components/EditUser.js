@@ -62,11 +62,8 @@ const EditUser = (props) => {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        // debugger
         props.history.push('/about')
-        // debugger
         props.deleteUser(localUser);
-        // debugger
     };
 
     const handleChange = (event) => {

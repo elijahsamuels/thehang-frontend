@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { List } from "semantic-ui-react";
+import { List, Image } from "semantic-ui-react";
 // import { UserCard } from "./UserCard";
 import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
+import pianoDog from "../images/pianodog.jpg";
 
 // const user = UserCard(event)
 // const user = this.event
@@ -103,10 +104,31 @@ const ShowUser = (props) => {
     if (props.loading) {
         return <div>"...Show User is Loading"</div>;
     }
+    const userImage = () => {
+        // function userImage() {
+            // console.log("props from userImage(): ",props, pianoDog)
+            if (!!user.imageUrl) {
+                return user.imageUrl
+            } else {
+                return pianoDog
+            }
+        }
     
     return (
-        <div>
-            <List>
+        <div >
+            <List >
+            <Image.Group >
+                        <Image
+                            // src={pianoDog}
+                            // src={user.imageUrl}
+                            src={userImage()}
+                            size="small"
+                            alt="pianodog"
+                            // wrapped
+                            // ui={false}
+                        />
+                    </Image.Group>
+
                 <List.Item>
                     <List.Icon name="users" color="black" />
                     <List.Content label="user_name">
