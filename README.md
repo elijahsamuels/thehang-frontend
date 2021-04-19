@@ -1,5 +1,5 @@
 
-# The Musicians GigBook/The Hang
+# theHang
 A social media platform for individual musicians (not bands/groups) to as a React-Redux project for Flatiron School, Module 5.
 
 Frontend repo is available here: https://github.com/elijahsamuels/thehang-frontend
