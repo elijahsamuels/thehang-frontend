@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SignUpForm from './SignUpForm.js';
+// import SignUpForm from './SignUpForm.js';
 
 export class Index extends Component {
 	render() {

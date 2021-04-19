@@ -6,7 +6,6 @@ export const fetchUsers = () => {
         fetch("/users")
             .then((response) => response.json())
             .then((payload) => dispatch({ type: "SET_USERS", payload }));
-        // .then(payload => // console.log(dispatch({ type: "SET_USERS", payload })))
     };
 };
 
@@ -33,7 +32,6 @@ export const showUser = (id) => {
         fetch(`/users/${id}`)
             .then((response) => {
                 if (response.ok === false) {
-                    // error coming back from server
                     throw dispatch({
                         type: "ERROR",
                         payload: "could not find the data for that resource",
@@ -45,10 +43,8 @@ export const showUser = (id) => {
             .then((data) => {
                 // console.log(data)
                 dispatch(obtainUser(data));
-                // dispatch{ type: "SHOW_USER", payload: user };
                 dispatch({ type: "LOADING", payload: false });
                 // setData(data);
-                // dispatch({ type: "ERROR", payload: false });
                 // setError(null);
             })
             .catch((error) => {
@@ -87,12 +83,10 @@ export const editUser = (user) => {
                 // console.log(3, "3 from editUser");
                 dispatch({ type: "ERROR", payload: null });
                 // console.log(4, "4 from editUser");
-                // setError(null);
             })
             .catch((err) => {
                 // auto catches network / connection error
                 dispatch({ type: "LOADING", payload: false });
-                // setError(err.message);
                 dispatch({ type: "ERROR", payload: err.message });
             });
         // console.log(3);
@@ -112,11 +106,6 @@ export const deleteUser = (user) => {
         })
         .then((response) => response.json()) // fulfilled and returns the user object
         .then((data) => dispatch({ type: "DELETE_USER", payload: data }));
-
-    //     dispatch({ type: "DELETE_USER" });
-    // //         .then((response) => response.json()) // fulfilled and returns the user object
-    // //         .then((data) => dispatch({ type: "DELETE_USER" }));
-        // })
     };
 };
 

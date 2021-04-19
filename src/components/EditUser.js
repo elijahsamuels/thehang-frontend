@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { List, Form, Image, Icon, Loader, Dimmer, Select, TextArea} from "semantic-ui-react";
-import { editUser, deleteUser, logoutUser } from "../actions/userActions";
-import onSuccess from "../components/Logout";
+import { editUser, deleteUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
-// import { useHistory } from 'react-router';
-// import { withRouter, Link } from "react-router-dom";
-// import { UserCard } from "./UserCard";
-// import { logoutUser } from "../actions/userActions";
 
-const genderOptions = [
-    { key: "male", text: "Male", value: "male" },
-    { key: "female", text: "Female", value: "female" },
-    { key: "other", text: "Other", value: "other" },
-    { key: "na", text: "Prefer not to say", value: "prefer not to say" },
-];
+// const genderOptions = [
+//     { key: "male", text: "Male", value: "male" },
+//     { key: "female", text: "Female", value: "female" },
+//     { key: "other", text: "Other", value: "other" },
+//     { key: "na", text: "Prefer not to say", value: "prefer not to say" },
+// ];
 
 const instruments = [
     { key: "1", text: "Guitar", value: "guitar" },
@@ -26,15 +21,6 @@ const instruments = [
 ];
 
 const EditUser = (props) => {
-    // const user = this.props.users.find(user => user.id == this.props.match.params.id)
-    
-    // useEffect(() => {
-    //     return function setUserImg() {
-    //         if (props !== undefined) {
-    //             console.log("from 109", props.currentUser.imageUrl)
-    //             console.log("from 110", props.currentUser.   rst_name)
-    //         }}
-    //     });
     
     const [localUser, setLocalUser] = useState({
         id: props.currentUser.id,
@@ -57,9 +43,6 @@ const EditUser = (props) => {
         props.editUser(localUser);
     };
 
-    // need to build this out to actions, reducer, and database. we want to HIDE the user, not actually delete the account.
-    // const history = useHistory()
-
     const handleDelete = (event) => {
         event.preventDefault();
         props.history.push('/about')
@@ -72,6 +55,7 @@ const EditUser = (props) => {
             [event.target.name]: event.target.value,
         });
     };
+
     // HELP/TODO: Move this out to a separate component
     // const text = async (url) => {
     //     return await fetch(url).then((res) => res.text());
@@ -81,7 +65,6 @@ const EditUser = (props) => {
     //     let ip = data.match(ipRegex)[0];
     //     localUser.ip = ip; // HELP: Doesn't always show... Why?
     // });
-
 
     if (props.loading) {
         return (
@@ -93,12 +76,10 @@ const EditUser = (props) => {
         );
     }
 
-    // const baseLocationURL = "www.google.com/maps/place/";
-
     return (
         <div>
             <br />
-            <h1 align="center">Welcome, {localUser.first_name}!</h1>
+                <h1 align="center">Welcome, {localUser.first_name}!</h1>
             <br />
 
             <Form>
@@ -194,16 +175,6 @@ const EditUser = (props) => {
                         value={localUser.website}
                         onChange={handleChange}
                     />
-                    {/* <Form.Input
-                        fluid
-                        name="imgUrl"
-                        label="imgUrl"
-                        type="text"
-                        id="imgUrl"
-                        placeholder="imgUrl"
-                        value={localUser.imgUrl}
-                        onChange={handleChange}
-                    /> */}
                 </Form.Group>
                 <Form.Group>
                     <Form.Input
@@ -312,7 +283,7 @@ const EditUser = (props) => {
                         <Icon name="signup" />
                         Save Changes
                     </Form.Button>
-                    <Form.Button // HELP! Can't get the button to disable IF fields are empty
+                    <Form.Button
                         color="red"
                         type="delete"
                         id="delete"

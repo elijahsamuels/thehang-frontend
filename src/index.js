@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 import usersReducer from "./reducers/usersReducer";
 import "semantic-ui-css/semantic.min.css";
 import { Container } from "semantic-ui-react";
-import env from "react-dotenv";
+// import env from "react-dotenv";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore( usersReducer, composeEnhancers(applyMiddleware(thunk)));

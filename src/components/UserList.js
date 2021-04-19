@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
-import { Loader, Card, Search, Dimmer } from "semantic-ui-react";
+import { Loader, Card, Dimmer } from "semantic-ui-react";
 
 export class UserList extends Component {
     
-
     state = {
         searchValue: ""
     }
@@ -14,9 +13,7 @@ export class UserList extends Component {
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
-            // [this.state.searchValue]: event.target.value
         });
-        
     };
 
     componentDidMount() {

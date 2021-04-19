@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Card, Image } from "semantic-ui-react";
 import { showUser } from "../actions/userActions.js";
@@ -8,16 +8,12 @@ import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 const UserCard = (props) => {
     const user = props.user;
     const currentUser = props.currentUser;
-    // let user = props.users.find(user => user.id === user)
     const userImage = () => {
-    // function userImage() {
-        // console.log("props from userImage(): ",props, pianoDog)
         if (!!user.imageUrl) {
             return user.imageUrl
-        } else {
-            return pianoDog
-        }
+        } return pianoDog
     }
+
     return (
         <div>
             <Card.Group style={{ padding: "2px" }}>
@@ -31,13 +27,9 @@ const UserCard = (props) => {
                     </Card.Header>
                     <Image.Group align="center">
                         <Image
-                            // src={pianoDog}
-                            // src={user.imageUrl}
                             src={userImage()}
                             size="small"
                             alt="pianodog"
-                            // wrapped
-                            // ui={false}
                         />
                     </Image.Group>
                     <Card.Content>
@@ -51,12 +43,6 @@ const UserCard = (props) => {
                             <></>
                         )}
                     </Card.Content>
-                    {/* <Button 
-							animated='fade' 
-							id={user.id}>
-							<Button.Content visible>Show Details</Button.Content>
-							<Button.Content hidden>Hide Details</Button.Content>
-						</Button> */}
                 </Card>
             </Card.Group>
             <br />

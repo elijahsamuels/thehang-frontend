@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import QRCode from "../../images/paypalQRCode.png";
 import {  } from "semantic-ui-react";
 

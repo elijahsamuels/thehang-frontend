@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Container, Sticky } from "semantic-ui-react";
+import { Icon, Container } from "semantic-ui-react";
 
 class Footer extends Component {
     render() {

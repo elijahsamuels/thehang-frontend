@@ -1,7 +1,7 @@
-import React, { Component, createRef } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Menu, Input, Image, Sticky, Icon } from "semantic-ui-react";
+import { Menu, Image, Sticky, Icon } from "semantic-ui-react";
 import logo from "../../images/sampleLogo.png";
 import { editUser } from "../../actions/userActions.js";
 import Login from "../Login";
@@ -45,13 +45,6 @@ const Nav = (props) => {
                         <Login />
                     )}
                     
-                    <Menu.Item position="right">
-                        <Input
-                            transparent
-                            icon={{ name: "search", link: true }}
-                            placeholder="Search users..."
-                        />
-                    </Menu.Item>
                 </Menu>
                 {/* <Link to="/"> Main</Link>
 						<Link to="about"> About</Link>

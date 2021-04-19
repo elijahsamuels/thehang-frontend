@@ -32,7 +32,7 @@ export class SignUpForm extends Component {
 			confirmPassword: ''
 
         })
-        this.props.history.push('/musicians') // HELP MOVE THIS TO THE ACTIONS
+        this.props.history.push('/musicians') 
 	}
 
 	render() {
@@ -80,12 +80,10 @@ export class SignUpForm extends Component {
 							placeholder="Email"
 							value={this.state.email} 
 							onChange={this.handleChange}
-							error={{content: 'Please enter a valid email address',
-						}, this.state.emailError}
-							// error={{
-							// 	content: 'Please enter a valid email address',
-							// 	pointing: 'below',
-							//   }}
+							error={{
+								content: 'Please enter a valid email address',
+								pointing: 'below',
+							  }}
 						 />
 
 					</Form.Group>
@@ -105,7 +103,6 @@ export class SignUpForm extends Component {
 						id="confirmPassword" 
 						name="confirmPassword" 
 						placeholder="Confirm Password"
-						// message={"hello"}
 						value={this.state.confirmPassword} 
 						onChange={this.handleChange} 
 						error={this.state.confirmPasswordError || this.state.passwordMatchError}
@@ -142,12 +139,11 @@ export class SignUpForm extends Component {
 	}
 }
 
-
-
 // const mapDispatchToProps = dispatch => {
 // 	return {
 // 		addUser: (user) => dispatch(this.addUser(user)) 
 // 	}
 // }
+// export default withRouter(connect(null, mapDispatchToProps)(SignUpForm))
 
 export default withRouter(connect(null, { addUser })(SignUpForm))

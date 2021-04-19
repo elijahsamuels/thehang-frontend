@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { GoogleLogout } from "react-google-login";
-// import { Redirect } from 'react-router-dom'
 import { logoutUser } from "../actions/userActions";
 import { useHistory } from 'react-router';
 // import history from "../components/staticComponents/history";

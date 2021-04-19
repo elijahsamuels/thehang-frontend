@@ -2,132 +2,41 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { List, Image } from "semantic-ui-react";
-// import { UserCard } from "./UserCard";
 import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 import pianoDog from "../images/pianodog.jpg";
 
-// const user = UserCard(event)
-// const user = this.event
-
-const genderOptions = [
-    { key: "male", text: "Male", value: "male" },
-    { key: "female", text: "Female", value: "female" },
-    { key: "other", text: "Other", value: "other" },
-    { key: "na", text: "Prefer not to say", value: "prefer not to say" },
-];
-
-const instruments = [
-    { name: "flute", key: "flute", text: "Flute", value: "flute" },
-    { name: "clarinet", key: "clarinet", text: "Clarinet", value: "clarinet" },
-    {
-        name: "saxophone",
-        key: "saxophone",
-        text: "Saxophone",
-        value: "saxophone",
-    },
-    { name: "oboe", key: "oboe", text: "Oboe", value: "oboe" },
-    { name: "bassoon", key: "bassoon", text: "Bassoon", value: "bassoon" },
-    { name: "trumpet", key: "trumpet", text: "Trumpet", value: "trumpet" },
-    { name: "trombone", key: "trombone", text: "Trombone", value: "trombone" },
-    {
-        name: "acoustic guitar",
-        key: "acoustic guitar",
-        text: "Acoustic Guitar",
-        value: "acoustic guitar",
-    },
-    {
-        name: "electric guitar",
-        key: "electric guitar",
-        text: "Electric Guitar",
-        value: "electric guitar",
-    },
-    {
-        name: "electric bass",
-        key: "electric bass",
-        text: "Electric Bass",
-        value: "electric bass",
-    },
-    { name: "drums", key: "drums", text: "Drums", value: "rums" },
-    {
-        name: "piano/keys",
-        key: "piano/keys",
-        text: "Piano/Keys",
-        value: "piano/keys",
-    },
-    {
-        name: "vocals (male)",
-        key: "vocals (male)",
-        text: "Vocals (Male)",
-        value: "vocals (male)",
-    },
-    {
-        name: "vocals (female key)",
-        key: "vocals (female)",
-        text: "Vocals (Female)",
-        value: "vocals (female)",
-    },
-    { name: "tuba", key: "tuba", text: "Tuba", value: "tuba" },
-    { name: "violin", key: "violin", text: "Violin", value: "violin" },
-    { name: "viola", key: "viola", text: "Viola", value: "viola" },
-    { name: "cello", key: "cello", text: "Cello", value: "cello" },
-    {
-        name: "double bass",
-        key: "double bass",
-        text: "Double Bass (Upright Bass)",
-        value: "double bass",
-    },
-    {
-        name: "accordion",
-        key: "accordion",
-        text: "Accordion",
-        value: "accordion",
-    },
-    { name: "dj", key: "dj", text: "DJ", value: "dj" },
-    { name: "banjo", key: "banjo", text: "Banjo", value: "banjo" },
-    { name: "mandolin", key: "mandolin", text: "Mandolin", value: "mandolin" },
-    { name: "other", key: "other", text: "Other", value: "other" },
-];
+// const genderOptions = [
+//     { key: "male", text: "Male", value: "male" },
+//     { key: "female", text: "Female", value: "female" },
+//     { key: "other", text: "Other", value: "other" },
+//     { key: "na", text: "Prefer not to say", value: "prefer not to say" },
+// ];
 
 const ShowUser = (props) => {
-    // console.log("this is current user object: ", props.user);
     const currentUser = props.currentUser;
     const user = props.user;
     const location = `${user.city}, ${user.state}` ;
     const baseLocationURL = "www.google.com/maps/place/";
 
     const dispatch = useDispatch();
-    useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [
-        dispatch
-    ]); // this is like componentDidMount
+    useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [dispatch]); // this is like componentDidMount
 
     if (props.loading) {
         return <div>"...Show User is Loading"</div>;
     }
     const userImage = () => {
-        // function userImage() {
             // console.log("props from userImage(): ",props, pianoDog)
             if (!!user.imageUrl) {
                 return user.imageUrl
-            } else {
-                return pianoDog
-            }
-        }
+            } return pianoDog }
     
     return (
-        <div >
-            <List >
+        <div>
+            <List>
             <Image.Group >
-                        <Image
-                            // src={pianoDog}
-                            // src={user.imageUrl}
-                            src={userImage()}
-                            size="small"
-                            alt="pianodog"
-                            // wrapped
-                            // ui={false}
-                        />
-                    </Image.Group>
+                <Image src={userImage()} size="small" alt="pianodog" />
+            </Image.Group>
 
                 <List.Item>
                     <List.Icon name="users" color="black" />
@@ -135,6 +44,7 @@ const ShowUser = (props) => {
                         {user.first_name} {user.last_name}
                     </List.Content>
                 </List.Item>
+                
                 <List.Item as={Link} to={baseLocationURL + location}>
                     <List.Icon name="marker" color="black" />
                     <List.Content label="user_location">
@@ -154,30 +64,18 @@ const ShowUser = (props) => {
                 <List.Item>
                     <List.Icon name="linkify" color="black" />
                     <List.Content label="user_website">
-                        <a
-                            href={`${user.website}`}
-                            target="_blank"
-                            rel="noreferrer">
-                            {user.website}
-                        </a>
-
-                        {/* <Link to={{pathname: user.website}} target="_blank">{user.website}</Link> */}
+                        <a href={`${user.website}`} target="_blank" rel="noreferrer"> {user.website} </a>
                     </List.Content>
                 </List.Item>
+
                 {!!currentUser ? (
-
-                <List.Item>
-                    <List.Icon name="phone" />{" "}
-                    <List.Content label="user_phone">
-                        <a
-                            href={`tel:${user.phone}`}
-                            target="_blank"
-                            rel="noreferrer">
-                            {user.phone}
-                        </a>
-                    </List.Content>
-                </List.Item>
-                 ) : ( <></> )}
+                    <List.Item>
+                        <List.Icon name="phone" />{" "}
+                        <List.Content label="user_phone">
+                            <a href={`tel:${user.phone}`} target="_blank" rel="noreferrer"> {user.phone} </a>
+                        </List.Content>
+                    </List.Item>
+                    ) : ( <></> )}
 
                 <List.Item>
                     <List.Icon name="book" />
@@ -188,15 +86,13 @@ const ShowUser = (props) => {
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
-                        Primary Instrument:{" "}
-                        {InstrumentIDToName(user.primary_instrument_id)}
+                        Primary Instrument:{" "} {InstrumentIDToName(user.primary_instrument_id)}
                     </List.Content>
                 </List.Item>
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
-                        Secondary Instrument:{" "}
-                        {InstrumentIDToName(user.secondary_instrument_id)}
+                        Secondary Instrument:{" "} {InstrumentIDToName(user.secondary_instrument_id)}
                     </List.Content>
                 </List.Item>
                 
