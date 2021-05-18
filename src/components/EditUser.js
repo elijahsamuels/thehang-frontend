@@ -1,52 +1,43 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { List, Form, Image, Icon, Loader, Dimmer, Select, TextArea} from "semantic-ui-react";
+import {
+    List,
+    Form,
+    Image,
+    Icon,
+    Loader,
+    Dimmer,
+    TextArea,
+} from "semantic-ui-react";
 import { editUser, deleteUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 
-// const genderOptions = [
-//     { key: "male", text: "Male", value: "male" },
-//     { key: "female", text: "Female", value: "female" },
-//     { key: "other", text: "Other", value: "other" },
-//     { key: "na", text: "Prefer not to say", value: "prefer not to say" },
-// ];
-
-const instruments = [
-    { key: "1", text: "Guitar", value: "guitar" },
-    { key: "2", text: "Bass", value: "bass" },
-    { key: "3", text: "Drums", value: "drums" },
-    { key: "4", text: "Piano", value: "piano" },
-    { key: "5", text: "Saxophone", value: "saxophone" },
-    { key: "6", text: "Trumpet", value: "trumpet" },
-];
-
-const EditUser = (props) => {
-    
+const EditUser = ({ currentUser, history, deleteUser, editUser, loading }) => {
     const [localUser, setLocalUser] = useState({
-        id: props.currentUser.id,
-        first_name: props.currentUser.first_name,
-        last_name: props.currentUser.last_name,
-        city: props.currentUser.city,
-        state: props.currentUser.state,
-        email: props.currentUser.email,
-        phone: props.currentUser.phone,
-        website: props.currentUser.website,
-        primary_instrument_id: props.currentUser.primary_instrument_id,
-        secondary_instrument_id: props.currentUser.secondary_instrument_id,
-        description: props.currentUser.description,
-        password: props.currentUser.password,
-        imageUrl: props.currentUser.imageUrl,
+        id: currentUser.id,
+        first_name: currentUser.first_name,
+        last_name: currentUser.last_name,
+        city: currentUser.city,
+        state: currentUser.state,
+        email: currentUser.email,
+        phone: currentUser.phone,
+        website: currentUser.website,
+        primary_instrument_id: currentUser.primary_instrument_id,
+        secondary_instrument_id: currentUser.secondary_instrument_id,
+        description: currentUser.description,
+        password: currentUser.password,
+        imageUrl: currentUser.imageUrl,
     });
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.editUser(localUser);
+        editUser(localUser);
     };
 
     const handleDelete = (event) => {
         event.preventDefault();
-        props.history.push('/about')
-        props.deleteUser(localUser);
+        history.push("/about");
+        deleteUser(localUser);
     };
 
     const handleChange = (event) => {
@@ -56,17 +47,7 @@ const EditUser = (props) => {
         });
     };
 
-    // HELP/TODO: Move this out to a separate component
-    // const text = async (url) => {
-    //     return await fetch(url).then((res) => res.text());
-    // };
-    // text("https://www.cloudflare.com/cdn-cgi/trace").then((data) => {
-    //     let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
-    //     let ip = data.match(ipRegex)[0];
-    //     localUser.ip = ip; // HELP: Doesn't always show... Why?
-    // });
-
-    if (props.loading) {
+    if (loading) {
         return (
             <div>
                 <Dimmer active>
@@ -79,7 +60,7 @@ const EditUser = (props) => {
     return (
         <div>
             <br />
-                <h1 align="center">Welcome, {localUser.first_name}!</h1>
+            <h1 align="center">Welcome, {localUser.first_name}!</h1>
             <br />
 
             <Form>
@@ -189,30 +170,7 @@ const EditUser = (props) => {
                         )}
                         onChange={handleChange}
                     />
-                    {/* <Dropdown
-                        fluid
-                        search
-                        selection
-                        name="primary_instrument_id"
-                        label="Primary Instrument"
-                        // id="primary_instrument_id" placeholder="Primary Instrument"
-                        options={instruments}
-                        value={InstrumentIDToName(
-                            localUser.primary_instrument_id
-                        )}
-                        // onChange={handleChange}
-                    /> */}
-                    {/* <Select
-                        placeholder={InstrumentIDToName(
-                            localUser.primary_instrument_id
-                        )}
-                        value={InstrumentIDToName(
-                            localUser.primary_instrument_id
-                        )}
-                        //   selected={localUser.primary_instrument_id}
-                        options={instruments}
-                        onChange={handleChange}
-                    /> */}
+
                     <Form.Input
                         fluid
                         name="secondary_instrument_id"
@@ -225,56 +183,20 @@ const EditUser = (props) => {
                         )}
                         onChange={handleChange}
                     />
-
-                    {/* <Form.Input
-                        fluid
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        placeholder="password"
-                        value={localUser.password}
-                        onChange={handleChange}
-                    /> */}
-                    {/* <Dropdown
-                        placeholder='Select Country'
-                        // fluid
-                        search
-                        selection
-                        options={instrumentIDToName}
-                        onChange={handleChange}
-                    /> */}
-
-                    {/*<Icon name="genderless" color="black" />
-                    <Form.Select
-                        label="Gender"
-                        options={genderOptions}
-                        placeholder="Gender"
-                        value={localUser.website}
-                        onChange={handleChange}
-                        
-                    /> */}
                 </Form.Group>
                 <Form.Group>
                     <Icon name="book" color="black" />
                     <TextArea
                         placeholder="Description"
                         name="Description"
-                        // type="text"
                         id="Description"
                         label="Description"
-                        // value={user.description}
                         value={localUser.description}
                         onChange={handleChange}
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Button // HELP! Can't get the button to disable IF fields are empty
-                        // disabled={!localUser.first_name
-                        //     || !localUser.last_name
-                        //     || !localUser.email
-                        //     || !localUser.phone
-                        // }
+                    <Form.Button
                         color="blue"
                         type="submit"
                         id="submit"
@@ -303,9 +225,6 @@ const EditUser = (props) => {
                     <List.Icon name="computer" /> Your computer type:{" "}
                     {clientInformation.platform}
                 </List.Item>
-                {/* <List.Item>
-                    <List.Icon name="location arrow" /> Your IP Address: {localUser.ip}
-                </List.Item> */}
             </List>
         </div>
     );
@@ -313,30 +232,9 @@ const EditUser = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        // loading: state.loading,
+        loading: state.loading,
         currentUser: state.currentUser,
     };
 };
 
 export default connect(mapStateToProps, { editUser, deleteUser })(EditUser);
-// export default withRouter(connect(mapStateToProps, { editUser })(EditUser))
-
-// function onCallHover(event) {
-//     event.target.style.background = "red";
-//     // edit a popup
-//     // give options to text OR call
-//     // return (
-//     //     window.prompt(
-//     //         <div>
-//     //             <a href={`sms:${user.phone}`}>
-//     //             Send a text message</a>
-//     //             <a href={`tel:${user.phone}`}>
-//     //             Give them a call
-//     //             </a>
-//     //         </div>
-//     //     )
-//     // )
-// }
-// function onCallHoverLeave(event) {
-//     event.target.style.background = "white";
-// }

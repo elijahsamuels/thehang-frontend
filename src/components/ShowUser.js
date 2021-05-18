@@ -6,37 +6,32 @@ import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 import pianoDog from "../images/pianodog.jpg";
 
-// const genderOptions = [
-//     { key: "male", text: "Male", value: "male" },
-//     { key: "female", text: "Female", value: "female" },
-//     { key: "other", text: "Other", value: "other" },
-//     { key: "na", text: "Prefer not to say", value: "prefer not to say" },
-// ];
-
 const ShowUser = (props) => {
     const currentUser = props.currentUser;
     const user = props.user;
-    const location = `${user.city}, ${user.state}` ;
+    const location = `${user.city}, ${user.state}`;
     const baseLocationURL = "www.google.com/maps/place/";
 
     const dispatch = useDispatch();
-    useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [dispatch]); // this is like componentDidMount
-
+    useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [
+        dispatch,
+    ]);
     if (props.loading) {
         return <div>"...Show User is Loading"</div>;
     }
     const userImage = () => {
-            // console.log("props from userImage(): ",props, pianoDog)
-            if (!!user.imageUrl) {
-                return user.imageUrl
-            } return pianoDog }
-    
+        if (!!user.imageUrl) {
+            return user.imageUrl;
+        }
+        return pianoDog;
+    };
+
     return (
         <div>
             <List>
-            <Image.Group >
-                <Image src={userImage()} size="small" alt="pianodog" />
-            </Image.Group>
+                <Image.Group>
+                    <Image src={userImage()} size="small" alt="pianodog" />
+                </Image.Group>
 
                 <List.Item>
                     <List.Icon name="users" color="black" />
@@ -44,7 +39,7 @@ const ShowUser = (props) => {
                         {user.first_name} {user.last_name}
                     </List.Content>
                 </List.Item>
-                
+
                 <List.Item as={Link} to={baseLocationURL + location}>
                     <List.Icon name="marker" color="black" />
                     <List.Content label="user_location">
@@ -53,18 +48,26 @@ const ShowUser = (props) => {
                 </List.Item>
 
                 {!!currentUser ? (
-                <List.Item>
-                    <List.Icon name="mail" color="black" />
-                    <List.Content label="user_email">
-                        <a href={`mailto:${user.email}`}>{user.email}</a>
-                    </List.Content>
-                </List.Item>
-                 ) : ( <></> )}
+                    <List.Item>
+                        <List.Icon name="mail" color="black" />
+                        <List.Content label="user_email">
+                            <a href={`mailto:${user.email}`}>{user.email}</a>
+                        </List.Content>
+                    </List.Item>
+                ) : (
+                    <></>
+                )}
 
                 <List.Item>
                     <List.Icon name="linkify" color="black" />
                     <List.Content label="user_website">
-                        <a href={`${user.website}`} target="_blank" rel="noreferrer"> {user.website} </a>
+                        <a
+                            href={`${user.website}`}
+                            target="_blank"
+                            rel="noreferrer">
+                            {" "}
+                            {user.website}{" "}
+                        </a>
                     </List.Content>
                 </List.Item>
 
@@ -72,10 +75,18 @@ const ShowUser = (props) => {
                     <List.Item>
                         <List.Icon name="phone" />{" "}
                         <List.Content label="user_phone">
-                            <a href={`tel:${user.phone}`} target="_blank" rel="noreferrer"> {user.phone} </a>
+                            <a
+                                href={`tel:${user.phone}`}
+                                target="_blank"
+                                rel="noreferrer">
+                                {" "}
+                                {user.phone}{" "}
+                            </a>
                         </List.Content>
                     </List.Item>
-                    ) : ( <></> )}
+                ) : (
+                    <></>
+                )}
 
                 <List.Item>
                     <List.Icon name="book" />
@@ -86,22 +97,23 @@ const ShowUser = (props) => {
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
-                        Primary Instrument:{" "} {InstrumentIDToName(user.primary_instrument_id)}
+                        Primary Instrument:{" "}
+                        {InstrumentIDToName(user.primary_instrument_id)}
                     </List.Content>
                 </List.Item>
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
-                        Secondary Instrument:{" "} {InstrumentIDToName(user.secondary_instrument_id)}
+                        Secondary Instrument:{" "}
+                        {InstrumentIDToName(user.secondary_instrument_id)}
                     </List.Content>
                 </List.Item>
-                
             </List>
         </div>
     );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         user: state.showUser,
         currentUser: state.currentUser,

@@ -10,9 +10,10 @@ const UserCard = (props) => {
     const currentUser = props.currentUser;
     const userImage = () => {
         if (!!user.imageUrl) {
-            return user.imageUrl
-        } return pianoDog
-    }
+            return user.imageUrl;
+        }
+        return pianoDog;
+    };
 
     return (
         <div>
@@ -26,17 +27,15 @@ const UserCard = (props) => {
                         {user.first_name} {user.last_name}
                     </Card.Header>
                     <Image.Group align="center">
-                        <Image
-                            src={userImage()}
-                            size="small"
-                            alt="pianodog"
-                        />
+                        <Image src={userImage()} size="small" alt="pianodog" />
                     </Image.Group>
                     <Card.Content>
                         <p align="center">
                             {InstrumentIDToName(user.primary_instrument_id)}
                         </p>
-                        <p align="center">{user.city}, {user.state}</p>
+                        <p align="center">
+                            {user.city}, {user.state}
+                        </p>
                         {!!currentUser ? (
                             <p align="center">{user.email}</p>
                         ) : (

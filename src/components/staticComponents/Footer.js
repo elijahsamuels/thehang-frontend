@@ -5,8 +5,7 @@ class Footer extends Component {
     render() {
         return (
             <Container className="footer" align="center">
-                <a
-                    href="https://www.elijahsamuels.com"
+                <a href="https://www.elijahsamuels.com"
                     target="_blank"
                     rel="noreferrer">
                     {new Date().getFullYear()} ©{" "}

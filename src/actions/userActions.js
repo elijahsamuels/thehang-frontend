@@ -1,14 +1,11 @@
 export const obtainUser = (user) => ({ type: "SHOW_USER", payload: user });
 
 export const fetchUsers = () => {
-    console.log("fetchUsers", fetchUsers)
-    
     return (dispatch) => {
         dispatch({ type: "LOADING" });
         fetch("/users")
-        .then((response) => response.json())
-        .then((payload) => dispatch({ type: "SET_USERS", payload }));
-        console.log("dispatch", dispatch)
+            .then((response) => response.json())
+            .then((payload) => dispatch({ type: "SET_USERS", payload }));
     };
 };
 
@@ -39,20 +36,16 @@ export const showUser = (id) => {
                         type: "ERROR",
                         payload: "could not find the data for that resource",
                     });
-                    // Error("could not fetch the data for that resource");
                 }
                 return response.json();
             })
             .then((data) => {
-                // console.log(data)
                 dispatch(obtainUser(data));
                 dispatch({ type: "LOADING", payload: false });
-                // setData(data);
-                // setError(null);
             })
             .catch((error) => {
-                dispatch({ type: "LOADING", payload: false }); // auto catches network / connection error
-                dispatch({ type: "ERROR", payload: error.message }); // setError(err.message);
+                dispatch({ type: "LOADING", payload: false }); 
+                dispatch({ type: "ERROR", payload: error.message });
             });
     };
 };
@@ -60,7 +53,6 @@ export const showUser = (id) => {
 export const editUser = (user) => {
     return (dispatch) => {
         dispatch({ type: "LOADING", payload: true });
-        // console.log(1, "???");
         fetch(`/users/${user.id}`, {
             method: "PATCH",
             headers: {
@@ -71,7 +63,6 @@ export const editUser = (user) => {
         })
             .then((response) => {
                 if (response.ok === false) {
-                    // console.log(5, "5 only on error from editUser");
                     throw dispatch({
                         type: "ERROR",
                         payload: "ERROR: Unable to save edits.",
@@ -80,19 +71,14 @@ export const editUser = (user) => {
                 return response.json();
             })
             .then((data) => {
-                // console.log(2, "2 from editUser");
                 dispatch({ type: "EDIT_CURRENT_USER", payload: data });
                 dispatch({ type: "LOADING", payload: false });
-                // console.log(3, "3 from editUser");
                 dispatch({ type: "ERROR", payload: null });
-                // console.log(4, "4 from editUser");
             })
             .catch((err) => {
-                // auto catches network / connection error
                 dispatch({ type: "LOADING", payload: false });
                 dispatch({ type: "ERROR", payload: err.message });
             });
-        // console.log(3);
     };
 };
 
@@ -107,8 +93,8 @@ export const deleteUser = (user) => {
             },
             body: JSON.stringify({ user }),
         })
-        .then((response) => response.json()) // fulfilled and returns the user object
-        .then((data) => dispatch({ type: "DELETE_USER", payload: data }));
+            .then((response) => response.json())
+            .then((data) => dispatch({ type: "DELETE_USER", payload: data }));
     };
 };
 
@@ -116,7 +102,6 @@ export const currentUser = (user) => ({ type: "CREATE_USER", payload: user });
 
 export const loginUser = (userObj) => {
     return (dispatch) => {
-        // console.log("Login, stage: 2. This triggers the fetch() ");
         fetch(`/users`, {
             method: "POST",
             headers: {
@@ -125,7 +110,7 @@ export const loginUser = (userObj) => {
             },
             body: JSON.stringify({ userObj }),
         })
-            .then((response) => response.json()) // fulfilled and returns the user object
+            .then((response) => response.json())
             .then((data) => dispatch({ type: "CURRENT_USER", payload: data }));
     };
 };
@@ -135,19 +120,3 @@ export const logoutUser = () => {
         dispatch({ type: "CURRENT_USER", payload: null });
     };
 };
-
-// grab the object from the GoogleLogin component
-// send to the rails API, users controller => find_or_create by the object passed in
-// on the response, set the incoming data to the currentUser in state
-// {
-//     /*
-//
-//     axios
-//     .get(`https://people.googleapis.com/v1/people/${googleId}?personFields=birthdays,genders&access_token=${accessToken}`)
-//     .then((response) => {console.log(JSON.stringify(response, null, 4)); }) //You will get data here
-//     .catch((error) => {console.warn(JSON.stringify(error, null, 4));});
-//
-// */
-// }
-
-// https://people.googleapis.com/v1/people/109441694687044824001?personFields=birthdays,genders&access_token=AIzaSyA2dy67S5fSB8H70A3cSZtL-uEdwKwOCc0

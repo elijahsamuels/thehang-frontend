@@ -9,7 +9,6 @@ import Logout from "../Logout";
 
 const Nav = (props) => {
     const currentUser = props.currentUser;
-    console.log(3);
     return (
         <div>
             <Sticky active={false}>
@@ -44,24 +43,18 @@ const Nav = (props) => {
                     ) : (
                         <Login />
                     )}
-                    
                 </Menu>
-                {/* <Link to="/"> Main</Link>
-						<Link to="about"> About</Link>
-					<Link to="musicians"> Musicians</Link> */}
             </Sticky>
         </div>
     );
 };
 
 const mapStateToProps = (state) => {
-    // console.log("state", state); // array of users
     return {
         loading: state.loading,
         users: state.users,
         user: state.user,
         currentUser: state.currentUser,
-        // test: console.log("mapStateToProps: ", state)
     };
 };
 

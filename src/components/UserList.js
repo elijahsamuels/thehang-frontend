@@ -1,49 +1,58 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Loader, Card } from "semantic-ui-react";
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
-import { Loader, Card } from "semantic-ui-react";
 
 export class UserList extends Component {
-    
     state = {
-        searchValue: ""
-    }
+        searchValue: "",
+    };
 
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
         });
     };
- 
+
     componentDidMount() {
         this.props.fetchUsers();
-        console.log("this.props.fetchUsers()", this.props.fetchUsers())
         this.functionSearch();
     }
 
     functionSearch = () => {
         const { users } = this.props;
-            if (this.state.searchValue === "") {
-                const userList = users.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
-                return userList
-            } else { 
-                const usersSorted = users.filter(user => user.city === this.state.searchValue );
-                const userList = usersSorted.map(user => <UserCard key={user.id} user={user} history={this.props.history} />);
-                return userList
-            };
+        if (this.state.searchValue === "") {
+            const userList = users.map((user) => (
+                <UserCard
+                    key={user.id}
+                    user={user}
+                    history={this.props.history}
+                />
+            ));
+            return userList;
+        } else {
+            const usersSorted = users.filter(
+                (user) => user.city === this.state.searchValue
+            );
+            const userList = usersSorted.map((user) => (
+                <UserCard
+                    key={user.id}
+                    user={user}
+                    history={this.props.history}
+                />
+            ));
+            return userList;
         }
+    };
 
     render() {
-        console.log("render")
-        const { loading } = this.props;
+        const { loading } = this.props.loading;
 
         if (loading) {
             return (
                 <div>
-                    {/* <Dimmer active> */}
-                        <Loader size="massive">Loading</Loader>
-                    {/* </Dimmer> */}
+                    <Loader size="massive">Loading</Loader>
                 </div>
             );
         }
@@ -51,15 +60,16 @@ export class UserList extends Component {
         return (
             <div>
                 <h2 align="center">Musicians</h2>
-                <p align="center">Musician Count: {this.functionSearch().length} </p>
+                <p align="center">
+                    Musician Count: {this.functionSearch().length}{" "}
+                </p>
                 <div align="center">
                     <input
                         placeholder="Filter by City"
                         name="searchValue"
-                        // input={{ icon: "search", iconPosition: "left" }}
                         loading={loading}
                         value={this.state.searchValue}
-                        onChange={this.handleChange} 
+                        onChange={this.handleChange}
                     />
                 </div>
 
@@ -75,12 +85,10 @@ export class UserList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps", state)
     return {
         loading: state.loading,
         users: state.users,
     };
-
 };
 
 export default connect(mapStateToProps, { fetchUsers })(UserList);

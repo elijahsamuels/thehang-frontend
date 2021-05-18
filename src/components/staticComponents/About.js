@@ -1,6 +1,6 @@
 import React from "react";
 import QRCode from "../../images/paypalQRCode.png";
-import {  } from "semantic-ui-react";
+import {} from "semantic-ui-react";
 
 const About = () => {
     return (
@@ -14,7 +14,11 @@ const About = () => {
                     world. The ultimate rollidex!
                 </p>
                 <p>
-					As a musician, you're able to sign in with your Google account. Once signed in, you can continue to complete your profile. This will help other musicians find you based on your location, instruments and type of gigs you want to play.
+                    As a musician, you're able to sign in with your Google
+                    account. Once signed in, you can continue to complete your
+                    profile. This will help other musicians find you based on
+                    your location, instruments and type of gigs you want to
+                    play.
                 </p>
             </div>
             <br />
@@ -30,7 +34,7 @@ const About = () => {
                         name="hosted_button_id"
                         value="ZMFAUDELBR7P6"
                     />
-		
+
                     <input
                         type="image"
                         src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
