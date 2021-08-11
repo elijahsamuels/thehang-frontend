@@ -33,7 +33,7 @@ export class UserList extends Component {
             return userList;
         } else {
             const usersSorted = users.filter(
-                (user) => user.city === this.state.searchValue
+                (user) => user.city.toLowerCase() === this.state.searchValue.toLowerCase()
             );
             const userList = usersSorted.map((user) => (
                 <UserCard
