@@ -24,7 +24,10 @@ export class UserList extends Component {
 
 
     cityMusiciansCount = () => {
-        if (this.state.citySearchValue !== "") {
+        if (this.state.citySearchValue === "") {
+            return `Total Musician Count: ${this.citySearch().length}`
+        }
+        else if (this.state.citySearchValue !== "") {
             return `Musicians in this city: ${this.citySearch().length}`
         }
     }
