@@ -6,7 +6,8 @@ import { fetchUsers } from "../actions/userActions";
 
 export class UserList extends Component {
     state = {
-        searchValue: "",
+        citySearchValue: "",
+        nameSearchValue: ""
     };
 
     handleChange = (event) => {
@@ -17,12 +18,21 @@ export class UserList extends Component {
 
     componentDidMount() {
         this.props.fetchUsers();
-        this.functionSearch();
+        this.citySearch();
+        this.userNameSearch();
     }
 
-    functionSearch = () => {
+
+    cityMusiciansCount = () => {
+        if (this.state.citySearchValue !== "") {
+            return `Musicians in this city: ${this.citySearch().length}`
+        }
+    }
+    
+
+    userNameSearch = () => {
         const { users } = this.props;
-        if (this.state.searchValue === "") {
+        if (this.state.nameSearchValue === "") {
             const userList = users.map((user) => (
                 <UserCard
                     key={user.id}
@@ -33,7 +43,35 @@ export class UserList extends Component {
             return userList;
         } else {
             const usersSorted = users.filter(
-                (user) => user.city.toLowerCase() === this.state.searchValue.toLowerCase()
+                (user) => user.first_name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
+                // (user) => user.name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
+            );
+            const userList = usersSorted.map((user) => (
+                <UserCard
+                    key={user.id}
+                    user={user}
+                    history={this.props.history}
+                />
+            ));
+            return userList;
+        }
+
+    }
+
+    citySearch = () => {
+        const { users } = this.props;
+        if (this.state.citySearchValue === "") {
+            const userList = users.map((user) => (
+                <UserCard
+                    key={user.id}
+                    user={user}
+                    history={this.props.history}
+                />
+            ));
+            return userList;
+        } else {
+            const usersSorted = users.filter(
+                (user) => user.city.toLowerCase() === this.state.citySearchValue.toLowerCase()
             );
             const userList = usersSorted.map((user) => (
                 <UserCard
@@ -61,14 +99,22 @@ export class UserList extends Component {
             <div>
                 <h2 align="center">Musicians</h2>
                 <p align="center">
-                    Musician Count: {this.functionSearch().length}{" "}
+                    {/* Musicians in this city: {this.citySearch().length} */}
+                    {this.cityMusiciansCount()}
                 </p>
                 <div align="center">
                     <input
                         placeholder="Filter by City"
-                        name="searchValue"
+                        name="citySearchValue"
                         loading={loading}
-                        value={this.state.searchValue}
+                        value={this.state.citySearchValue}
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        placeholder="Filter by Name"
+                        name="nameSearchValue"
+                        loading={loading}
+                        value={this.state.nameSearchValue}
                         onChange={this.handleChange}
                     />
                 </div>
@@ -77,7 +123,7 @@ export class UserList extends Component {
                     centered={true}
                     itemsPerRow={4}
                     style={{ padding: "20px" }}>
-                    {this.functionSearch()}
+                    {this.citySearch() || this.userNameSearch()}
                 </Card.Group>
             </div>
         );
