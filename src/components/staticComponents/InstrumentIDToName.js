@@ -9,11 +9,8 @@ const InstrumentIDToName = (instrumentID) => {
         6: "Trumpet",
     };
 
-    if (!!instrumentID) {
-        return instrumentArray[instrumentID];
-    } else {
-        return "No instrument listed";
-    }
+    return !!instrumentID ? instrumentArray[instrumentID] : "No instrument listed";
+
 };
 
 export default InstrumentIDToName;
