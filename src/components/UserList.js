@@ -22,7 +22,6 @@ export class UserList extends Component {
         this.userNameSearch();
     }
 
-
     cityMusiciansCount = () => {
         if (this.state.citySearchValue === "") {
             return `Total Musician Count: ${this.citySearch().length}`
@@ -31,7 +30,6 @@ export class UserList extends Component {
             return `Musicians in this city: ${this.citySearch().length}`
         }
     }
-    
 
     userNameSearch = () => {
         const { users } = this.props;
@@ -58,7 +56,6 @@ export class UserList extends Component {
             ));
             return userList;
         }
-
     }
 
     citySearch = () => {

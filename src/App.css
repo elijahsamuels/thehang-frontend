@@ -88,6 +88,11 @@ body {
     }
 }
 
+.ui .cards {
+        min-height: 300px;
+        min-width: 300px;
+}
+
 .footer {
     margin-top: auto;
 }

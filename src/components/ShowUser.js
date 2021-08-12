@@ -13,24 +13,26 @@ const ShowUser = (props) => {
     const baseLocationURL = "www.google.com/maps/place/";
 
     const dispatch = useDispatch();
-    useEffect(() => dispatch(showUser(parseInt(props.match.params.id))), [
-        dispatch,
-    ]);
+    useEffect(
+        () => dispatch(showUser(parseInt(props.match.params.id))),
+        [dispatch]
+    );
     if (props.loading) {
-        return <div>"...Show User is Loading"</div>;
+        return <div>"...loading"</div>;
     }
-    const userImage = () => {
-        if (!!user.imageUrl) {
-            return user.imageUrl;
-        }
-        return pianoDog;
-    };
+
+    const userImage = () => { return !!user.imageUrl ? user.imageUrl : pianoDog };
 
     return (
         <div>
             <List>
                 <Image.Group>
-                    <Image src={userImage()} size="small" alt="pianodog" />
+                    <Image
+                        src={userImage()}
+                        size="small"
+                        alt="pianodog"
+                        rounded="true"
+                    />
                 </Image.Group>
 
                 <List.Item>

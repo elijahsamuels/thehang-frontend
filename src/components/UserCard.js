@@ -8,32 +8,30 @@ import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 const UserCard = (props) => {
     const user = props.user;
     const currentUser = props.currentUser;
-    const userImage = () => {
-        if (!!user.imageUrl) {
-            return user.imageUrl;
-        }
-        return pianoDog;
-    };
+    const userImage = () => { return !!user.imageUrl ? user.imageUrl : pianoDog };
 
     return (
         <div>
-            <Card.Group style={{ padding: "2px" }}>
+            <Card.Group style={{ padding: "2px", height: "300px"}}>
                 <Card
                     raised={true}
                     id={user.id}
                     key={user.id}
                     href={`/musician/${user.id}`}>
-                    <Card.Header align="center" as="h3">
+
+                    <Card.Header align="center" as="h3" style={{ padding: "4px"}}>
                         {user.first_name} {user.last_name}
                     </Card.Header>
+
                     <Image.Group align="center">
-                        <Image src={userImage()} size="small" alt="pianodog" />
+                        <Image src={userImage()} size="small" alt="pianodog" rounded="true"/>
                     </Image.Group>
+
                     <Card.Content>
                         <p align="center">
                             {InstrumentIDToName(user.primary_instrument_id)}
                         </p>
-                        <p align="center">
+                        <p align="center" >
                             {user.city}, {user.state}
                         </p>
                         {!!currentUser ? (
@@ -42,6 +40,7 @@ const UserCard = (props) => {
                             <></>
                         )}
                     </Card.Content>
+
                 </Card>
             </Card.Group>
             <br />
