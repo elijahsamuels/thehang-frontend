@@ -2,13 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Card, Image } from "semantic-ui-react";
 import { showUser } from "../actions/userActions.js";
-import pianoDog from "../images/pianodog.jpg";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
+import userImage from "./staticComponents/userImage";
 
 const UserCard = (props) => {
     const user = props.user;
     const currentUser = props.currentUser;
-    const userImage = () => { return !!user.imageUrl ? user.imageUrl : pianoDog };
 
     return (
         <div>
@@ -24,7 +23,7 @@ const UserCard = (props) => {
                     </Card.Header>
 
                     <Image.Group align="center">
-                        <Image src={userImage()} size="small" alt="pianodog" rounded="true"/>
+                        <Image src={userImage(user)} size="small" alt="pianodog" rounded="true"/>
                     </Image.Group>
 
                     <Card.Content>

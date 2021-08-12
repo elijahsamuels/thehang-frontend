@@ -1,4 +1,4 @@
-import pianoDog from "../images/pianodog.jpg";
+import pianoDog from "../../images/pianodog.jpg";
 
 const userImage = (user) => { return !!user.imageUrl ? user.imageUrl : pianoDog };
 

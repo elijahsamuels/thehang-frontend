@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { List, Image } from "semantic-ui-react";
 import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
-import pianoDog from "../images/pianodog.jpg";
+import userImage from "./staticComponents/userImage";
 
 const ShowUser = (props) => {
     const currentUser = props.currentUser;
@@ -21,14 +21,12 @@ const ShowUser = (props) => {
         return <div>"...loading"</div>;
     }
 
-    const userImage = () => { return !!user.imageUrl ? user.imageUrl : pianoDog };
-
     return (
         <div>
             <List>
                 <Image.Group>
                     <Image
-                        src={userImage()}
+                        src={userImage(user)}
                         size="small"
                         alt="pianodog"
                         rounded="true"
