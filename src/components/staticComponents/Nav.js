@@ -11,8 +11,8 @@ const Nav = (props) => {
     const currentUser = props.currentUser;
     return (
         <div>
-            <Sticky active={true}>
-                <Menu secondary>
+            <Sticky active={true} >
+                <Menu >
                     <Link to="/">
                         <Image src={logo} width={50} />
                     </Link>

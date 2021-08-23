@@ -19,7 +19,7 @@ export class UserList extends Component {
     componentDidMount() {
         this.props.fetchUsers();
         this.citySearch();
-        this.userNameSearch();
+        // this.userNameSearch();
     }
 
     cityMusiciansCount = () => {
@@ -31,32 +31,32 @@ export class UserList extends Component {
         }
     }
 
-    userNameSearch = () => {
-        const { users } = this.props;
-        if (this.state.nameSearchValue === "") {
-            const userList = users.map((user) => (
-                <UserCard
-                    key={user.id}
-                    user={user}
-                    history={this.props.history}
-                />
-            ));
-            return userList;
-        } else {
-            const usersSorted = users.filter(
-                (user) => user.first_name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
-                // (user) => user.name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
-            );
-            const userList = usersSorted.map((user) => (
-                <UserCard
-                    key={user.id}
-                    user={user}
-                    history={this.props.history}
-                />
-            ));
-            return userList;
-        }
-    }
+    // userNameSearch = () => {
+    //     const { users } = this.props;
+    //     if (this.state.nameSearchValue === "") {
+    //         const userList = users.map((user) => (
+    //             <UserCard
+    //                 key={user.id}
+    //                 user={user}
+    //                 history={this.props.history}
+    //             />
+    //         ));
+    //         return userList;
+    //     } else {
+    //         const usersSorted = users.filter(
+    //             (user) => user.first_name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
+    //             // (user) => user.name.toLowerCase() === this.state.nameSearchValue.toLowerCase()
+    //         );
+    //         const userList = usersSorted.map((user) => (
+    //             <UserCard
+    //                 key={user.id}
+    //                 user={user}
+    //                 history={this.props.history}
+    //             />
+    //         ));
+    //         return userList;
+    //     }
+    // }
 
     citySearch = () => {
         const { users } = this.props;
@@ -99,8 +99,8 @@ export class UserList extends Component {
             <div>
                 <h2 align="center">Musicians</h2>
                 <p align="center">
-                    {/* Musicians in this city: {this.citySearch().length} */}
-                    {this.cityMusiciansCount()}
+                    Musicians in this city: {this.citySearch().length}
+                    {/* {this.cityMusiciansCount()} */}
                 </p>
                 <div align="center">
                     <input
@@ -110,20 +110,20 @@ export class UserList extends Component {
                         value={this.state.citySearchValue}
                         onChange={this.handleChange}
                     />
-                    <input
+                    {/* <input
                         placeholder="Filter by Name"
                         name="nameSearchValue"
                         loading={loading}
                         value={this.state.nameSearchValue}
                         onChange={this.handleChange}
-                    />
+                    /> */}
                 </div>
 
                 <Card.Group
                     centered={true}
                     itemsPerRow={4}
                     style={{ padding: "20px" }}>
-                    {this.citySearch() || this.userNameSearch()}
+                    {this.citySearch() }
                 </Card.Group>
             </div>
         );
