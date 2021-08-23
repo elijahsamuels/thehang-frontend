@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Container } from "semantic-ui-react";
+// import { Container } from "semantic-ui-react";
+import Container from '@material-ui/core/Container';
+
 import UserList from "./components/UserList";
 import ShowUser from "./components/ShowUser";
 import EditUser from "./components/EditUser";
