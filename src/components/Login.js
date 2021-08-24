@@ -22,7 +22,7 @@ const Login = (props) => {
         <div>
             <GoogleLogin
                 clientId={clientId}
-                buttonText="Login"
+                buttonText="Google Login"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_origin"}
