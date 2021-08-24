@@ -40,7 +40,7 @@ const ShowUser = (props) => {
                     </List.Content>
                 </List.Item>
 
-                <List.Item as={Link} to={baseLocationURL + location}>
+                <List.Item as={Link} to={baseLocationURL + location}style={{ textDecoration: "none" }}>
                     <List.Icon name="marker" color="black" />
                     <List.Content label="user_location">
                         {location}
@@ -48,7 +48,7 @@ const ShowUser = (props) => {
                 </List.Item>
 
                 {!!currentUser ? (
-                    <List.Item>
+                    <List.Item style={{ textDecoration: "none" }}>
                         <List.Icon name="mail" color="black" />
                         <List.Content label="user_email">
                             <a href={`mailto:${user.email}`}>{user.email}</a>
@@ -60,7 +60,7 @@ const ShowUser = (props) => {
 
                 <List.Item>
                     <List.Icon name="linkify" color="black" />
-                    <List.Content label="user_website">
+                    <List.Content label="user_website" >
                         <a
                             href={`${user.website}`}
                             target="_blank"

@@ -1,50 +1,105 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Menu, Image, Sticky, Icon } from "semantic-ui-react";
+
+import {
+    AppBar,
+    Toolbar,
+    IconButton,
+    Typography,
+    makeStyles,
+} from "@material-ui/core";
+
+import { Image, Icon } from "semantic-ui-react";
+// import { AppBar, Image, Sticky, Icon } from "semantic-ui-react";
+
 import logo from "../../images/sampleLogo.png";
 import { editUser } from "../../actions/userActions.js";
 import Login from "../Login";
 import Logout from "../Logout";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        background: "white",
+    },
+    button: {
+        "&:hover": {
+            backgroundColor: "white",
+        },
+    },
+}));
+
 const Nav = (props) => {
+    const classes = useStyles();
     const currentUser = props.currentUser;
     return (
         <div>
-            <Sticky active={true} >
-                <Menu >
-                    <Link to="/">
-                        <Image src={logo} width={50} />
-                    </Link>
-                    <Menu.Item name="Main" to="/">
-                        <Link to="/">The Hang</Link>
-                    </Menu.Item>
+            <AppBar className={classes.root} position="static" elevation={0}>
+                <Toolbar>
+                    <Typography >
+                        <Link to="/" style={{ textDecoration: "none" }}>
+                            <Image src={logo} width={50} />
+                        </Link>
 
-                    <Menu.Item position="right" name="About" to="/">
-                        <Link to="/about">About</Link>
-                    </Menu.Item>
+                        <IconButton
+                            name="Main"
+                            disableRipple="true"
+                            size="small"
+                            className={classes.button}>
+                            <Link to="/" style={{ textDecoration: "none" }}>
+                                The Hang
+                            </Link>
+                        </IconButton>
 
-                    <Menu.Item name="Musicians" to="/">
-                        <Link to="/musicians">Musicians</Link>
-                    </Menu.Item>
+                        <IconButton
+                            name="About"
+                            disableRipple="true"
+                            size="small"
+                            className={classes.button}>
+                            <Link
+                                to="/about"
+                                style={{ textDecoration: "none" }}>
+                                About
+                            </Link>
+                        </IconButton>
 
-                    {!!currentUser ? (
-                        <>
-                            <Menu.Item
-                                name="Edit"
-                                to={`/musician/${currentUser.id}/edit`}>
-                                <Link to={`/musician/${currentUser.id}/edit`}>
-                                    <Icon loading name="setting" />
-                                    Edit
-                                </Link>
-                            </Menu.Item>
-                            <Logout />
-                        </>
-                    ) : (
-                        <Login />
-                    )}
-                </Menu>
-            </Sticky>
+                        <IconButton
+                            name="Musicians"
+                            disableRipple="true"
+                            size="small"
+                            className={classes.button}>
+                            <Link
+                                to="/musicians"
+                                style={{ textDecoration: "none" }}>
+                                Musicians
+                            </Link>
+                        </IconButton>
+
+                        {!!currentUser ? (
+                            <>
+                                <IconButton
+                                    name="Edit"
+                                    className={classes.button}
+                                    to={`/musician/${currentUser.id}/edit`}>
+                                    <Link
+                                        to={`/musician/${currentUser.id}/edit`}>
+                                        <Icon loading name="setting" />
+                                        Edit
+                                    </Link>
+                                </IconButton>
+                                <Logout />
+                            </>
+                        ) : (
+                            <IconButton
+                                name="Login"
+                                disableRipple="true"
+                                className={classes.button}>
+                                <Login />
+                            </IconButton>
+                        )}
+                    </Typography>
+                </Toolbar>
+            </AppBar>
         </div>
     );
 };
