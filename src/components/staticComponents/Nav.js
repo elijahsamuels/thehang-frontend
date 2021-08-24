@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 
 import {
     AppBar,
+    Icon,
     Toolbar,
     IconButton,
     Typography,
+    SvgIcon,
     makeStyles,
 } from "@material-ui/core";
 
-import { Image, Icon } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 // import { AppBar, Image, Sticky, Icon } from "semantic-ui-react";
 
-import logo from "../../images/sampleLogo.png";
+import logo from "../../images/sampleLogo24x24.svg";
 import { editUser } from "../../actions/userActions.js";
 import Login from "../Login";
 import Logout from "../Logout";
@@ -29,6 +31,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const LogoIcon = (props) => {
+    return (
+        <SvgIcon {...props}>
+            <path d={logo} />
+        </SvgIcon>
+    );
+};
+
 const Nav = (props) => {
     const classes = useStyles();
     const currentUser = props.currentUser;
@@ -36,9 +46,15 @@ const Nav = (props) => {
         <div>
             <AppBar className={classes.root} position="static" elevation={0}>
                 <Toolbar>
-                    <Typography >
+                    <Typography>
                         <Link to="/" style={{ textDecoration: "none" }}>
-                            <Image src={logo} width={50} />
+                            <Icon classes={{ root: classes.iconRoot }}>
+                                <img
+                                    className={classes.imageIcon}
+                                    src={logo}
+                                    alt="sample SVG icon"
+                                />
+                            </Icon>
                         </Link>
 
                         <IconButton
@@ -47,7 +63,7 @@ const Nav = (props) => {
                             size="small"
                             className={classes.button}>
                             <Link to="/" style={{ textDecoration: "none" }}>
-                                The Hang
+                                 theHang
                             </Link>
                         </IconButton>
 
