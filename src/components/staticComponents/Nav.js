@@ -8,7 +8,7 @@ import {
     Icon,
     Toolbar,
     IconButton,
-    Typography,
+    // Typography,
     // Slide,
     // useScrollTrigger,
     makeStyles,
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             backgroundColor: "white",
         },
+    },
+    rightToolbar: {
+        marginRight: "auto",
     },
 }));
 
@@ -59,7 +62,6 @@ const Nav = (props) => {
     return (
         <AppBar className={classes.root} position="sticky" elevation={0}>
             <Toolbar>
-                <Typography>
                     <Link to="/" style={{ textDecoration: "none" }}>
                         <Icon classes={{ root: classes.iconRoot }}>
                             <img
@@ -74,7 +76,7 @@ const Nav = (props) => {
                         name="Main"
                         disableRipple="true"
                         size="small"
-                        className={classes.button}>
+                        className={classes.rightToolbar}>
                         <Link to="/" style={{ textDecoration: "none" }}>
                             theHang
                         </Link>
@@ -89,7 +91,7 @@ const Nav = (props) => {
                             About
                         </Link>
                     </IconButton>
-
+                    {/* className={classes.rightToolbar} */}
                     <IconButton
                         name="Musicians"
                         disableRipple="true"
@@ -123,7 +125,6 @@ const Nav = (props) => {
                             <Login />
                         </IconButton>
                     )}
-                </Typography>
             </Toolbar>
         </AppBar>
     );
