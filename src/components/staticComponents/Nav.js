@@ -11,6 +11,8 @@ import {
     // Typography,
     // Slide,
     // useScrollTrigger,
+    Menu,
+    MenuItem,
     makeStyles,
 } from "@material-ui/core";
 
@@ -59,72 +61,86 @@ const useStyles = makeStyles((theme) => ({
 const Nav = (props) => {
     const classes = useStyles();
     const currentUser = props.currentUser;
+        
+    // let fullName = `${currentUser.first_name} ${currentUser.last_name} `;
+
     return (
         <AppBar className={classes.root} position="sticky" elevation={0}>
             <Toolbar>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <Icon classes={{ root: classes.iconRoot }}>
+                        <img
+                            className={classes.imageIcon}
+                            src={logo}
+                            alt="sample SVG icon"
+                        />
+                    </Icon>
+                </Link>
+
+                <IconButton
+                    name="Main"
+                    disableRipple="true"
+                    size="small"
+                    className={classes.rightToolbar}>
                     <Link to="/" style={{ textDecoration: "none" }}>
-                        <Icon classes={{ root: classes.iconRoot }}>
-                            <img
-                                className={classes.imageIcon}
-                                src={logo}
-                                alt="sample SVG icon"
-                            />
-                        </Icon>
+                        theHang
                     </Link>
+                </IconButton>
 
-                    <IconButton
-                        name="Main"
-                        disableRipple="true"
-                        size="small"
-                        className={classes.rightToolbar}>
-                        <Link to="/" style={{ textDecoration: "none" }}>
-                            theHang
-                        </Link>
-                    </IconButton>
+                <IconButton
+                    name="User Welcome"
+                    disableRipple="true"
+                    size="small"
+                    className={classes.button}>
+                    {/* <Link to="/about" style={{ textDecoration: "none" }}>
+                        About
+                    </Link> */}
+                </IconButton>
+                <IconButton
+                    name="About"
+                    disableRipple="true"
+                    size="small"
+                    className={classes.button}>
+                    <Link to="/about" style={{ textDecoration: "none" }}>
+                        About
+                    </Link>
+                </IconButton>
+                {/* className={classes.rightToolbar} */}
+                <IconButton
+                    name="Musicians"
+                    disableRipple="true"
+                    size="small"
+                    className={classes.button}>
+                    <Link to="/musicians" style={{ textDecoration: "none" }}>
+                        Musicians
+                    </Link>
+                </IconButton>
 
-                    <IconButton
-                        name="About"
-                        disableRipple="true"
-                        size="small"
-                        className={classes.button}>
-                        <Link to="/about" style={{ textDecoration: "none" }}>
-                            About
-                        </Link>
-                    </IconButton>
-                    {/* className={classes.rightToolbar} */}
-                    <IconButton
-                        name="Musicians"
-                        disableRipple="true"
-                        size="small"
-                        className={classes.button}>
-                        <Link
-                            to="/musicians"
-                            style={{ textDecoration: "none" }}>
-                            Musicians
-                        </Link>
-                    </IconButton>
-
-                    {!!currentUser ? (
-                        <>
-                            <IconButton
-                                name="Edit"
-                                className={classes.button}
-                                to={`/musician/${currentUser.id}/edit`}>
-                                <Link to={`/musician/${currentUser.id}/edit`}>
-                                    <Icon loading name="setting" />
-                                    Edit
-                                </Link>
-                            </IconButton>
-                            <Logout />
-                        </>
-                    ) : (
+                {!!currentUser ? (
+                    <> <p>Hello, {currentUser.first_name}!</p>
                         <IconButton
-                            name="Login"
+                            name="Edit"
                             disableRipple="true"
-                            className={classes.button}>
-                            <Login />
+                            size="small"
+                            className={classes.button}
+                            to={`/musician/${currentUser.id}/edit`}>
+                            <Link
+                                to={`/musician/${currentUser.id}/edit`}
+                                style={{ textDecoration: "none" }}>
+                                <Icon loading name="setting" />
+                                Edit
+                            </Link>
                         </IconButton>
-                    )}
+                        <Logout />
+                    </>
+                ) : (
+                    <IconButton
+                        name="Login"
+                        disableRipple="true"
+                        className={classes.button}>
+                        <Login />
+                    </IconButton>
+                )}
             </Toolbar>
         </AppBar>
     );

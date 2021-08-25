@@ -17,6 +17,7 @@ export const Logout = (props) => {
     return (
         <div>
             <GoogleLogout
+                buttonText="Logout"
                 clientId={clientId}
                 onLogoutSuccess={onSuccess}></GoogleLogout>
         </div>

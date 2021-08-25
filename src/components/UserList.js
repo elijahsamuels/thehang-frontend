@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Loader, Card } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
+import { Paper, Card } from '@material-ui/core';
+
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
 
@@ -119,12 +121,13 @@ export class UserList extends Component {
                     /> */}
                 </div>
 
-                <Card.Group
+                <Paper
                     centered={true}
                     itemsPerRow={4}
+                    elevation={0}
                     style={{ padding: "20px" }}>
                     {this.citySearch() }
-                </Card.Group>
+                </Paper>
             </div>
         );
     }
