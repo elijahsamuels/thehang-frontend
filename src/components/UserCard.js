@@ -54,6 +54,9 @@ const UserCard = (props) => {
 
                 <CardContent>
                     <p align="center">
+                        {user.first_name} {user.last_name}
+                    </p>
+                    <p align="center">
                         {InstrumentIDToName(user.primary_instrument_id)}
                     </p>
                     <p align="center">
