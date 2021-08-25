@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Loader } from "semantic-ui-react";
-import { Paper, Card } from '@material-ui/core';
+import { Paper, Card } from "@material-ui/core";
 
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
@@ -9,7 +9,7 @@ import { fetchUsers } from "../actions/userActions";
 export class UserList extends Component {
     state = {
         citySearchValue: "",
-        nameSearchValue: ""
+        nameSearchValue: "",
     };
 
     handleChange = (event) => {
@@ -26,12 +26,11 @@ export class UserList extends Component {
 
     cityMusiciansCount = () => {
         if (this.state.citySearchValue === "") {
-            return `Total Musician Count: ${this.citySearch().length}`
+            return `Total Musician Count: ${this.citySearch().length}`;
+        } else if (this.state.citySearchValue !== "") {
+            return `Musicians in this city: ${this.citySearch().length}`;
         }
-        else if (this.state.citySearchValue !== "") {
-            return `Musicians in this city: ${this.citySearch().length}`
-        }
-    }
+    };
 
     // userNameSearch = () => {
     //     const { users } = this.props;
@@ -73,7 +72,9 @@ export class UserList extends Component {
             return userList;
         } else {
             const usersSorted = users.filter(
-                (user) => user.city.toLowerCase() === this.state.citySearchValue.toLowerCase()
+                (user) =>
+                    user.city.toLowerCase() ===
+                    this.state.citySearchValue.toLowerCase()
             );
             const userList = usersSorted.map((user) => (
                 <UserCard
@@ -120,14 +121,16 @@ export class UserList extends Component {
                         onChange={this.handleChange}
                     /> */}
                 </div>
-
-                <Paper
-                    centered={true}
-                    itemsPerRow={4}
-                    elevation={0}
-                    style={{ padding: "20px" }}>
-                    {this.citySearch() }
-                </Paper>
+                <div align="center">
+                    <Paper
+                        centered={true}
+                        itemsPerRow={4}
+                        elevation={0}
+                        square={false}
+                        style={{ padding: "20px" }}>
+                        {this.citySearch()}
+                    </Paper>
+                </div>
             </div>
         );
     }
