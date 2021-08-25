@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-    Paper,
     Card,
     CardHeader,
     CardContent,
     CardMedia,
     makeStyles,
 } from "@material-ui/core";
-
-import { Image } from "semantic-ui-react";
 
 import { showUser } from "../actions/userActions.js";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";

@@ -1,10 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Loader } from "semantic-ui-react";
-import { Paper, Card } from "@material-ui/core";
-
+import { Paper, Card, makeStyles, Grid } from "@material-ui/core";
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
+
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//       display: 'flex',
+//       flexWrap: 'wrap',
+//       '& > *': {
+//         margin: theme.spacing(1),
+//         width: theme.spacing(16),
+//         height: theme.spacing(16),
+//       },
+//     },
+//   }));
+
+//   const classes = useStyles();
 
 export class UserList extends Component {
     state = {
@@ -102,8 +115,8 @@ export class UserList extends Component {
             <div>
                 <h2 align="center">Musicians</h2>
                 <p align="center">
-                    Musicians in this city: {this.citySearch().length}
-                    {/* {this.cityMusiciansCount()} */}
+                    {/* Musicians in this city: {this.citySearch().length} */}
+                    {this.cityMusiciansCount()}
                 </p>
                 <div align="center">
                     <input
@@ -122,14 +135,15 @@ export class UserList extends Component {
                     /> */}
                 </div>
                 <div align="center">
-                    <Paper
-                        centered={true}
-                        itemsPerRow={4}
-                        elevation={0}
-                        square={false}
-                        style={{ padding: "20px" }}>
+                    <Grid
+                        container
+                        spacing={0}
+                        //   className={classes.gridContainer}
+                        style={{ paddingLeft: "10px",
+                        paddingRight: "10px" }}
+                        justify="center">
                         {this.citySearch()}
-                    </Paper>
+                    </Grid>
                 </div>
             </div>
         );

@@ -11,8 +11,6 @@ import {
     // Typography,
     // Slide,
     // useScrollTrigger,
-    Menu,
-    MenuItem,
     makeStyles,
 } from "@material-ui/core";
 
