@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+// import { Link } from "react-router-dom";
+
 import {
     Card,
     CardHeader,
     CardContent,
     CardMedia,
     makeStyles,
+    Link,
 } from "@material-ui/core";
 
 import { showUser } from "../actions/userActions.js";
@@ -36,40 +39,42 @@ const UserCard = (props) => {
 
     return (
         <div>
-            <Card
-                className={classes.root}
-                id={user.id}
-                key={user.id}
-                href={`/musician/${user.id}`}>
-
-                <CardHeader 
-                    className={classes.header} 
-                    align="center" 
-                    as="h3">
-                    {user.first_name} {user.last_name}
-                </CardHeader>
-
-                <CardMedia
-                    className={classes.media}
-                    image={userImage(user)}
-                    title="User Image"
-                    alt="pianodog"
-                />
-
-                <CardContent className={classes.media}
->
-                    <p align="center">
+            <Link
+                href={`/musician/${user.id}`}
+                style={{ textDecoration: "none" }}>
+                <Card className={classes.root} id={user.id} key={user.id}>
+                    <CardHeader
+                        className={classes.header}
+                        align="center"
+                        as="h3">
                         {user.first_name} {user.last_name}
-                    </p>
-                    <p align="center">
-                        {InstrumentIDToName(user.primary_instrument_id)}
-                    </p>
-                    <p align="center">
-                        {user.city}, {user.state}
-                    </p>
-                    {!!currentUser ? <p align="center">{user.email}</p> : <></>}
-                </CardContent>
-            </Card>
+                    </CardHeader>
+
+                    <CardMedia
+                        className={classes.media}
+                        image={userImage(user)}
+                        title="User Image"
+                        alt="pianodog"
+                    />
+
+                    <CardContent className={classes.media}>
+                        <p align="center">
+                            {user.first_name} {user.last_name}
+                        </p>
+                        <p align="center">
+                            {InstrumentIDToName(user.primary_instrument_id)}
+                        </p>
+                        <p align="center">
+                            {user.city}, {user.state}
+                        </p>
+                        {!!currentUser ? (
+                            <p align="center">{user.email}</p>
+                        ) : (
+                            <></>
+                        )}
+                    </CardContent>
+                </Card>
+            </Link>
             <br />
             <br />
         </div>
