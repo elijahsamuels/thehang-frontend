@@ -17,8 +17,12 @@ const useStyles = makeStyles({
         maxWidth: 200,
     },
     media: {
-        height: 140,
-        width: 140,
+        height: 130,
+        width: 130,
+        maxHeight: 130,
+        maxWidth: 130,
+        minHeight: 130,
+        minWidth: 130,
     },
     header: {
         padding: "4px",
@@ -52,7 +56,8 @@ const UserCard = (props) => {
                     alt="pianodog"
                 />
 
-                <CardContent>
+                <CardContent className={classes.media}
+>
                     <p align="center">
                         {user.first_name} {user.last_name}
                     </p>
