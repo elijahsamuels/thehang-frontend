@@ -20,8 +20,6 @@ const useStyles = makeStyles({
         maxWidth: 200,
     },
     media: {
-        height: 130,
-        width: 130,
         maxHeight: 130,
         maxWidth: 130,
         minHeight: 130,
@@ -32,12 +30,15 @@ const useStyles = makeStyles({
     },
 });
 
-
 const UserCard = (props) => {
-
     const mailToUserEmail = () => {
-        return `mailto:${user.email}`
-    }
+        return `mailto:${user.email}`;
+    };
+
+    const userLinkOrAlert = () => {
+        return !!currentUser ? `/musician/${user.id}` : false;
+        // const notLoggedInAlert = () => alert("hello")
+    };
 
     const user = props.user;
     const currentUser = props.currentUser;
@@ -45,9 +46,7 @@ const UserCard = (props) => {
 
     return (
         <div>
-            <Link
-                href={`/musician/${user.id}`}
-                style={{ textDecoration: "none" }}>
+            <Link href={userLinkOrAlert()} style={{ textDecoration: "none" }}>
                 <Card className={classes.root} id={user.id} key={user.id}>
                     <CardHeader
                         className={classes.header}
@@ -74,7 +73,13 @@ const UserCard = (props) => {
                             {user.city}, {user.state}
                         </p>
                         {!!currentUser ? (
-                            <p align="center"><a href={mailToUserEmail()}>Email</a></p>
+                            <p align="center">
+                                <a
+                                    href={mailToUserEmail()}
+                                    style={{ textDecoration: "none" }}>
+                                    Email
+                                </a>
+                            </p>
                         ) : (
                             <></>
                         )}

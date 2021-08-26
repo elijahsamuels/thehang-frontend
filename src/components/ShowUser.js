@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { List, Image } from "semantic-ui-react";
+// import { List, Image } from "semantic-ui-react";
 
 import {
     Card,
     CardHeader,
     CardContent,
     CardMedia,
+    List,
+    ListItem,
+    ListItemIcon,
     makeStyles,
 } from "@material-ui/core";
 
@@ -57,7 +60,39 @@ const ShowUser = (props) => {
                     title="User Image"
                     alt="pianodog"
                 />
-                <CardContent className={classes.media}></CardContent>
+                <CardContent className={classes.media}>
+                    {/* <ListItemIcon name="users" color="black" /> */}
+                    <ListItem label="user_name">
+                        {user.first_name} {user.last_name}
+                    </ListItem>
+
+                    <ListItem
+                        label="user_location"
+                        as={Link}
+                        to={baseLocationURL + location}
+                        style={{ textDecoration: "none" }}>
+                        {/* <List.Icon name="marker" color="black" /> */}
+                        {location}
+                    </ListItem>
+
+                    {/* <List.Icon name="mail" color="black" /> */}
+                    <ListItem
+                        style={{ textDecoration: "none" }}
+                        label="user_email">
+                        <a href={`mailto:${user.email}`}>{user.email}</a>
+                    </ListItem>
+
+                    <ListItem label="user_website">
+                        {/* <List.Icon name="linkify" color="black" /> */}
+                            <a
+                                href={`${user.website}`}
+                                target="_blank"
+                                rel="noreferrer">
+                                {" "}
+                                {user.website}{" "}
+                            </a>
+                    </ListItem>
+                </CardContent>
 
                 {/* 
                 <List.Item>
