@@ -32,7 +32,13 @@ const useStyles = makeStyles({
     },
 });
 
+
 const UserCard = (props) => {
+
+    const mailToUserEmail = () => {
+        return `mailto:${user.email}`
+    }
+
     const user = props.user;
     const currentUser = props.currentUser;
     const classes = useStyles();
@@ -68,7 +74,7 @@ const UserCard = (props) => {
                             {user.city}, {user.state}
                         </p>
                         {!!currentUser ? (
-                            <p align="center">{user.email}</p>
+                            <p align="center"><a href={mailToUserEmail()}>Email</a></p>
                         ) : (
                             <></>
                         )}

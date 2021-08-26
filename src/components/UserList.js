@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Loader } from "semantic-ui-react";
-import { Paper, Card, makeStyles, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import UserCard from "./UserCard";
 import { fetchUsers } from "../actions/userActions";
 

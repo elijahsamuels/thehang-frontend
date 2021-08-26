@@ -2,15 +2,42 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { List, Image } from "semantic-ui-react";
+
+import {
+    Card,
+    CardHeader,
+    CardContent,
+    CardMedia,
+    makeStyles,
+} from "@material-ui/core";
+
 import { showUser } from "../actions/userActions";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 import userImage from "./staticComponents/userImage";
+
+const useStyles = makeStyles({
+    root: {
+        maxWidth: `calc(100% - 500px)`,
+    },
+    media: {
+        // height: 130,
+        // width: 130,
+        // maxHeight: 130,
+        // maxWidth: 130,
+        minHeight: 400,
+        minWidth: 400,
+    },
+    header: {
+        padding: "4px",
+    },
+});
 
 const ShowUser = (props) => {
     const currentUser = props.currentUser;
     const user = props.user;
     const location = `${user.city}, ${user.state}`;
     const baseLocationURL = "www.google.com/maps/place/";
+    const classes = useStyles();
 
     const dispatch = useDispatch();
     useEffect(
@@ -23,24 +50,24 @@ const ShowUser = (props) => {
 
     return (
         <div>
-            <List>
-                <Image.Group>
-                    <Image
-                        src={userImage(user)}
-                        size="small"
-                        alt="pianodog"
-                        rounded="true"
-                    />
-                </Image.Group>
+            <Card className={classes.root} id={user.id} key={user.id}>
+                <CardMedia
+                    className={classes.media}
+                    image={userImage(user)}
+                    title="User Image"
+                    alt="pianodog"
+                />
+                <CardContent className={classes.media}></CardContent>
 
+                {/* 
                 <List.Item>
                     <List.Icon name="users" color="black" />
                     <List.Content label="user_name">
                         {user.first_name} {user.last_name}
                     </List.Content>
-                </List.Item>
+                </List.Item> */}
 
-                <List.Item as={Link} to={baseLocationURL + location}style={{ textDecoration: "none" }}>
+                {/* <List.Item as={Link} to={baseLocationURL + location} style={{ textDecoration: "none" }}>
                     <List.Icon name="marker" color="black" />
                     <List.Content label="user_location">
                         {location}
@@ -56,9 +83,9 @@ const ShowUser = (props) => {
                     </List.Item>
                 ) : (
                     <></>
-                )}
+                )} */}
 
-                <List.Item>
+                {/* <List.Item>
                     <List.Icon name="linkify" color="black" />
                     <List.Content label="user_website" >
                         <a
@@ -69,9 +96,9 @@ const ShowUser = (props) => {
                             {user.website}{" "}
                         </a>
                     </List.Content>
-                </List.Item>
+                </List.Item> */}
 
-                {!!currentUser ? (
+                {/* {!!currentUser ? (
                     <List.Item>
                         <List.Icon name="phone" />{" "}
                         <List.Content label="user_phone">
@@ -86,14 +113,15 @@ const ShowUser = (props) => {
                     </List.Item>
                 ) : (
                     <></>
-                )}
+                )} */}
 
-                <List.Item>
+                {/* <List.Item>
                     <List.Icon name="book" />
                     <List.Content label="user_description">
                         {user.description}
                     </List.Content>
                 </List.Item>
+
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
@@ -101,14 +129,15 @@ const ShowUser = (props) => {
                         {InstrumentIDToName(user.primary_instrument_id)}
                     </List.Content>
                 </List.Item>
+
                 <List.Item>
                     <List.Icon name="music" />
                     <List.Content label="primary_instrument">
                         Secondary Instrument:{" "}
                         {InstrumentIDToName(user.secondary_instrument_id)}
                     </List.Content>
-                </List.Item>
-            </List>
+                </List.Item> */}
+            </Card>
         </div>
     );
 };
