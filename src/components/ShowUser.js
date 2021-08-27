@@ -52,7 +52,7 @@ const ShowUser = (props) => {
     }
 
     return (
-        <div>
+        <div align="center">
             <Card className={classes.root} id={user.id} key={user.id}>
                 <CardMedia
                     className={classes.media}

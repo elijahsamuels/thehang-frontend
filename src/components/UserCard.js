@@ -10,7 +10,10 @@ import {
     makeStyles,
     Link,
 } from "@material-ui/core";
-
+// import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
+import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
+import PhoneDisabledIcon from '@material-ui/icons/PhoneDisabled';
+import EmailIcon from '@material-ui/icons/Email';
 import { showUser } from "../actions/userActions.js";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
 import userImage from "./staticComponents/userImage";
@@ -33,6 +36,9 @@ const useStyles = makeStyles({
 const UserCard = (props) => {
     const mailToUserEmail = () => {
         return `mailto:${user.email}`;
+    };
+    const phoneUser = () => {
+        return `tel:${user.phone}`;
     };
 
     const userLinkOrAlert = () => {
@@ -77,11 +83,21 @@ const UserCard = (props) => {
                                 <a
                                     href={mailToUserEmail()}
                                     style={{ textDecoration: "none" }}>
-                                    Email
+                                    
+                                    <EmailIcon />
+                                </a>
+                                <a
+                                    href={phoneUser()}
+                                    style={{ textDecoration: "none" }}>
+                                    
+                                    <PhoneEnabledIcon />
                                 </a>
                             </p>
                         ) : (
-                            <></>
+                            <div>
+                            <EmailIcon />
+                            <PhoneDisabledIcon />
+                            </div>
                         )}
                     </CardContent>
                 </Card>

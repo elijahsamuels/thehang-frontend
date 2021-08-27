@@ -8,7 +8,7 @@ import {
     Icon,
     Toolbar,
     IconButton,
-    // Typography,
+    Typography,
     // Slide,
     // useScrollTrigger,
     makeStyles,
@@ -25,12 +25,15 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         "&:hover": {
-            backgroundColor: "white",
+            background: "white",
         },
     },
     rightToolbar: {
         marginRight: "auto",
     },
+    userText: {
+        color: "black",
+    }
 }));
 
 // function HideOnScroll(props) {
@@ -115,7 +118,7 @@ const Nav = (props) => {
                 </IconButton>
 
                 {!!currentUser ? (
-                    <> <p>Hello, {currentUser.first_name}!</p>
+                    <> <Typography className={classes.userText}>Hello, {currentUser.first_name}!</Typography>
                         <IconButton
                             name="Edit"
                             disableRipple="true"
