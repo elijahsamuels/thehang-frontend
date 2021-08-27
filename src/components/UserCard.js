@@ -13,6 +13,8 @@ import {
 // import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
 import PhoneDisabledIcon from '@material-ui/icons/PhoneDisabled';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import PhonelinkLockIcon from '@material-ui/icons/PhonelinkLock';
 import EmailIcon from '@material-ui/icons/Email';
 import { showUser } from "../actions/userActions.js";
 import InstrumentIDToName from "./staticComponents/InstrumentIDToName";
@@ -39,6 +41,9 @@ const UserCard = (props) => {
     };
     const phoneUser = () => {
         return `tel:${user.phone}`;
+    };
+    const textUser = () => {
+        return `sms:${user.phone}`;
     };
 
     const userLinkOrAlert = () => {
@@ -83,20 +88,24 @@ const UserCard = (props) => {
                                 <a
                                     href={mailToUserEmail()}
                                     style={{ textDecoration: "none" }}>
-                                    
                                     <EmailIcon />
                                 </a>
                                 <a
                                     href={phoneUser()}
                                     style={{ textDecoration: "none" }}>
-                                    
                                     <PhoneEnabledIcon />
+                                </a>
+                                <a
+                                    href={textUser()}
+                                    style={{ textDecoration: "none" }}>
+                                    <PhoneIphoneIcon />
                                 </a>
                             </p>
                         ) : (
                             <div>
                             <EmailIcon />
                             <PhoneDisabledIcon />
+                            <PhonelinkLockIcon />
                             </div>
                         )}
                     </CardContent>
